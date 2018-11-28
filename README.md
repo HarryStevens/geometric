@@ -1,4 +1,4 @@
-# geometric.js
+# Geometric.js
 A JavaScript library with geometric functions.
 
 ## Installation
@@ -6,8 +6,8 @@ A JavaScript library with geometric functions.
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@0.0.2/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@0.0.2/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@0.0.3/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@0.0.3/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
