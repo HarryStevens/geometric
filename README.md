@@ -50,3 +50,12 @@ Calculate the distance between two points.
 geometric.distance([1, 0], [1, 0]); // 0
 geometric.distance([1, 0], [-1, 0]); // 2
 ```
+
+<a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>a</em>, <em>b</em>)
+
+Calculate the midpoint between two points.
+
+```js
+geometric.midpoint([0, 0], [1, 0]); // [0.5, 0]
+geometric.midpoint([0, 0], [-1, 0]); // [-0.5, 0]
+```

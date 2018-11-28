@@ -26,9 +26,17 @@
     return Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2));
   }
 
+  // Calculates the midpoint between two points.
+  // Takes two arguments, each of which is a point represented as an array of two numbers,
+  // where the first number is its x coordinate and the second number is its y coordinate.
+  function midpoint(a, b){
+    return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
+  }
+
   exports.angleDegrees = angleDegrees;
   exports.angleRadians = angleRadians;
   exports.distance = distance;
+  exports.midpoint = midpoint;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
