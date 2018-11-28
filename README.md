@@ -1,4 +1,4 @@
-# geometric
+# geometric.js
 A JavaScript library with geometric functions.
 
 ## Installation
