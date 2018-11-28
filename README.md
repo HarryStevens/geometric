@@ -29,10 +29,6 @@ Calculate the angle between two points, in degrees. Takes two arguments, each of
 ```js
 geometric.angleDegrees([0, 0], [1, 0]); // 0
 geometric.angleDegrees([0, 0], [-1, 0]); // 180
-geometric.angleDegrees([0, 0], [0, 1]); // 90
-geometric.angleDegrees([0, 0], [0, -1]); // -90
-geometric.angleDegrees([0, 0], [1, 1]); // 45
-geometric.angleDegrees([0, 0], [-1, -1]); // -135
 ```
 
 <a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>a</em>, <em>b</em>)
@@ -40,11 +36,8 @@ geometric.angleDegrees([0, 0], [-1, -1]); // -135
 Calculate the angle between two points, in [radians](https://en.wikipedia.org/wiki/Radian). Takes two arguments, each of which is a point represented as an array of two numbers, where the first number is its x coordinate and the second number is its y coordinate.
 
 ```js
-geometric.angleRadians([0, 0], [0, 1]); // Math.PI / 2
-geometric.angleRadians([0, 0], [0, -1]); // Math.PI / -2
 geometric.angleRadians([0, 0], [1, 0]); // 0
 geometric.angleRadians([0, 0], [-1, 0]); // Math.PI
-geometric.angleRadians([0, 0], [1, 1]); // Math.PI / 4
 ```
 
 <a name="distasnce" href="#distasnce">#</a> geometric.<b>distasnce</b>(<em>a</em>, <em>b</em>)
@@ -52,8 +45,6 @@ geometric.angleRadians([0, 0], [1, 1]); // Math.PI / 4
 Calculate the distance between two points. Takes two arguments, each of which is a point represented as an array of two numbers, where the first number is its x coordinate and the second number is its y coordinate.
 
 ```js
-geometric.distance([0, 0], [0, 1]); // 1
-geometric.distance([0, 0], [0, -1]); // 1
 geometric.distance([1, 0], [1, 0]); // 0
 geometric.distance([1, 0], [-1, 0]); // 2
 ```
