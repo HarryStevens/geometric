@@ -1,7 +1,7 @@
 var tape = require("tape"),
     geometric = require("../");
 
-tape("angleDegrees(a, b) calculates the angle between two points", function(test) {
+tape("angleDegrees(a, b) calculates the angle between two points, in degrees", function(test) {
   test.equal(geometric.angleDegrees([0, 0], [0, 1]), 90);
   test.equal(geometric.angleDegrees([0, 0], [0, -1]), -90);
   test.equal(geometric.angleDegrees([0, 0], [1, 0]), 0);
