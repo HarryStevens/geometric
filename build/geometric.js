@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 0.0.1. Copyright 2018 undefined.
+// https://github.com/HarryStevens/geometric#readme Version 0.0.2. Copyright 2018 undefined.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
