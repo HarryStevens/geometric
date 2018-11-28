@@ -24,7 +24,11 @@
   "keywords": [
     "geometry"
   ],
-  "author": "Harry Stevens <harryjosephstevens@gmail.com> (harryjstevens.com)",
+  "author": {
+    "name": "Harry Stevens",
+    "email": "harryjosephstevens@gmail.com",
+    "url": "http://harryjstevens.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/HarryStevens/geometric/issues"
