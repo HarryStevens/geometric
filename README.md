@@ -24,7 +24,7 @@ var geometric = require("geometric");
 
 <a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>a</em>, <em>b</em>)
 
-Calculate the angle between two points in degrees.
+Calculate the angle between two points in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)).
 
 ```js
 geometric.angleDegrees([0, 0], [1, 0]); // 0
