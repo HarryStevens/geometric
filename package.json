@@ -1,0 +1,33 @@
+{
+  "name": "geometric",
+  "version": "0.0.1",
+  "description": "A JavaScript library with geometric functions.",
+  "main": "build/geometric.js",
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup -c --banner \"$(preamble)\"",
+    "test": "tape 'test/**/*-test.js' && eslint index.js src",
+    "prepublish": "npm run test && uglifyjs build/geometric.js -c -m -o build/geometric.min.js",
+    "postpublish": "zip -j build/geometric.zip -- LICENSE README.md build/geometric.js build/geometric.min.js"
+  },
+  "devDependencies": {
+    "eslint": "3",
+    "jsdom": "11",
+    "package-preamble": "0.1",
+    "rollup": "^0.62.0",
+    "tape": "4",
+    "uglify-js": "^2.8.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarryStevens/geometric.git"
+  },
+  "keywords": [
+    "geometry"
+  ],
+  "author": "Harry Stevens <harryjosephstevens@gmail.com> (harryjstevens.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HarryStevens/geometric/issues"
+  },
+  "homepage": "https://github.com/HarryStevens/geometric#readme"
+}
