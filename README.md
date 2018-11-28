@@ -37,7 +37,7 @@ Calculate the angle between two points in [radians](https://en.wikipedia.org/wik
 
 ```js
 geometric.angleRadians([0, 0], [1, 0]); // 0
-geometric.angleRadians([0, 0], [-1, 0]); // Math.PI
+geometric.angleRadians([0, 0], [-1, 0]); // π
 ```
 
 <a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>a</em>, <em>b</em>)
