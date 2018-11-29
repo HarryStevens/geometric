@@ -62,18 +62,18 @@ geometric.midpoint([0, 0], [-1, 0]); // [-0.5, 0]
 
 <a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angleInDegrees</em>, <em>distance</em>)
 
-Translates a point by an angle in degrees and distance.
+Translates a point by an angle in degrees and distance. (In the example below, rounding is necessary to produce a clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript).)
 
 ```js
 geometric.translateDegrees([0, 0], 0, 1) // [1, 0]
-geometric.translateDegrees([0, 0], 90, 1).map(d => Math.round(d)) // [0, 1] (Rounding is necessary to produce this clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript))
+geometric.translateDegrees([0, 0], 90, 1).map(d => Math.round(d)) // [0, 1]
 ```
 
 <a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angleInRadians</em>, <em>distance</em>)
 
-Translates a point by an angle in [radians](https://en.wikipedia.org/wiki/Radian) and distance.
+Translates a point by an angle in [radians](https://en.wikipedia.org/wiki/Radian) and distance. (In the example below, rounding is necessary to produce a clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript).)
 
 ```js
 geometric.translateRadians([0, 0], 0, 1) // [1, 0]
-geometric.translateRadians([0, 0], Math.PI / 2, 1).map(d => Math.round(d)) // [0, 1] (Rounding is necessary to produce this clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript))
+geometric.translateRadians([0, 0], Math.PI / 2, 1).map(d => Math.round(d)) // [0, 1]
 ```
