@@ -24,7 +24,7 @@ var geometric = require("geometric");
 
 ## API
 
-<a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>a</em>, <em>b</em>)
+<a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>pointA</em>, <em>pointB</em>)
 
 Calculate the angle between two points in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)).
 
@@ -33,7 +33,7 @@ geometric.angleDegrees([0, 0], [1, 0]); // 0
 geometric.angleDegrees([0, 0], [-1, 0]); // 180
 ```
 
-<a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>a</em>, <em>b</em>)
+<a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>pointA</em>, <em>pointB</em>)
 
 Calculate the angle between two points in [radians](https://en.wikipedia.org/wiki/Radian).
 
@@ -42,7 +42,7 @@ geometric.angleRadians([0, 0], [1, 0]); // 0
 geometric.angleRadians([0, 0], [-1, 0]); // π
 ```
 
-<a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>a</em>, <em>b</em>)
+<a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>)
 
 Calculate the distance between two points.
 
@@ -51,11 +51,29 @@ geometric.distance([1, 0], [1, 0]); // 0
 geometric.distance([1, 0], [-1, 0]); // 2
 ```
 
-<a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>a</em>, <em>b</em>)
+<a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>)
 
 Calculate the midpoint between two points.
 
 ```js
 geometric.midpoint([0, 0], [1, 0]); // [0.5, 0]
 geometric.midpoint([0, 0], [-1, 0]); // [-0.5, 0]
+```
+
+<a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angleInDegrees</em>, <em>distance</em>)
+
+Translates a point by an angle in degrees and distance.
+
+```js
+geometric.translateDegrees([0, 0], 0, 1) // [1, 0]
+geometric.translateDegrees([0, 0], 90, 1).map(d => Math.round(d)) // [0, 1] (Rounding is necessary to produce this clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript))
+```
+
+<a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angleInRadians</em>, <em>distance</em>)
+
+Translates a point by an angle in [radians](https://en.wikipedia.org/wiki/Radian) and distance.
+
+```js
+geometric.translateRadians([0, 0], 0, 1) // [1, 0]
+geometric.translateRadians([0, 0], Math.PI / 2, 1).map(d => Math.round(d)) // [0, 1] (Rounding is necessary to produce this clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript))
 ```

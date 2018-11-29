@@ -33,10 +33,23 @@
     return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
   }
 
+  // Translates a point (p) by an angle in radians (a) and distance (d)
+  function translateDegrees(p, a, d){
+    a = a / 180 * Math.PI;
+    return [p[0] + d * Math.cos(a), p[1] + d * Math.sin(a)]
+  }
+
+  // Translates a point (p) by an angle in degrees (a) and distance (d)
+  function translateRadians(p, a, d){
+    return [p[0] + d * Math.cos(a), p[1] + d * Math.sin(a)]
+  }
+
   exports.angleDegrees = angleDegrees;
   exports.angleRadians = angleRadians;
   exports.distance = distance;
   exports.midpoint = midpoint;
+  exports.translateDegrees = translateDegrees;
+  exports.translateRadians = translateRadians;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
