@@ -1,5 +1,5 @@
 # Geometric.js
-A JavaScript library with geometric functions.
+A JavaScript library with geometric functions. [See a live demo](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
 [![Build Status](https://travis-ci.org/HarryStevens/geometric.svg?branch=master)](https://travis-ci.org/HarryStevens/geometric)
 
