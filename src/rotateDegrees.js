@@ -7,9 +7,9 @@ export default function rotateDegrees(p, a, o){
 
   else {
     // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
-    var p0 = p.map((c, i) => c - o[i]);
+    var p0 = p.map(function(c, i){ return c - o[i]; });
     var r = rotate(p0, a);
-    return r.map((c, i) => c + o[i]);
+    return r.map(function(c, i){ return c + o[i]; });
   }
   
   function rotate(p, a){
