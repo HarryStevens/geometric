@@ -26,6 +26,42 @@
     return Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2));
   }
 
+  // Determines whether a point is inside of a polygon, represented as an array of vertices.
+  // From https://github.com/substack/point-in-polygon/blob/master/index.js,
+  // based on the ray-casting algorithm from https://web.archive.org/web/20180115151705/https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
+  // Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
+  // Returns a boolean.
+  function pointInPolygon(point, vertices) {
+      var x = point[0], y = point[1];
+      
+      var inside = false;
+      for (var i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
+        var xi = vertices[i][0], yi = vertices[i][1];
+        var xj = vertices[j][0], yj = vertices[j][1];
+      
+        if (((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { inside = !inside; }
+      }
+      
+      return inside;
+  }
+
+  // Determines whether a polygon is contained by another polygon.
+  // Polygons are represented as an array of vertices, each of which is an array of two numbers,
+  // where the first number represents its x-coordinate and the second its y-coordinate.
+  // Returns a boolean.
+  function polygonInPolygon(verticesA, verticesB){
+    return verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
+  }
+
+  // Determines whether a polygon intersects but is not contained by another polygon.
+  // Polygons are represented as an array of vertices, each of which is an array of two numbers,
+  // where the first number represents its x-coordinate and the second its y-coordinate.
+  // Returns a boolean.
+  function polygonsIntersect(verticesA, verticesB){
+    return verticesA.some(function(p){ return pointInPolygon(p, verticesB); }) &&
+          !verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
+  }
+
   // Calculates the midpoint between two points.
   // Takes two arguments, each of which is a point represented as an array of two numbers,
   // where the first number is its x coordinate and the second number is its y coordinate.
@@ -47,6 +83,9 @@
   exports.angleDegrees = angleDegrees;
   exports.angleRadians = angleRadians;
   exports.distance = distance;
+  exports.pointInPolygon = pointInPolygon;
+  exports.polygonInPolygon = polygonInPolygon;
+  exports.polygonsIntersect = polygonsIntersect;
   exports.midpoint = midpoint;
   exports.translateDegrees = translateDegrees;
   exports.translateRadians = translateRadians;

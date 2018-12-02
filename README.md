@@ -60,6 +60,18 @@ geometric.midpoint([0, 0], [1, 0]); // [0.5, 0]
 geometric.midpoint([0, 0], [-1, 0]); // [-0.5, 0]
 ```
 
+<a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>vertices</em>)
+
+Determines whether a point is inside of a polygon, represented as an array of vertices, where each vertex is an array of two numbers representing the x-coordinate and y-coordinate, respectively. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm). Returns a boolean.
+
+<a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>verticesA</em>, <em>verticesB</em>)
+
+Determines whether a polygon is contained by another polygon. Polygons are represented as arrays of vertices, where each vertex is an array of two numbers representing the x-coordinate and y-coordinate, respectively. Returns a boolean.
+
+<a name="polygonsIntersect" href="#polygonsIntersect">#</a> geometric.<b>polygonsIntersect</b>(<em>verticesA</em>, <em>verticesB</em>)
+
+Determines whether a polygon intersects but is not contained by another polygon. Polygons are represented as arrays of vertices, where each vertex is an array of two numbers representing the x-coordinate and y-coordinate, respectively. Returns a boolean.
+
 <a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angleInDegrees</em>, <em>distance</em>)
 
 Translates a point by an angle in degrees and distance. (In the example below, rounding is necessary to produce a clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript).)
