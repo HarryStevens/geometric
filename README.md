@@ -29,6 +29,8 @@ In Geometric.js, there are <b>points</b>, <b>polygons</b>, <b>angles</b>, and <b
 * <b>Polygons</b> are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]].
 * <b>Angles</b> and <b>distances</b> are represented as numbers. Angles are measured in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)) or [radians](https://en.wikipedia.org/wiki/Radian), depending upon the function, while distances are measured in pixels.
 
+<hr />
+
 <a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>pointA</em>, <em>pointB</em>)
 
 Returns the angle between <em>pointA</em> and <em>pointB</em> in degrees. [See it in action](https://bl.ocks.org/harrystevens/b212d3166a85aecb9d5fc61cf660de23).
