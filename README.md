@@ -72,6 +72,14 @@ Determines whether a polygon is contained by another polygon. Polygons are repre
 
 Determines whether a polygon intersects but is not contained by another polygon. Polygons are represented as arrays of vertices, where each vertex is an array of two numbers representing the x-coordinate and y-coordinate, respectively. Returns a boolean.
 
+<a name="rotateDegrees" href="#rotateDegrees">#</a> geometric.<b>rotateDegrees</b>(<em>point</em>, <em>angleInDegrees</em>[, <em>origin</em>])
+
+Rotates a point around an origin by an angle in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0].
+
+<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angleInDegrees</em>[, <em>origin</em>])
+
+Rotates a point around an origin by an angle in radians. If <em>origin</em> is not specified, the origin is set to [0, 0].
+
 <a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angleInDegrees</em>, <em>distance</em>)
 
 Translates a point by an angle in degrees and distance. (In the example below, rounding is necessary to produce a clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript).)
