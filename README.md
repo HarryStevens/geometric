@@ -31,7 +31,7 @@ In Geometric.js, there are <b>points</b>, <b>polygons</b>, <b>angles</b>, and <b
 
 <a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>pointA</em>, <em>pointB</em>)
 
-Returns the angle between <em>pointA</em> and <em>pointB</em> in degrees.
+Returns the angle between <em>pointA</em> and <em>pointB</em> in degrees. [See it in action](https://bl.ocks.org/harrystevens/b212d3166a85aecb9d5fc61cf660de23).
 
 <a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>pointA</em>, <em>pointB</em>)
 
@@ -39,11 +39,11 @@ Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
 
 <a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>)
 
-Returns the distance between <em>pointA</em> and <em>pointB</em>.
+Returns the distance between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
 <a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>)
 
-Returns the midpoint between <em>pointA</em> and <em>pointB</em>.
+Returns the midpoint between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
 <a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>)
 
@@ -59,7 +59,7 @@ Returns a boolean representing whether <em>polygonA</em> intersects but is not c
 
 <a name="rotateDegrees" href="#rotateDegrees">#</a> geometric.<b>rotateDegrees</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>])
 
-Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0].
+Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0]. [See it in action](https://bl.ocks.org/harrystevens/5fe49df19892c04dfb9883c217571409).
 
 <a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>])
 
@@ -67,7 +67,7 @@ Returns the coordinates resulting from rotating a <em>point</em> about an origin
 
 <a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angle</em>, <em>distance</em>)
 
-Returns the coordinates resulting from translating a point by an <em>angle</em> in degrees and a <em>distance</em>.
+Returns the coordinates resulting from translating a point by an <em>angle</em> in degrees and a <em>distance</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
 <a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angle</em>, <em>distance</em>)
 
