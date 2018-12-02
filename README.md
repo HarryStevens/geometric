@@ -24,76 +24,51 @@ var geometric = require("geometric");
 
 ## API
 
+In Geometric.js, there are <b>points</b>, <b>polygons</b>, <b>angles</b>, and <b>distances</b>.
+* <b>Points</b> are represented as arrays of two numbers, such as [0, 0].
+* <b>Polygons</b> are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]].
+* <b>Angles</b> and <b>distances</b> are represented as numbers. Angles are measured in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)) or [radians](https://en.wikipedia.org/wiki/Radian), depending upon the function, while distances are measured in pixels.
+
 <a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>pointA</em>, <em>pointB</em>)
 
-Calculate the angle between two points in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)).
-
-```js
-geometric.angleDegrees([0, 0], [1, 0]); // 0
-geometric.angleDegrees([0, 0], [-1, 0]); // 180
-```
+Returns the angle between <em>pointA</em> and <em>pointB</em> in degrees.
 
 <a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>pointA</em>, <em>pointB</em>)
 
-Calculate the angle between two points in [radians](https://en.wikipedia.org/wiki/Radian).
-
-```js
-geometric.angleRadians([0, 0], [1, 0]); // 0
-geometric.angleRadians([0, 0], [-1, 0]); // π
-```
+Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
 
 <a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>)
 
-Calculate the distance between two points.
-
-```js
-geometric.distance([1, 0], [1, 0]); // 0
-geometric.distance([1, 0], [-1, 0]); // 2
-```
+Returns the distance between <em>pointA</em> and <em>pointB</em>.
 
 <a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>)
 
-Calculate the midpoint between two points.
+Returns the midpoint between <em>pointA</em> and <em>pointB</em>.
 
-```js
-geometric.midpoint([0, 0], [1, 0]); // [0.5, 0]
-geometric.midpoint([0, 0], [-1, 0]); // [-0.5, 0]
-```
+<a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>)
 
-<a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>vertices</em>)
+Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 
-Determines whether a point is inside of a polygon, represented as an array of vertices, where each vertex is an array of two numbers representing the x-coordinate and y-coordinate, respectively. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm). Returns a boolean.
+<a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>polygonA</em>, <em>polygonB</em>)
 
-<a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>verticesA</em>, <em>verticesB</em>)
+Returns a boolean representing whether <em>polygonA</em> is contained by <em>polygonB</em>.
 
-Determines whether a polygon is contained by another polygon. Polygons are represented as arrays of vertices, where each vertex is an array of two numbers representing the x-coordinate and y-coordinate, respectively. Returns a boolean.
+<a name="polygonsIntersect" href="#polygonsIntersect">#</a> geometric.<b>polygonsIntersect</b>(<em>polygonA</em>, <em>polygonB</em>)
 
-<a name="polygonsIntersect" href="#polygonsIntersect">#</a> geometric.<b>polygonsIntersect</b>(<em>verticesA</em>, <em>verticesB</em>)
+Returns a boolean representing whether <em>polygonA</em> intersects but is not contained by <em>polygonB</em>.
 
-Determines whether a polygon intersects but is not contained by another polygon. Polygons are represented as arrays of vertices, where each vertex is an array of two numbers representing the x-coordinate and y-coordinate, respectively. Returns a boolean.
+<a name="rotateDegrees" href="#rotateDegrees">#</a> geometric.<b>rotateDegrees</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>])
 
-<a name="rotateDegrees" href="#rotateDegrees">#</a> geometric.<b>rotateDegrees</b>(<em>point</em>, <em>angleInDegrees</em>[, <em>origin</em>])
+Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0].
 
-Rotates a point around an origin by an angle in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0].
+<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>])
 
-<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angleInRadians</em>[, <em>origin</em>])
+Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in radians. If <em>origin</em> is not specified, the origin is set to [0, 0].
 
-Rotates a point around an origin by an angle in radians. If <em>origin</em> is not specified, the origin is set to [0, 0].
+<a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angle</em>, <em>distance</em>)
 
-<a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angleInDegrees</em>, <em>distance</em>)
+Returns the coordinates resulting from translating a point by an <em>angle</em> in degrees and a <em>distance</em>.
 
-Translates a point by an angle in degrees and distance. (In the example below, rounding is necessary to produce a clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript).)
+<a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angle</em>, <em>distance</em>)
 
-```js
-geometric.translateDegrees([0, 0], 0, 1) // [1, 0]
-geometric.translateDegrees([0, 0], 90, 1).map(d => Math.round(d)) // [0, 1]
-```
-
-<a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angleInRadians</em>, <em>distance</em>)
-
-Translates a point by an angle in [radians](https://en.wikipedia.org/wiki/Radian) and distance. (In the example below, rounding is necessary to produce a clean result because arithmetic in JavaScript is done in [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#JavaScript).)
-
-```js
-geometric.translateRadians([0, 0], 0, 1) // [1, 0]
-geometric.translateRadians([0, 0], Math.PI / 2, 1).map(d => Math.round(d)) // [0, 1]
-```
+Returns the coordinates resulting from translating a point by an <em>angle</em> in radians and a <em>distance</em>.
