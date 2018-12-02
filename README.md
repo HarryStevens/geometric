@@ -76,7 +76,7 @@ Determines whether a polygon intersects but is not contained by another polygon.
 
 Rotates a point around an origin by an angle in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0].
 
-<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angleInDegrees</em>[, <em>origin</em>])
+<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angleInRadians</em>[, <em>origin</em>])
 
 Rotates a point around an origin by an angle in radians. If <em>origin</em> is not specified, the origin is set to [0, 0].
 
