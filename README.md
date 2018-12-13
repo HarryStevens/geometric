@@ -31,58 +31,58 @@ In Geometric.js, there are <b>points</b>, <b>polygons</b>, <b>angles</b>, and <b
 
 <hr />
 
-<a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>pointA</em>, <em>pointB</em>)
+<a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/angleDegrees.js "Source")
 
 Returns the angle between <em>pointA</em> and <em>pointB</em> in degrees. [See it in action](https://bl.ocks.org/harrystevens/b212d3166a85aecb9d5fc61cf660de23).
 
-<a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>pointA</em>, <em>pointB</em>)
+<a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/angleRadians.js "Source")
 
 Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
 
-<a name="area" href="#area">#</a> geometric.<b>area</b>(<em>polygon</em>)
+<a name="area" href="#area">#</a> geometric.<b>area</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/area.js "Source")
 
 Returns the area of a polygon.
 
-<a name="centroid" href="#centroid">#</a> geometric.<b>centroid</b>(<em>polygon</em>)
+<a name="centroid" href="#centroid">#</a> geometric.<b>centroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/centroid.js "Source")
 
 Returns the weighted centroid of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a mean center.
 
-<a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>)
+<a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/distance.js "Source")
 
 Returns the distance between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
-<a name="meanCenter" href="#meanCenter">#</a> geometric.<b>meanCenter</b>(<em>polygon</em>)
+<a name="meanCenter" href="#meanCenter">#</a> geometric.<b>meanCenter</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/meanCenter.js "Source")
 
 Returns the arithmetic mean of the vertices of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a centroid.
 
-<a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>)
+<a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/midpoint.js "Source")
 
 Returns the midpoint between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
-<a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>)
+<a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointInPolygon.js "Source")
 
 Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 
-<a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>polygonA</em>, <em>polygonB</em>)
+<a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygonInPolygon.js "Source")
 
 Returns a boolean representing whether <em>polygonA</em> is contained by <em>polygonB</em>.
 
-<a name="polygonsIntersect" href="#polygonsIntersect">#</a> geometric.<b>polygonsIntersect</b>(<em>polygonA</em>, <em>polygonB</em>)
+<a name="polygonsIntersect" href="#polygonsIntersect">#</a> geometric.<b>polygonsIntersect</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointsIntersect.js "Source")
 
 Returns a boolean representing whether <em>polygonA</em> intersects but is not contained by <em>polygonB</em>.
 
-<a name="rotateDegrees" href="#rotateDegrees">#</a> geometric.<b>rotateDegrees</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>])
+<a name="rotateDegrees" href="#rotateDegrees">#</a> geometric.<b>rotateDegrees</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/rotateDegrees.js "Source")
 
 Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0]. [See it in action](https://bl.ocks.org/harrystevens/5fe49df19892c04dfb9883c217571409).
 
-<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>])
+<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/rotateRadians.js "Source")
 
 Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in radians. If <em>origin</em> is not specified, the origin is set to [0, 0].
 
-<a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angle</em>, <em>distance</em>)
+<a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angle</em>, <em>distance</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/translateDegrees.js "Source")
 
 Returns the coordinates resulting from translating a point by an <em>angle</em> in degrees and a <em>distance</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
-<a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angle</em>, <em>distance</em>)
+<a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angle</em>, <em>distance</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/translateRadians.js "Source")
 
 Returns the coordinates resulting from translating a point by an <em>angle</em> in radians and a <em>distance</em>.
