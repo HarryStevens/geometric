@@ -3,10 +3,11 @@ export default function area(vertices){
   var a = 0;
 
   for (var i = 0, l = vertices.length; i < l; i++) {
-    var s = i === l - 1 ? 0 : i + 1;
+    var v0 = vertices[i],
+        v1 = vertices[i === l - 1 ? 0 : i + 1];
 
-    a += vertices[i][0] * vertices[s][1];
-    a -= vertices[s][0] * vertices[i][1];
+    a += v0[0] * v1[1];
+    a -= v1[0] * v0[1];
   }
 
   return Math.abs(a / 2);

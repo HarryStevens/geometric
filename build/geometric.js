@@ -24,10 +24,11 @@
     var a = 0;
 
     for (var i = 0, l = vertices.length; i < l; i++) {
-      var s = i === l - 1 ? 0 : i + 1;
+      var v0 = vertices[i],
+          v1 = vertices[i === l - 1 ? 0 : i + 1];
 
-      a += vertices[i][0] * vertices[s][1];
-      a -= vertices[s][0] * vertices[i][1];
+      a += v0[0] * v1[1];
+      a -= v1[0] * v0[1];
     }
 
     return Math.abs(a / 2);
@@ -38,6 +39,20 @@
   // where the first number is its x coordinate and the second number is its y coordinate.
   function distance(a, b){
     return Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2));
+  }
+
+  // Calculates the arithmetic mean of a polygon's vertices. Not to be confused with a centroid (https://github.com/Turfjs/turf/issues/334).
+  function meanCenter(vertices){
+    var x = 0, y = 0, l = vertices.length;
+
+    for (var i = 0; i < l; i++) {
+      var v = vertices[i];        
+
+      x += v[0];
+      y += v[1];
+    }
+
+    return [x / l, y / l];
   }
 
   // Calculates the midpoint between two points.
@@ -137,6 +152,7 @@
   exports.angleRadians = angleRadians;
   exports.area = area;
   exports.distance = distance;
+  exports.meanCenter = meanCenter;
   exports.midpoint = midpoint;
   exports.pointInPolygon = pointInPolygon;
   exports.polygonInPolygon = polygonInPolygon;

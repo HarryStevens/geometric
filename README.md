@@ -47,6 +47,10 @@ Returns the area of a polygon.
 
 Returns the distance between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
 
+<a name="meanCenter" href="#meanCenter">#</a> geometric.<b>meanCenter</b>(<em>polygon</em>)
+
+Returns the arithmetic mean of the vertices of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a centroid.
+
 <a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>)
 
 Returns the midpoint between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
