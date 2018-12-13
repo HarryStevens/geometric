@@ -27,7 +27,7 @@ var geometric = require("geometric");
 In Geometric.js, there are <b>points</b>, <b>polygons</b>, <b>angles</b>, and <b>distances</b>.
 * <b>Points</b> are represented as arrays of two numbers, such as [0, 0].
 * <b>Polygons</b> are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]].
-* <b>Angles</b> and <b>distances</b> are represented as numbers. Angles are measured in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)) or [radians](https://en.wikipedia.org/wiki/Radian), depending upon the function, while distances are measured in pixels.
+* <b>Angles</b>, <b>areas</b> and <b>distances</b> are represented as numbers. Angles are measured in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)) or [radians](https://en.wikipedia.org/wiki/Radian), depending upon the function, while areas and distances are measured in pixels.
 
 <hr />
 
@@ -38,6 +38,10 @@ Returns the angle between <em>pointA</em> and <em>pointB</em> in degrees. [See i
 <a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>pointA</em>, <em>pointB</em>)
 
 Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
+
+<a name="area" href="#area">#</a> geometric.<b>area</b>(<em>polygon</em>)
+
+Returns the area of a polygon.
 
 <a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>)
 

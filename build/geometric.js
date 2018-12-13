@@ -19,6 +19,20 @@
     return Math.atan2(b[1] - a[1], b[0] - a[0]);
   }
 
+  // Calculates the area of a polygon.
+  function area(vertices){
+    var a = 0;
+
+    for (var i = 0, l = vertices.length; i < l; i++) {
+      var s = i === l - 1 ? 0 : i + 1;
+
+      a += vertices[i][0] * vertices[s][1];
+      a -= vertices[s][0] * vertices[i][1];
+    }
+
+    return Math.abs(a / 2);
+  }
+
   // Calculates the distance between two points.
   // Takes two arguments, each of which is a point represented as an array of two numbers,
   // where the first number is its x coordinate and the second number is its y coordinate.
@@ -121,6 +135,7 @@
 
   exports.angleDegrees = angleDegrees;
   exports.angleRadians = angleRadians;
+  exports.area = area;
   exports.distance = distance;
   exports.midpoint = midpoint;
   exports.pointInPolygon = pointInPolygon;
