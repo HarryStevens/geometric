@@ -1,6 +1,7 @@
 export {default as angleDegrees} from "./src/angleDegrees"
 export {default as angleRadians} from "./src/angleRadians"
 export {default as area} from "./src/area"
+export {default as centroid} from "./src/centroid"
 export {default as distance} from "./src/distance"
 export {default as meanCenter} from "./src/meanCenter"
 export {default as midpoint} from "./src/midpoint"

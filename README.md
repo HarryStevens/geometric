@@ -43,6 +43,10 @@ Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
 
 Returns the area of a polygon.
 
+<a name="centroid" href="#centroid">#</a> geometric.<b>centroid</b>(<em>polygon</em>)
+
+Returns the weighted centroid of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a mean center.
+
 <a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>)
 
 Returns the distance between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
