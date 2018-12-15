@@ -41,11 +41,11 @@ Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
 
 <a name="area" href="#area">#</a> geometric.<b>area</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/area.js "Source")
 
-Returns the area of a polygon.
+Returns the area of a polygon. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
 
 <a name="centroid" href="#centroid">#</a> geometric.<b>centroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/centroid.js "Source")
 
-Returns the weighted centroid of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a mean center.
+Returns the weighted centroid of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a mean center. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
 
 <a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/distance.js "Source")
 
@@ -53,7 +53,7 @@ Returns the distance between <em>pointA</em> and <em>pointB</em>. [See it in act
 
 <a name="meanCenter" href="#meanCenter">#</a> geometric.<b>meanCenter</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/meanCenter.js "Source")
 
-Returns the arithmetic mean of the vertices of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a centroid.
+Returns the arithmetic mean of the vertices of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a centroid. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
 
 <a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/midpoint.js "Source")
 
