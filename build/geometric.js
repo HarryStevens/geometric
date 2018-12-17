@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 0.0.12. Copyright 2018 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 0.0.13. Copyright 2018 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -101,23 +101,6 @@
       return inside;
   }
 
-  // Determines whether a polygon is contained by another polygon.
-  // Polygons are represented as an array of vertices, each of which is an array of two numbers,
-  // where the first number represents its x-coordinate and the second its y-coordinate.
-  // Returns a boolean.
-  function polygonInPolygon(verticesA, verticesB){
-    return verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
-  }
-
-  // Determines whether a polygon intersects but is not contained by another polygon.
-  // Polygons are represented as an array of vertices, each of which is an array of two numbers,
-  // where the first number represents its x-coordinate and the second its y-coordinate.
-  // Returns a boolean.
-  function polygonsIntersect(verticesA, verticesB){
-    return verticesA.some(function(p){ return pointInPolygon(p, verticesB); }) &&
-          !verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
-  }
-
   // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
   function sign(point, line){
     var x = point[0],
@@ -140,6 +123,23 @@
   }
   function pointOnLine(point, line){
     return sign(point, line) === 0;
+  }
+
+  // Determines whether a polygon is contained by another polygon.
+  // Polygons are represented as an array of vertices, each of which is an array of two numbers,
+  // where the first number represents its x-coordinate and the second its y-coordinate.
+  // Returns a boolean.
+  function polygonInPolygon(verticesA, verticesB){
+    return verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
+  }
+
+  // Determines whether a polygon intersects but is not contained by another polygon.
+  // Polygons are represented as an array of vertices, each of which is an array of two numbers,
+  // where the first number represents its x-coordinate and the second its y-coordinate.
+  // Returns a boolean.
+  function polygonsIntersect(verticesA, verticesB){
+    return verticesA.some(function(p){ return pointInPolygon(p, verticesB); }) &&
+          !verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
   }
 
   // Rotates a point (p) by an angle in degrees (a) around an origin (o)
@@ -200,11 +200,11 @@
   exports.meanCenter = meanCenter;
   exports.midpoint = midpoint;
   exports.pointInPolygon = pointInPolygon;
-  exports.polygonInPolygon = polygonInPolygon;
-  exports.polygonsIntersect = polygonsIntersect;
   exports.pointLeftOfLine = pointLeftOfLine;
   exports.pointRightOfLine = pointRightOfLine;
   exports.pointOnLine = pointOnLine;
+  exports.polygonInPolygon = polygonInPolygon;
+  exports.polygonsIntersect = polygonsIntersect;
   exports.rotateDegrees = rotateDegrees;
   exports.rotateRadians = rotateRadians;
   exports.translateDegrees = translateDegrees;
