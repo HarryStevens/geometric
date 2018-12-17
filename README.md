@@ -8,8 +8,8 @@ A JavaScript library with geometric functions. [See a live demo](https://bl.ocks
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@0.0.12/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@0.0.12/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@0.0.13/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@0.0.13/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -72,13 +72,9 @@ Returns a boolean representing whether a <em>point</em> is to the left of a <em>
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em>.
 
-<a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L21 "Source")
+<a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L18 "Source")
 
 Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>.
-
-<a name="pointLeftOfLine" href="#pointLeftOfLine">#</a> geometric.<b>pointLeftOfLine</b>(<em>point</em>, <em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L15 "Source")
-
-Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>.
 
 <a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygonInPolygon.js "Source")
 
