@@ -66,7 +66,7 @@ Returns a boolean representing whether a <em>point</em> is inside of a <em>polyg
 
 <a name="pointLeftOfLine" href="#pointLeftOfLine">#</a> geometric.<b>pointLeftOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L15 "Source")
 
-Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>.
+Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
 
 <a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L21 "Source")
 
@@ -74,7 +74,7 @@ Returns a boolean representing whether a <em>point</em> is collinear with a <em>
 
 <a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L18 "Source")
 
-Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>.
+Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
 
 <a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygonInPolygon.js "Source")
 
