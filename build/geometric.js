@@ -118,6 +118,30 @@
           !verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
   }
 
+  // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
+  function sign(point, line){
+    var x = point[0],
+        y = point[1],
+        a = line[0],
+        x1 = a[0],
+        y1 = a[1],
+        b = line[1],
+        x2 = b[0],
+        y2 = b[1];
+
+    return ((x - x1) * (y2 - y1)) - ((y - y1) * (x2 - x1));      
+  }
+
+  function pointLeftOfLine(point, line){
+    return sign(point, line) < 0;
+  }
+  function pointRightOfLine(point, line){
+    return sign(point, line) > 0;
+  }
+  function pointOnLine(point, line){
+    return sign(point, line) === 0;
+  }
+
   // Rotates a point (p) by an angle in degrees (a) around an origin (o)
   function rotateDegrees(p, a, o){
     a = a / 180 * Math.PI;
@@ -178,6 +202,9 @@
   exports.pointInPolygon = pointInPolygon;
   exports.polygonInPolygon = polygonInPolygon;
   exports.polygonsIntersect = polygonsIntersect;
+  exports.pointLeftOfLine = pointLeftOfLine;
+  exports.pointRightOfLine = pointRightOfLine;
+  exports.pointOnLine = pointOnLine;
   exports.rotateDegrees = rotateDegrees;
   exports.rotateRadians = rotateRadians;
   exports.translateDegrees = translateDegrees;
