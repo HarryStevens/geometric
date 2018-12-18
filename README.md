@@ -64,15 +64,15 @@ Returns the midpoint between <em>pointA</em> and <em>pointB</em>. [See it in act
 
 Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 
-<a name="pointLeftOfLine" href="#pointLeftOfLine">#</a> geometric.<b>pointLeftOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L15 "Source")
+<a name="pointLeftOfLine" href="#pointLeftOfLine">#</a> geometric.<b>pointLeftOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L18 "Source")
 
 Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
 
-<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L21 "Source")
+<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L24 "Source")
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em>.
 
-<a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L18 "Source")
+<a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L21 "Source")
 
 Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
 
