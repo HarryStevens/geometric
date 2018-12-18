@@ -1,5 +1,5 @@
 // Rotates a point (p) by an angle in degrees (a) around an origin (o)
-export default function rotateDegrees(p, a, o){
+export function rotateDegrees(p, a, o){
   a = a / 180 * Math.PI;
   if (!o || o === [0, 0]){
     return rotate(p, a);

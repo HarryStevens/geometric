@@ -3,7 +3,7 @@
 // based on the ray-casting algorithm from https://web.archive.org/web/20180115151705/https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
 // Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
 // Returns a boolean.
-export default function pointInPolygon(point, vertices) {
+export function pointInPolygon(point, vertices) {
     var x = point[0], y = point[1];
     
     var inside = false;

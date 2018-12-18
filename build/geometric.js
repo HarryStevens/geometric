@@ -54,6 +54,43 @@
     return [x / d, y / d];
   }
 
+  // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
+  // and https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
+  function cross (a, b, o){
+    return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])     
+  }
+
+  // Caclulates the convex hull of a set of points.
+  // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
+  function convexHull(points){
+    if (points.length < 3) { return null; }
+
+    points.sort(function(a, b) {
+      return a[0] === b[0] ? a[1] - b[1] : a[0] - b[0];
+    });
+
+    var lower = [];
+    for (var i0 = 0; i0 < points.length; i0++) {
+      while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], points[i0]) <= 0) {
+         lower.pop();
+      }
+      lower.push(points[i0]);
+    }
+
+    var upper = [];
+    for (var i1 = points.length - 1; i1 >= 0; i1--) {
+      while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], points[i1]) <= 0) {
+         upper.pop();
+      }
+      upper.push(points[i1]);
+    }
+
+    upper.pop();
+    lower.pop();
+
+    return lower.concat(upper);
+  }
+
   // Calculates the distance between two points.
   // Takes two arguments, each of which is a point represented as an array of two numbers,
   // where the first number is its x coordinate and the second number is its y coordinate.
@@ -99,12 +136,6 @@
       }
       
       return inside;
-  }
-
-  // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
-  // and https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
-  function cross (a, b, o){
-    return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])     
   }
 
   // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
@@ -195,6 +226,7 @@
   exports.angleRadians = angleRadians;
   exports.area = area;
   exports.centroid = centroid;
+  exports.convexHull = convexHull;
   exports.distance = distance;
   exports.meanCenter = meanCenter;
   exports.midpoint = midpoint;

@@ -1,5 +1,5 @@
 // Rotate a point (p) by an angle in radians (a) around an origin (o)
-export default function rotateRadians(p, a, o){
+export function rotateRadians(p, a, o){
   if (!o || o === [0, 0]){
     return rotate(p, a);
   }

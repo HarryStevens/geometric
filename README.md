@@ -42,11 +42,15 @@ Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
 
 <a name="area" href="#area">#</a> geometric.<b>area</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/area.js "Source")
 
-Returns the area of a polygon. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
+Returns the area of a <em>polygon</em>. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
 
 <a name="centroid" href="#centroid">#</a> geometric.<b>centroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/centroid.js "Source")
 
-Returns the weighted centroid of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a mean center. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
+Returns the weighted centroid of a <em>polygon</em>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a mean center. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
+
+<a name="convexHull" href="#convexHull">#</a> geometric.<b>convexHull</b>(<em>points</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/convexHull.js "Source")
+
+Returns the convex hull, represented as a <em>polygon</em> of an array of <em>point</em>s using [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript). Returns null if the input array contains fewer than three points.
 
 <a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/distance.js "Source")
 
@@ -64,15 +68,15 @@ Returns the midpoint between <em>pointA</em> and <em>pointB</em>. [See it in act
 
 Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 
-<a name="pointLeftOfLine" href="#pointLeftOfLine">#</a> geometric.<b>pointLeftOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L18 "Source")
+<a name="pointLeftOfLine" href="#pointLeftOfLine">#</a> geometric.<b>pointLeftOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L8 "Source")
 
 Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
 
-<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L24 "Source")
+<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L16 "Source")
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em>.
 
-<a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L21 "Source")
+<a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L12 "Source")
 
 Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
 
