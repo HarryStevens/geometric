@@ -101,31 +101,27 @@
       return inside;
   }
 
-  // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
-  function sign(point, line){
-    var x = point[0],
-        y = point[1],
-        a = line[0],
-        x1 = a[0],
-        y1 = a[1],
-        b = line[1],
-        x2 = b[0],
-        y2 = b[1];
-
-    return (x - x1) * (y2 - y1) - (y - y1) * (x2 - x1);      
+  // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
+  // and https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
+  function cross (a, b, o){
+    return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])     
   }
+
+  // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
   function topPointFirst(line){
     return line[1][1] > line[0][1] ? line : [line[1], line[0]];
   }
 
   function pointLeftOfLine(point, line){
-    return sign(point, topPointFirst(line)) < 0;
+    var t = topPointFirst(line);
+    return cross(point, t[1], t[0]) < 0;
   }
   function pointRightOfLine(point, line){
-    return sign(point, topPointFirst(line)) > 0;
+    var t = topPointFirst(line);
+    return cross(point, t[1], t[0]) > 0;
   }
   function pointOnLine(point, line){
-    return sign(point, line) === 0;
+    return cross(point, line[0], line[1]) === 0;
   }
 
   // Determines whether a polygon is contained by another polygon.
