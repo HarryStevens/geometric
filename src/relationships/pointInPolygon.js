@@ -4,15 +4,15 @@
 // Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
 // Returns a boolean.
 export function pointInPolygon(point, vertices) {
-    var x = point[0], y = point[1];
-    
-    var inside = false;
-    for (var i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
-      var xi = vertices[i][0], yi = vertices[i][1];
-      var xj = vertices[j][0], yj = vertices[j][1];
-    
-      if (((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { inside = !inside; }
-    }
-    
-    return inside;
+  var x = point[0], y = point[1];
+  
+  var inside = false;
+  for (var i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
+    var xi = vertices[i][0], yi = vertices[i][1];
+    var xj = vertices[j][0], yj = vertices[j][1];
+  
+    if (((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { inside = !inside; }
+  }
+  
+  return inside;
 }
