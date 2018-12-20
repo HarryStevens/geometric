@@ -78,7 +78,7 @@ Returns the weighted centroid of a <em>polygon</em>. Not to be [confused](https:
 
 <a name="polygonHull" href="#polygonHull">#</a> geometric.<b>polygonHull</b>(<em>points</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonHull.js "Source")
 
-Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for a array of <em>points</em>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).
+Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for an array of <em>points</em>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).
 
 <a name="polygonLength" href="#polygonLength">#</a> geometric.<b>polygonLength</b>(<em>points</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonLength.js "Source")
 
