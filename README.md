@@ -30,7 +30,7 @@ Geometric.js uses the geometric primitives <b>points</b>, <b>lines</b>, and <b>p
 * [<b>Points</b>](#points) are represented as arrays of two numbers, such as [0, 0].
 * [<b>Lines</b>](#lines) are represented as arrays of two points, such as [[0, 0], [1, 0]].
 * [<b>Polygons</b>](#polygons) are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]]. Polygons can be closed – the first and last vertex are the same – or open.
-* There are also functions that allow you to [calculate the relationships](#relationships) between these primitives.
+* There are also functions to [calculate relationships](#relationships) between these primitives.
 
 You will also encounter <b>angles</b>, <b>areas</b>, <b>distances</b>, and <b>lengths</b>.
 * <b>Angles</b> are represented as numbers, measured in degrees. Geometric.js also provides functions to convert angles from [degrees to radians](#degreesToRadians) or [vice versa](#radiansToDegrees).
