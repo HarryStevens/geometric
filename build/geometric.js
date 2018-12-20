@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 1.0.0. Copyright 2018 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 1.0.1. Copyright 2018 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -163,17 +163,17 @@
   // Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
   // Returns a boolean.
   function pointInPolygon(point, vertices) {
-      var x = point[0], y = point[1];
-      
-      var inside = false;
-      for (var i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
-        var xi = vertices[i][0], yi = vertices[i][1];
-        var xj = vertices[j][0], yj = vertices[j][1];
-      
-        if (((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { inside = !inside; }
-      }
-      
-      return inside;
+    var x = point[0], y = point[1];
+    
+    var inside = false;
+    for (var i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
+      var xi = vertices[i][0], yi = vertices[i][1];
+      var xj = vertices[j][0], yj = vertices[j][1];
+    
+      if (((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { inside = !inside; }
+    }
+    
+    return inside;
   }
 
   // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
