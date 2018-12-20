@@ -1,7 +1,7 @@
 # Geometric.js
-A JavaScript library with geometric functions. [See a live demo](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
+A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/HarryStevens/geometric.svg?branch=master)](https://travis-ci.org/HarryStevens/geometric)
 
-[![Build Status](https://travis-ci.org/HarryStevens/geometric.svg?branch=master)](https://travis-ci.org/HarryStevens/geometric)
+[<img src="https://github.com/HarryStevens/geometric/blob/master/img/rotation.png" />](https://bl.ocks.org/HarryStevens/5fe49df19892c04dfb9883c217571409) [<img src="https://github.com/HarryStevens/geometric/blob/master/img/length.png" />](https://bl.ocks.org/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
 
 ## Installation
 
