@@ -4,6 +4,7 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 [<img src="https://github.com/HarryStevens/geometric/blob/master/img/rotation.png" />](https://bl.ocks.org/HarryStevens/5fe49df19892c04dfb9883c217571409)
 [<img src="https://github.com/HarryStevens/geometric/blob/master/img/length.png" />](https://bl.ocks.org/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
 [<img src="https://github.com/HarryStevens/geometric/blob/master/img/left-right.png" />](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f)
+[<img src="https://github.com/HarryStevens/geometric/blob/master/img/centroid.png" />](https://bl.ocks.org/HarryStevens/37287b23b345f394f8276dc87a9c2bc6)
 
 ## Installation
 
