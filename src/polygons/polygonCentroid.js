@@ -1,5 +1,5 @@
 // Calculates the weighted centroid a polygon.
-export function centroid(vertices){
+export function polygonCentroid(vertices){
   var a = 0, x = 0, y = 0, l = vertices.length;
 
   for (var i = 0; i < l; i++) {

@@ -4,7 +4,7 @@ import {pointInPolygon} from "./pointInPolygon";
 // Polygons are represented as an array of vertices, each of which is an array of two numbers,
 // where the first number represents its x-coordinate and the second its y-coordinate.
 // Returns a boolean.
-export function polygonsIntersect(verticesA, verticesB){
+export function polygonIntersectsPolygon(verticesA, verticesB){
   return verticesA.some(function(p){ return pointInPolygon(p, verticesB); }) &&
         !verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
 }

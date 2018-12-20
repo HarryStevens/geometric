@@ -5,22 +5,49 @@
   (factory((global.geometric = {})));
 }(this, (function (exports) { 'use strict';
 
-  // Calculate the angle between two points, in degrees.
-  // Takes two arguments, each of which is a point represented as an array of two numbers,
-  // where the first number is its x coordinate and the second number is its y coordinate.
-  function angleDegrees(a, b){
-    return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
+  // Calculates the angle of a line, in degrees.
+  function lineAngle(line){
+    return Math.atan2(line[1][1] - line[0][1], line[1][0] - line[0][0]) * 180 / Math.PI;
   }
 
-  // Calculate the angle between two points, in radians.
-  // Takes two arguments, each of which is a point represented as an array of two numbers,
-  // where the first number is its x coordinate and the second number is its y coordinate.
-  function angleRadians(a, b){
-    return Math.atan2(b[1] - a[1], b[0] - a[0]);
+  // Calculates the distance between the endpoints of a line segment.
+  function lineLength(line){
+    return Math.sqrt(Math.pow(line[1][0] - line[0][0], 2) + Math.pow(line[1][1] - line[0][1], 2));
+  }
+
+  // Calculates the midpoint of a line segment.
+  function lineMidpoint(line){
+    return [(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2];
+  }
+
+  // Rotates a point by an angle in degrees around an origin.
+  function pointRotate(point, angle, origin){
+    angle = angle / 180 * Math.PI;
+    if (!origin || origin === [0, 0]){
+      return rotate(point, angle);
+    }
+
+    else {
+      // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
+      var p0 = point.map(function(c, i){ return c - origin[i]; });
+      var r = rotate(p0, angle);
+      return r.map(function(c, i){ return c + origin[i]; });
+    }
+    
+    function rotate(point, angle){
+      // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
+      return [(point[0] * Math.cos(angle)) - point[1] * Math.sin(angle), (point[0] * Math.sin(angle)) + point[1] * Math.cos(angle)];
+    }
+  }
+
+  // Translates a point by an angle in degrees and distance
+  function pointTranslate(point, angle, distance){
+    angle = angle / 180 * Math.PI;
+    return [point[0] + distance * Math.cos(angle), point[1] + distance * Math.sin(angle)];
   }
 
   // Calculates the area of a polygon.
-  function area(vertices){
+  function polygonArea(vertices){
     var a = 0;
 
     for (var i = 0, l = vertices.length; i < l; i++) {
@@ -35,7 +62,7 @@
   }
 
   // Calculates the weighted centroid a polygon.
-  function centroid(vertices){
+  function polygonCentroid(vertices){
     var a = 0, x = 0, y = 0, l = vertices.length;
 
     for (var i = 0; i < l; i++) {
@@ -62,7 +89,7 @@
 
   // Caclulates the convex hull of a set of points.
   // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
-  function convexHull(points){
+  function polygonHull(points){
     if (points.length < 3) { return null; }
 
     points.sort(function(a, b) {
@@ -91,15 +118,33 @@
     return lower.concat(upper);
   }
 
-  // Calculates the distance between two points.
-  // Takes two arguments, each of which is a point represented as an array of two numbers,
-  // where the first number is its x coordinate and the second number is its y coordinate.
-  function distance(a, b){
-    return Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2));
+  // Calculates the length of a polygon's perimeter. See https://github.com/d3/d3-polygon/blob/master/src/length.js
+  function polygonLength(vertices){
+    var i = -1,
+        n = vertices.length,
+        b = vertices[n - 1],
+        xa,
+        ya,
+        xb = b[0],
+        yb = b[1],
+        perimeter = 0;
+
+    while (++i < n) {
+      xa = xb;
+      ya = yb;
+      b = vertices[i];
+      xb = b[0];
+      yb = b[1];
+      xa -= xb;
+      ya -= yb;
+      perimeter += Math.sqrt(xa * xa + ya * ya);
+    }
+
+    return perimeter;
   }
 
-  // Calculates the arithmetic mean of a polygon's vertices. Not to be confused with a centroid (https://github.com/Turfjs/turf/issues/334).
-  function meanCenter(vertices){
+  // Calculates the arithmetic mean of a polygon's vertices.
+  function polygonMean(vertices){
     var x = 0, y = 0, l = vertices.length;
 
     for (var i = 0; i < l; i++) {
@@ -110,13 +155,6 @@
     }
 
     return [x / l, y / l];
-  }
-
-  // Calculates the midpoint between two points.
-  // Takes two arguments, each of which is a point represented as an array of two numbers,
-  // where the first number is its x coordinate and the second number is its y coordinate.
-  function midpoint(a, b){
-    return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
   }
 
   // Determines whether a point is inside of a polygon, represented as an array of vertices.
@@ -143,11 +181,11 @@
     return line[1][1] > line[0][1] ? line : [line[1], line[0]];
   }
 
-  function pointLeftOfLine(point, line){
+  function pointLeftofLine(point, line){
     var t = topPointFirst(line);
     return cross(point, t[1], t[0]) < 0;
   }
-  function pointRightOfLine(point, line){
+  function pointRightofLine(point, line){
     var t = topPointFirst(line);
     return cross(point, t[1], t[0]) > 0;
   }
@@ -167,79 +205,39 @@
   // Polygons are represented as an array of vertices, each of which is an array of two numbers,
   // where the first number represents its x-coordinate and the second its y-coordinate.
   // Returns a boolean.
-  function polygonsIntersect(verticesA, verticesB){
+  function polygonIntersectsPolygon(verticesA, verticesB){
     return verticesA.some(function(p){ return pointInPolygon(p, verticesB); }) &&
           !verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
   }
 
-  // Rotates a point (p) by an angle in degrees (a) around an origin (o)
-  function rotateDegrees(p, a, o){
-    a = a / 180 * Math.PI;
-    if (!o || o === [0, 0]){
-      return rotate(p, a);
-    }
-
-    else {
-      // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
-      var p0 = p.map(function(c, i){ return c - o[i]; });
-      var r = rotate(p0, a);
-      return r.map(function(c, i){ return c + o[i]; });
-    }
-    
-    function rotate(p, a){
-      // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
-      return [(p[0] * Math.cos(a)) - p[1] * Math.sin(a), (p[0] * Math.sin(a)) + p[1] * Math.cos(a)];
-    }
+  // Converts degrees to radians.
+  function degreesToRadians(angle){
+    return angle / 180 * Math.PI;
   }
 
-  // Rotate a point (p) by an angle in radians (a) around an origin (o)
-  function rotateRadians(p, a, o){
-    if (!o || o === [0, 0]){
-      return rotate(p, a);
-    }
-
-    else {
-      // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
-      var p0 = p.map(function(c, i){ return c - o[i]; });
-      var r = rotate(p0, a);
-      return r.map(function(c, i){ return c + o[i]; });
-    }
-      
-    function rotate(p, a){
-      // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
-      return [(p[0] * Math.cos(a)) - p[1] * Math.sin(a), (p[0] * Math.sin(a)) + p[1] * Math.cos(a)];
-    }
+  // Converts radians to degrees.
+  function radiansToDegrees(angle){
+    return angle * 180 / Math.PI;
   }
 
-  // Translates a point (p) by an angle in radians (a) and distance (d)
-  function translateDegrees(p, a, d){
-    a = a / 180 * Math.PI;
-    return [p[0] + d * Math.cos(a), p[1] + d * Math.sin(a)]
-  }
-
-  // Translates a point (p) by an angle in degrees (a) and distance (d)
-  function translateRadians(p, a, d){
-    return [p[0] + d * Math.cos(a), p[1] + d * Math.sin(a)]
-  }
-
-  exports.angleDegrees = angleDegrees;
-  exports.angleRadians = angleRadians;
-  exports.area = area;
-  exports.centroid = centroid;
-  exports.convexHull = convexHull;
-  exports.distance = distance;
-  exports.meanCenter = meanCenter;
-  exports.midpoint = midpoint;
+  exports.lineAngle = lineAngle;
+  exports.lineLength = lineLength;
+  exports.lineMidpoint = lineMidpoint;
+  exports.pointRotate = pointRotate;
+  exports.pointTranslate = pointTranslate;
+  exports.polygonArea = polygonArea;
+  exports.polygonCentroid = polygonCentroid;
+  exports.polygonHull = polygonHull;
+  exports.polygonLength = polygonLength;
+  exports.polygonMean = polygonMean;
   exports.pointInPolygon = pointInPolygon;
-  exports.pointLeftOfLine = pointLeftOfLine;
-  exports.pointRightOfLine = pointRightOfLine;
+  exports.pointLeftofLine = pointLeftofLine;
+  exports.pointRightofLine = pointRightofLine;
   exports.pointOnLine = pointOnLine;
   exports.polygonInPolygon = polygonInPolygon;
-  exports.polygonsIntersect = polygonsIntersect;
-  exports.rotateDegrees = rotateDegrees;
-  exports.rotateRadians = rotateRadians;
-  exports.translateDegrees = translateDegrees;
-  exports.translateRadians = translateRadians;
+  exports.polygonIntersectsPolygon = polygonIntersectsPolygon;
+  exports.degreesToRadians = degreesToRadians;
+  exports.radiansToDegrees = radiansToDegrees;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

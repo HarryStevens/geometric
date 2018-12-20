@@ -1,8 +1,8 @@
-import {cross} from "./utils/crossProduct";
+import {cross} from "../utils/crossProduct";
 
 // Caclulates the convex hull of a set of points.
 // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
-export function convexHull(points){
+export function polygonHull(points){
   if (points.length < 3) { return null; }
 
   points.sort(function(a, b) {

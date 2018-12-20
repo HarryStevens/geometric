@@ -24,82 +24,104 @@ var geometric = require("geometric");
 
 ## API
 
-In Geometric.js, there are <b>points</b>, <b>lines</b>, <b>polygons</b>, <b>angles</b>, and <b>distances</b>.
-* <b>Points</b> are represented as arrays of two numbers, such as [0, 0].
-* <b>Lines</b> are represented as arrays of two points, such as [[0, 0], [1, 0]].
-* <b>Polygons</b> are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]].
-* <b>Angles</b>, <b>areas</b> and <b>distances</b> are represented as numbers. Angles are measured in [degrees](https://en.wikipedia.org/wiki/Degree_(angle)) or [radians](https://en.wikipedia.org/wiki/Radian), depending upon the function, while areas and distances are measured in pixels.
+Geometric.js uses the geometric primitives <b>points</b>, <b>lines</b>, and <b>polygons</b>.
+* [<b>Points</b>](#points) are represented as arrays of two numbers, such as [0, 0].
+* [<b>Lines</b>](#lines) are represented as arrays of two points, such as [[0, 0], [1, 0]].
+* [<b>Polygons</b>](#polygons) are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]]. Polygons can be closed – the first and last vertex are the same – or open.
+* There are also functions that allow you to [calculate the relationships](#relationships) between these primitives.
+
+You will also encounter <b>angles</b>, <b>areas</b>, <b>distances</b>, and <b>lengths</b>.
+* <b>Angles</b> are represented as numbers, measured in degrees. Geometric.js also provides functions to convert angles from [degrees to radians](#degreesToRadians) or [vice versa](#radiansToDegrees).
+* <b>Areas</b>, <b>distances</b>, and <b>lengths</b> are represented as numbers, measured in pixels.
 
 <hr />
 
-<a name="angleDegrees" href="#angleDegrees">#</a> geometric.<b>angleDegrees</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/angleDegrees.js "Source")
+### <a name="points"></a>Points
 
-Returns the angle between <em>pointA</em> and <em>pointB</em> in degrees. [See it in action](https://bl.ocks.org/harrystevens/b212d3166a85aecb9d5fc61cf660de23).
+<a name="pointRotate" href="#pointRotate">#</a> geometric.<b>pointRotate</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/points/pointRotate.js "Source")
 
-<a name="angleRadians" href="#angleRadians">#</a> geometric.<b>angleRadians</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/angleRadians.js "Source")
+Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in degrees. If <em>origin</em> is not specified, the origin defaults to [0, 0].
 
-Returns the angle between <em>pointA</em> and <em>pointB</em> in radians.
+<a name="pointTranslate" href="#pointTranslate">#</a> geometric.<b>pointTranslate</b>(<em>point</em>, <em>angle</em>, <em>distance</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/points/pointTranslate.js "Source")
 
-<a name="area" href="#area">#</a> geometric.<b>area</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/area.js "Source")
+Returns the coordinates resulting from translating a <em>point</em> by an <em>angle</em> in degrees and a <em>distance</em>.
 
-Returns the area of a <em>polygon</em>. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
+<hr />
 
-<a name="centroid" href="#centroid">#</a> geometric.<b>centroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/centroid.js "Source")
+### <a name="lines"></a>Lines
 
-Returns the weighted centroid of a <em>polygon</em>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a mean center. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
+<a name="lineAngle" href="#lineAngle">#</a> geometric.<b>lineAngle</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineAngle.js "Source")
 
-<a name="convexHull" href="#convexHull">#</a> geometric.<b>convexHull</b>(<em>points</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/convexHull.js "Source")
+Returns the angle of a <em>line</em> in degrees.
 
-Returns the convex hull, represented as a <em>polygon</em> of an array of <em>point</em>s using [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript). Returns null if the input array contains fewer than three points.
+<a name="lineLength" href="#lineLength">#</a> geometric.<b>lineLength</b>(<em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineLength.js "Source")
 
-<a name="distance" href="#distance">#</a> geometric.<b>distance</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/distance.js "Source")
+Returns the length of a <em>line</em>.
 
-Returns the distance between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
+<a name="lineMidpoint" href="#lineMidpoint">#</a> geometric.<b>lineMidpoint</b>(<em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineMidpoint.js "Source")
 
-<a name="meanCenter" href="#meanCenter">#</a> geometric.<b>meanCenter</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/meanCenter.js "Source")
+Returns the midpoint of a <em>line</em>.
 
-Returns the arithmetic mean of the vertices of a polygon. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a centroid. [See it in action](https://bl.ocks.org/harrystevens/37287b23b345f394f8276dc87a9c2bc6).
+<hr />
 
-<a name="midpoint" href="#midpoint">#</a> geometric.<b>midpoint</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/midpoint.js "Source")
+### <a name="polygons"></a>Polygons
 
-Returns the midpoint between <em>pointA</em> and <em>pointB</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
+<a name="polygonArea" href="#polygonArea">#</a> geometric.<b>polygonArea</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonArea.js "Source")
 
-<a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointInPolygon.js "Source")
+Returns the area of a <em>polygon</em>.
+
+<a name="polygonCentroid" href="#polygonCentroid">#</a> geometric.<b>polygonCentroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonCentroid.js "Source")
+
+Returns the weighted centroid of a <em>polygon</em>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [mean center](#polygonMean).
+
+<a name="polygonHull" href="#polygonHull">#</a> geometric.<b>polygonHull</b>(<em>points</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonHull.js "Source")
+
+Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for a array of <em>points</em>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).
+
+<a name="polygonLength" href="#polygonLength">#</a> geometric.<b>polygonLength</b>(<em>points</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonLength.js "Source")
+
+Returns the length of a polygon's perimeter.
+
+<a name="polygonMean" href="#polygonMean">#</a> geometric.<b>polygonMean</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonMean.js "Source")
+
+Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
+
+<hr />
+
+### <a name="points"></a>Relationships
+
+<a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointInPolygon.js "Source")
 
 Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 
-<a name="pointLeftOfLine" href="#pointLeftOfLine">#</a> geometric.<b>pointLeftOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L8 "Source")
+<a name="pointLeftofLine" href="#pointLeftofLine">#</a> geometric.<b>pointLeftofLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L8 "Source")
 
-Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
+Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>.
 
-<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L16 "Source")
+<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L16 "Source")
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em>.
 
-<a name="pointRightOfLine" href="#pointRightOfLine">#</a> geometric.<b>pointRightOfLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointOnLine.js#L12 "Source")
+<a name="pointRightofLine" href="#pointRightofLine">#</a> geometric.<b>pointRightofLine</b>(<em>point</em>, <em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L12 "Source")
 
-Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>. [See it in action](https://bl.ocks.org/HarryStevens/e6b53f48aff3a2bea1f99604cde1a99f).
+Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>.
 
-<a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygonInPolygon.js "Source")
+<a name="polygonInPolygon" href="#polygonInPolygon">#</a> geometric.<b>polygonInPolygon</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/polygonInPolygon.js "Source")
 
 Returns a boolean representing whether <em>polygonA</em> is contained by <em>polygonB</em>.
 
-<a name="polygonsIntersect" href="#polygonsIntersect">#</a> geometric.<b>polygonsIntersect</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/pointsIntersect.js "Source")
+<a name="polygonIntersectsPolygon" href="#polygonIntersectsPolygon">#</a> geometric.<b>polygonIntersectsPolygon</b>(<em>polygonA</em>, <em>polygonB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/polygonIntersectsPolygon.js "Source")
 
 Returns a boolean representing whether <em>polygonA</em> intersects but is not contained by <em>polygonB</em>.
 
-<a name="rotateDegrees" href="#rotateDegrees">#</a> geometric.<b>rotateDegrees</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/rotateDegrees.js "Source")
+<hr />
 
-Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in degrees. If <em>origin</em> is not specified, the origin is set to [0, 0]. [See it in action](https://bl.ocks.org/harrystevens/5fe49df19892c04dfb9883c217571409).
+### Utilities
 
-<a name="rotateRadians" href="#rotateRadians">#</a> geometric.<b>rotateRadians</b>(<em>point</em>, <em>angle</em>[, <em>origin</em>]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/rotateRadians.js "Source")
+<a name="degreesToRadians" href="#degreesToRadians">#</a> geometric.<b>degreesToRadians</b>(<em>angle</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/utils/degreesToRadians.js "Source")
 
-Returns the coordinates resulting from rotating a <em>point</em> about an origin by an <em>angle</em> in radians. If <em>origin</em> is not specified, the origin is set to [0, 0].
+Returns the result of a converting an angle in degrees to the same angle in radians.
 
-<a name="translateDegrees" href="#translateDegrees">#</a> geometric.<b>translateDegrees</b>(<em>point</em>, <em>angle</em>, <em>distance</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/translateDegrees.js "Source")
+<a name="radiansToDegrees" href="#radiansToDegrees">#</a> geometric.<b>radiansToDegrees</b>(<em>angle</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/utils/radiansToDegrees.js "Source")
 
-Returns the coordinates resulting from translating a point by an <em>angle</em> in degrees and a <em>distance</em>. [See it in action](https://bl.ocks.org/harrystevens/c4eddfb97535e8e01643325cb43175ff).
-
-<a name="translateRadians" href="#translateRadians">#</a> geometric.<b>translateRadians</b>(<em>point</em>, <em>angle</em>, <em>distance</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/translateRadians.js "Source")
-
-Returns the coordinates resulting from translating a point by an <em>angle</em> in radians and a <em>distance</em>.
+Returns the result of a converting an angle in radians to the same angle in degrees.
