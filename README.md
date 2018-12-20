@@ -28,7 +28,7 @@ var geometric = require("geometric");
 
 Geometric.js uses the geometric primitives <b>points</b>, <b>lines</b>, and <b>polygons</b>.
 * [<b>Points</b>](#points) are represented as arrays of two numbers, such as [0, 0].
-* [<b>Lines</b>](#lines) are represented as arrays of two points, such as [[0, 0], [1, 0]].
+* [<b>Lines</b>](#lines) are represented as arrays of two points, such as [[0, 0], [1, 0]]. Because they have endpoints, these are technically [line <em>segments</em>](https://www.mhschool.com/math/mathconnects/wa/assets/docs/394_397_wa_gr3_adllsn_onln.pdf), but Geometric.js refers to them as lines for simplicity's sake.
 * [<b>Polygons</b>](#polygons) are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]]. Polygons can be closed – the first and last vertex are the same – or open.
 * There are also functions to [calculate relationships](#relationships) between these primitives.
 
