@@ -1,9 +1,9 @@
 # Geometric.js
 A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/HarryStevens/geometric.svg?branch=master)](https://travis-ci.org/HarryStevens/geometric)
 
-[<img src="https://github.com/HarryStevens/geometric/blob/master/img/angle-thumb.png" />](https://bl.ocks.org/HarryStevens/5fe49df19892c04dfb9883c217571409)
-[<img src="https://github.com/HarryStevens/geometric/blob/master/img/length-thumb.png" />](https://bl.ocks.org/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
-[<img src="https://github.com/HarryStevens/geometric/blob/master/img/centroid-thumb.png" />](https://bl.ocks.org/HarryStevens/37287b23b345f394f8276dc87a9c2bc6)
+[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/angle-thumb.png" />](https://bl.ocks.org/HarryStevens/5fe49df19892c04dfb9883c217571409)
+[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/length-thumb.png" />](https://bl.ocks.org/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
+[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/centroid-thumb.png" />](https://bl.ocks.org/HarryStevens/37287b23b345f394f8276dc87a9c2bc6)
 
 ## Installation
 
