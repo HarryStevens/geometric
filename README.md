@@ -92,6 +92,10 @@ Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertic
 
 ### <a name="points"></a>Relationships
 
+<a name="lineIntersectsLine" href="#lineIntersectsLine">#</a> geometric.<b>lineIntersectsLine</b>(<em>lineA</em>, <em>lineB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersectsLine.js "Source")
+
+Returns a boolean representing whether <em>lineA</em> intersects <em>lineB</em>.
+
 <a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointInPolygon.js "Source")
 
 Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).

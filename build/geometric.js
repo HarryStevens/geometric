@@ -157,6 +157,30 @@
     return [x / l, y / l];
   }
 
+  // Determines if lineA intersects lineB. 
+  // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
+  // Returns a boolean.
+  function lineIntersectsLine(lineA, lineB) {
+    var a = lineA[0][0],
+        b = lineA[0][1],
+        c = lineA[1][0],
+        d = lineA[1][1],
+        p = lineB[0][0],
+        q = lineB[0][1],
+        r = lineB[1][0],
+        s = lineB[1][1],
+        det, gamma, lambda;
+
+    det = (c - a) * (s - q) - (r - p) * (d - b);
+    if (det === 0) {
+      return false;
+    } else {
+      lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
+      gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
+      return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
+    }
+  }
+
   // Determines whether a point is inside of a polygon, represented as an array of vertices.
   // From https://github.com/substack/point-in-polygon/blob/master/index.js,
   // based on the ray-casting algorithm from https://web.archive.org/web/20180115151705/https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
@@ -230,6 +254,7 @@
   exports.polygonHull = polygonHull;
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
+  exports.lineIntersectsLine = lineIntersectsLine;
   exports.pointInPolygon = pointInPolygon;
   exports.pointLeftofLine = pointLeftofLine;
   exports.pointRightofLine = pointRightofLine;
