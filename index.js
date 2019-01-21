@@ -12,6 +12,7 @@ export {polygonLength} from "./src/polygons/polygonLength";
 export {polygonMean} from "./src/polygons/polygonMean";
 
 export {lineIntersectsLine} from "./src/relationships/lineIntersectsLine";
+export {lineIntersectsPolygon} from "./src/relationships/lineIntersectsPolygon";
 export {pointInPolygon} from "./src/relationships/pointInPolygon";
 export {pointLeftofLine, pointRightofLine, pointOnLine} from "./src/relationships/pointOnLine";
 export {polygonInPolygon} from "./src/relationships/polygonInPolygon";

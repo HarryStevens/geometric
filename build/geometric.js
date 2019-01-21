@@ -181,18 +181,38 @@
     }
   }
 
+  // Determines whether a line intersects a polygon.
+  // Returns a boolean.
+  function lineIntersectsPolygon(line, polygon){
+    var intersects = false;
+    
+    // Make it a closed polygon.
+    if (polygon[0] !== polygon[polygon.length - 1]){
+      polygon.push(polygon[0]);
+    }
+
+    for (var i = 0, l = polygon.length - 1; i < l; i++){
+      if (lineIntersectsLine(line, [polygon[i], polygon[i + 1]])) {
+        intersects = true;
+        break;
+      }
+    }
+
+    return intersects;
+  }
+
   // Determines whether a point is inside of a polygon, represented as an array of vertices.
   // From https://github.com/substack/point-in-polygon/blob/master/index.js,
   // based on the ray-casting algorithm from https://web.archive.org/web/20180115151705/https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
   // Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
   // Returns a boolean.
-  function pointInPolygon(point, vertices) {
+  function pointInPolygon(point, polygon) {
     var x = point[0], y = point[1];
     
     var inside = false;
-    for (var i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
-      var xi = vertices[i][0], yi = vertices[i][1];
-      var xj = vertices[j][0], yj = vertices[j][1];
+    for (var i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+      var xi = polygon[i][0], yi = polygon[i][1];
+      var xj = polygon[j][0], yj = polygon[j][1];
     
       if (((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { inside = !inside; }
     }
@@ -221,17 +241,40 @@
   // Polygons are represented as an array of vertices, each of which is an array of two numbers,
   // where the first number represents its x-coordinate and the second its y-coordinate.
   // Returns a boolean.
-  function polygonInPolygon(verticesA, verticesB){
-    return verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
+  function polygonInPolygon(polygonA, polygonB){
+    var inside = true;
+
+    for (var i = 0, l = polygonA.length; i < l; i++){
+      var p = polygonA[i];
+      if (!pointInPolygon(p, polygonB)){
+        inside = false;
+        break;
+      }
+    }
+
+    return inside;
   }
 
   // Determines whether a polygon intersects but is not contained by another polygon.
   // Polygons are represented as an array of vertices, each of which is an array of two numbers,
   // where the first number represents its x-coordinate and the second its y-coordinate.
   // Returns a boolean.
-  function polygonIntersectsPolygon(verticesA, verticesB){
-    return verticesA.some(function(p){ return pointInPolygon(p, verticesB); }) &&
-          !verticesA.every(function(p){ return pointInPolygon(p, verticesB); });
+  function polygonIntersectsPolygon(polygonA, polygonB){
+    var intersects = false;
+
+    // Make it a closed polygon
+    if (polygonA[0] !== polygonA[polygonA.length - 1]){
+      polygonA.push(polygonA[0]);
+    }
+
+    for (var i = 0, l = polygonA.length - 1; i < l; i++){
+      if (lineIntersectsPolygon([polygonA[i], polygonA[i + 1]], polygonB)){
+        intersects = true;
+        break;
+      }
+    }
+
+    return intersects;
   }
 
   // Converts degrees to radians.
@@ -255,6 +298,7 @@
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
   exports.lineIntersectsLine = lineIntersectsLine;
+  exports.lineIntersectsPolygon = lineIntersectsPolygon;
   exports.pointInPolygon = pointInPolygon;
   exports.pointLeftofLine = pointLeftofLine;
   exports.pointRightofLine = pointRightofLine;

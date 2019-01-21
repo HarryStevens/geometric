@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.0.3/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.0.3/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@1.0.4/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@1.0.4/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -95,6 +95,10 @@ Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertic
 <a name="lineIntersectsLine" href="#lineIntersectsLine">#</a> geometric.<b>lineIntersectsLine</b>(<em>lineA</em>, <em>lineB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersectsLine.js "Source")
 
 Returns a boolean representing whether <em>lineA</em> intersects <em>lineB</em>.
+
+<a name="lineIntersectsPolygon" href="#lineIntersectsPolygon">#</a> geometric.<b>lineIntersectsPolygon</b>(<em>line</em>, <em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersectsPolygon.js "Source")
+
+Returns a boolean representing whether a <em>line</em> intersects a <em>polygon</em>.
 
 <a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointInPolygon.js "Source")
 
