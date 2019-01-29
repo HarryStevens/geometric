@@ -18,5 +18,6 @@ export {pointLeftofLine, pointRightofLine, pointOnLine} from "./src/relationship
 export {polygonInPolygon} from "./src/relationships/polygonInPolygon";
 export {polygonIntersectsPolygon} from "./src/relationships/polygonIntersectsPolygon";
 
+export {angleReflect} from "./src/angles/angleReflect";
 export {degreesToRadians} from "./src/utils/degreesToRadians";
 export {radiansToDegrees} from "./src/utils/radiansToDegrees";

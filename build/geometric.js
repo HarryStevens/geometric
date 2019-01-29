@@ -277,6 +277,12 @@
     return intersects;
   }
 
+  // Returns the angle of reflection given an angle of incidence and a surface angle.
+  function angleReflect(incidenceAngle, surfaceAngle){
+    var a = surfaceAngle * 2 + incidenceAngle * -1;
+    return a >= 360 ? a - 360 : a < 0 ? a + 360 : a;
+  }
+
   // Converts degrees to radians.
   function degreesToRadians(angle){
     return angle / 180 * Math.PI;
@@ -305,6 +311,7 @@
   exports.pointOnLine = pointOnLine;
   exports.polygonInPolygon = polygonInPolygon;
   exports.polygonIntersectsPolygon = polygonIntersectsPolygon;
+  exports.angleReflect = angleReflect;
   exports.degreesToRadians = degreesToRadians;
   exports.radiansToDegrees = radiansToDegrees;
 
