@@ -10,6 +10,7 @@ export {polygonCentroid} from "./src/polygons/polygonCentroid";
 export {polygonHull} from "./src/polygons/polygonHull";
 export {polygonLength} from "./src/polygons/polygonLength";
 export {polygonMean} from "./src/polygons/polygonMean";
+export {polygonRotate} from "./src/polygons/polygonRotate";
 
 export {lineIntersectsLine} from "./src/relationships/lineIntersectsLine";
 export {lineIntersectsPolygon} from "./src/relationships/lineIntersectsPolygon";

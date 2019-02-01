@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.0.7/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.0.7/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@1.0.8/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@1.0.8/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -88,9 +88,13 @@ Returns the length of a polygon's perimeter.
 
 Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
 
+<a name="polygonRotate" href="#polygonRotate">#</a> geometric.<b>polygonRotate</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRotate.js "Source")
+
+Returns the vertices resulting from rotating a <em>polygon</em> about an origin by an <em>angle</em> in degrees. If <em>origin</em> is not specified, the origin defaults to [0, 0].
+
 <hr />
 
-### <a name="points"></a>Relationships
+### <a name="relationships"></a>Relationships
 
 <a name="lineIntersectsLine" href="#lineIntersectsLine">#</a> geometric.<b>lineIntersectsLine</b>(<em>lineA</em>, <em>lineB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersectsLine.js "Source")
 

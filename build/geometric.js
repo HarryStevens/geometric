@@ -157,6 +157,15 @@
     return [x / l, y / l];
   }
 
+  // Rotates a polygon by an angle in degrees around an origin.
+  function polygonRotate(polygon, angle, origin){
+    var out = [];
+    for (var i = 0, l = polygon.length; i < l; i++){
+      out.push(pointRotate(polygon[i], angle, origin));
+    }
+    return out;
+  }
+
   // Determines if lineA intersects lineB. 
   // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
   // Returns a boolean.
@@ -303,6 +312,7 @@
   exports.polygonHull = polygonHull;
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
+  exports.polygonRotate = polygonRotate;
   exports.lineIntersectsLine = lineIntersectsLine;
   exports.lineIntersectsPolygon = lineIntersectsPolygon;
   exports.pointInPolygon = pointInPolygon;
