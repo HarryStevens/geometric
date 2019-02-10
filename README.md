@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.0.10/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.0.10/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@1.0.11/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@1.0.11/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -74,7 +74,7 @@ Returns the area of a <em>polygon</em>.
 
 <a name="polygonBounds" href="#polygonBounds">#</a> geometric.<b>polygonBounds</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonBounds.js "Source")
 
-Returns the bounds of a <em>polygon</em>, represented as a polygon with four vertices (i.e. a rectangle), where the first vertex is the top-left corner, the second vertex is the top-right corner, the third vertex is the bottom-right corner, and the fourth vertex is the bottom-left corner.
+Returns the bounds of a <em>polygon</em>. The returned bounds are represented as a polygon with four vertices (i.e. a rectangle), where the first vertex is the top-left corner, the second vertex is the top-right corner, the third vertex is the bottom-right corner, and the fourth vertex is the bottom-left corner.
 
 <a name="polygonCentroid" href="#polygonCentroid">#</a> geometric.<b>polygonCentroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonCentroid.js "Source")
 
