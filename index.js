@@ -11,6 +11,7 @@ export {polygonHull} from "./src/polygons/polygonHull";
 export {polygonLength} from "./src/polygons/polygonLength";
 export {polygonMean} from "./src/polygons/polygonMean";
 export {polygonRotate} from "./src/polygons/polygonRotate";
+export {polygonScale} from "./src/polygons/polygonScale";
 export {polygonTranslate} from "./src/polygons/polygonTranslate";
 
 export {lineIntersectsLine} from "./src/relationships/lineIntersectsLine";

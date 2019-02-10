@@ -166,6 +166,25 @@
     return out;
   }
 
+  // Scales a polygon by a scale factor (where 1 is the original size) from an origin point.
+  // The origin defaults to the polygon's centroid.
+  function polygonScale(polygon, scale, origin){
+    if (!origin){
+      origin = polygonCentroid(polygon);
+    }
+
+    var output = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++){
+      var v = polygon[i];
+      var d = lineLength([origin, v]);
+      var a = lineAngle([origin, v]);
+      output.push(pointTranslate(origin, a, d * scale));
+    }
+
+    return output;
+  }
+
   // Translates a polygon by an angle in degrees and distance.
   function polygonTranslate(polygon, angle, distance){
     var p = [];
@@ -322,6 +341,7 @@
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
   exports.polygonRotate = polygonRotate;
+  exports.polygonScale = polygonScale;
   exports.polygonTranslate = polygonTranslate;
   exports.lineIntersectsLine = lineIntersectsLine;
   exports.lineIntersectsPolygon = lineIntersectsPolygon;
