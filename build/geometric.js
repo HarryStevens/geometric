@@ -61,6 +61,38 @@
     return Math.abs(a / 2);
   }
 
+  // Calculates the bounds of a polygon.
+  function polygonBounds(polygon){
+    var xMin = polygon[0][0],
+        xMax = xMin,
+        yMin = polygon[0][1],
+        yMax = yMin;
+
+    for (var i = 1, l = polygon.length; i < l; i++){
+      var p = polygon[i],
+          x = p[0],
+          y = p[1];
+
+      if (x < xMin){
+        xMin = x;
+      }
+
+      if (x > xMax){
+        xMax = x;
+      }
+
+      if (y < yMin){
+        yMin = y;
+      }
+
+      if (y > yMax){
+        yMax = y;
+      }
+    }
+
+    return [[xMin, yMin], [xMax, yMin], [xMax, yMax], [xMin, yMax]];
+  }
+
   // Calculates the weighted centroid a polygon.
   function polygonCentroid(vertices){
     var a = 0, x = 0, y = 0, l = vertices.length;
@@ -336,6 +368,7 @@
   exports.pointRotate = pointRotate;
   exports.pointTranslate = pointTranslate;
   exports.polygonArea = polygonArea;
+  exports.polygonBounds = polygonBounds;
   exports.polygonCentroid = polygonCentroid;
   exports.polygonHull = polygonHull;
   exports.polygonLength = polygonLength;

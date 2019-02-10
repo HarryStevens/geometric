@@ -6,6 +6,7 @@ export {pointRotate} from "./src/points/pointRotate";
 export {pointTranslate} from "./src/points/pointTranslate";
 
 export {polygonArea} from "./src/polygons/polygonArea";
+export {polygonBounds} from "./src/polygons/polygonBounds";
 export {polygonCentroid} from "./src/polygons/polygonCentroid";
 export {polygonHull} from "./src/polygons/polygonHull";
 export {polygonLength} from "./src/polygons/polygonLength";

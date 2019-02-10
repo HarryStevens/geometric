@@ -72,6 +72,10 @@ Returns the midpoint of a <em>line</em>.
 
 Returns the area of a <em>polygon</em>.
 
+<a name="polygonBounds" href="#polygonBounds">#</a> geometric.<b>polygonBounds</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonBounds.js "Source")
+
+Returns the bounds of a <em>polygon</em>, represented as a polygon with four vertices (i.e. a rectangle), where the first vertex is the top-left corner, the second vertex is the top-right corner, the third vertex is the bottom-right corner, and the fourth vertex is the bottom-left corner.
+
 <a name="polygonCentroid" href="#polygonCentroid">#</a> geometric.<b>polygonCentroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonCentroid.js "Source")
 
 Returns the weighted centroid of a <em>polygon</em>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [mean center](#polygonMean).
