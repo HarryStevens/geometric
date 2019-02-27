@@ -27,5 +27,5 @@ export function polygonBounds(polygon){
     }
   }
 
-  return [[xMin, yMin], [xMax, yMin], [xMax, yMax], [xMin, yMax]];
+  return [[xMin, yMin], [xMax, yMax]];
 }

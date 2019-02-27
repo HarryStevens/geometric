@@ -90,7 +90,7 @@
       }
     }
 
-    return [[xMin, yMin], [xMax, yMin], [xMax, yMax], [xMin, yMax]];
+    return [[xMin, yMin], [xMax, yMax]];
   }
 
   // Calculates the weighted centroid a polygon.
