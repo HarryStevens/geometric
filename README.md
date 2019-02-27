@@ -74,7 +74,12 @@ Returns the area of a <em>polygon</em>.
 
 <a name="polygonBounds" href="#polygonBounds">#</a> geometric.<b>polygonBounds</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonBounds.js "Source")
 
-Returns the bounds of a <em>polygon</em>. The returned bounds are represented as an array of two points, where the first points is the top-left corner and the second point is the bottom-right corner.
+Returns the bounds of a <em>polygon</em>. The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
+
+```js
+var rectangle = [[0, 0], [0, 1], [1, 1], [1, 0]];
+var bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
+```
 
 <a name="polygonCentroid" href="#polygonCentroid">#</a> geometric.<b>polygonCentroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonCentroid.js "Source")
 
