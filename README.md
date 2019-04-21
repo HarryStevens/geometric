@@ -151,7 +151,7 @@ Returns a boolean representing whether <em>polygonA</em> intersects but is not c
 
 <a name="angleReflect" href="#angleReflect">#</a> geometric.<b>angleReflect</b>(<em>incidenceAngle</em>, <em>surfaceAngle</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/angles/angleReflect.js "Source")
 
-Returns the angle of reflection given a starting angle, also known as the angle of incidence, and the angle of the surface of of which it is reflected.
+Returns the angle of reflection given a starting angle, also known as the angle of incidence, and the angle of the surface off of which it is reflected.
 
 <a name="degreesToRadians" href="#degreesToRadians">#</a> geometric.<b>degreesToRadians</b>(<em>angle</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/utils/degreesToRadians.js "Source")
 
