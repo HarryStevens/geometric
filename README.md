@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.1.1/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.1.1/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@1.2.0/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@1.2.0/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -96,6 +96,10 @@ Returns the length of a polygon's perimeter.
 <a name="polygonMean" href="#polygonMean">#</a> geometric.<b>polygonMean</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonMean.js "Source")
 
 Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
+
+<a name="polygonRegular" href="#polygonRegular">#</a> geometric.<b>polygonRegular</b>([<em>sides</em>[, <em>area</em>[, <em>center</em>]]]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRegular.js "Source")
+
+Returns the vertices of a regular polygon of the specified number of <em>sides</em>, <em>area</em>, and <em>center</em> coordinates. If <em>sides</em> is not specified, deafults to 3. If <em>area</em> is not specified, defaults to 100. If <em>center</em> is not specified, defaults to [0, 0].
 
 <a name="polygonRotate" href="#polygonRotate">#</a> geometric.<b>polygonRotate</b>(<em>polygon</em>, <em>angle</em>[, <em>origin</em>]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRotate.js "Source")
 
