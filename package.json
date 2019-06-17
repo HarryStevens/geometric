@@ -10,9 +10,13 @@
     "postpublish": "zip -j build/geometric.zip -- LICENSE README.md build/geometric.js build/geometric.min.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel": "^6.23.0",
     "eslint": "3",
     "package-preamble": "0.1",
     "rollup": "^0.62.0",
+    "rollup-plugin-babel": "^4.3.2",
     "tape": "4",
     "uglify-js": "^2.8.11"
   },
