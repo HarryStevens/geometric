@@ -197,6 +197,17 @@
     return [x / l, y / l];
   }
 
+  function polygonPerimeter(vertices) {
+    var perimeter = 0;
+    var n = vertices.length;
+
+    for (var i = 0; i < n; i++) {
+      perimeter += lineLength([vertices[i], vertices[i === n - 1 ? 0 : i + 1]]);
+    }
+
+    return perimeter;
+  }
+
   function polygonTranslate(polygon, angle, distance) {
     var p = [];
 
@@ -220,7 +231,8 @@
       polygon[i] = point;
       sum[0] += point[0];
       sum[1] += point[1];
-      point = pointTranslate(point, angle, Math.sqrt(4 * area * Math.tan(Math.PI / sides) / sides));
+      point = pointTranslate(point, angle, Math.sqrt(4 * area * Math.tan(Math.PI / sides) / sides)); // https://web.archive.org/web/20180404142713/http://keisan.casio.com/exec/system/1355985985
+
       angle -= 360 / sides;
     }
 
@@ -413,6 +425,7 @@
   exports.polygonHull = polygonHull;
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
+  exports.polygonPerimeter = polygonPerimeter;
   exports.polygonRegular = polygonRegular;
   exports.polygonRotate = polygonRotate;
   exports.polygonScale = polygonScale;
