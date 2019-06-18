@@ -14,7 +14,7 @@ export function polygonRegular(sides = 3, area = 100, center){
     polygon[i] = point;
     sum[0] += point[0];
     sum[1] += point[1];
-    point = pointTranslate(point, angle, Math.sqrt((4 * area) * Math.tan(Math.PI / sides) / sides));
+    point = pointTranslate(point, angle, Math.sqrt((4 * area) * Math.tan(Math.PI / sides) / sides)); // https://web.archive.org/web/20180404142713/http://keisan.casio.com/exec/system/1355985985
     angle -= 360 / sides;
   }
 
