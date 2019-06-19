@@ -99,7 +99,7 @@ Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertic
 
 <a name="polygonPerimeter" href="#polygonPerimeter">#</a> geometric.<b>polygonPerimeter</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonPerimeter.js "Source")
 
-Returns the length of the perimeter of a polygon.
+Returns the length of the perimeter of a <em>polygon</em>.
 
 <a name="polygonRegular" href="#polygonRegular">#</a> geometric.<b>polygonRegular</b>([<em>sides</em>[, <em>area</em>[, <em>center</em>]]]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRegular.js "Source")
 
