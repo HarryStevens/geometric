@@ -24,7 +24,7 @@
   function pointRotate(point, angle, origin) {
     angle = angle / 180 * Math.PI;
 
-    if (!origin || origin === [0, 0]) {
+    if (!origin || origin[0] === 0 && origin[1] === 0) {
       return rotate(point, angle);
     } else {
       // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
