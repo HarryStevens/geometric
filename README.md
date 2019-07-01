@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.3.3/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.3.3/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@1.3.4/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@1.3.4/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -91,15 +91,11 @@ Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represente
 
 <a name="polygonLength" href="#polygonLength">#</a> geometric.<b>polygonLength</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonLength.js "Source")
 
-Returns the length of a polygon's perimeter.
+Returns the length of a <em>polygon</em>'s perimeter.
 
 <a name="polygonMean" href="#polygonMean">#</a> geometric.<b>polygonMean</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonMean.js "Source")
 
 Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
-
-<a name="polygonPerimeter" href="#polygonPerimeter">#</a> geometric.<b>polygonPerimeter</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonPerimeter.js "Source")
-
-Returns the length of the perimeter of a <em>polygon</em>.
 
 <a name="polygonRegular" href="#polygonRegular">#</a> geometric.<b>polygonRegular</b>([<em>sides</em>[, <em>area</em>[, <em>center</em>]]]) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRegular.js "Source")
 
