@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.3.2/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.3.2/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@1.3.3/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@1.3.3/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -52,7 +52,7 @@ Returns the coordinates resulting from translating a <em>point</em> by an <em>an
 
 ### <a name="lines"></a>Lines
 
-<a name="lineAngle" href="#lineAngle">#</a> geometric.<b>lineAngle</b>(<em>pointA</em>, <em>pointB</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineAngle.js "Source")
+<a name="lineAngle" href="#lineAngle">#</a> geometric.<b>lineAngle</b>(<em>line</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineAngle.js "Source")
 
 Returns the angle of a <em>line</em> in degrees.
 
