@@ -81,6 +81,8 @@ var rectangle = [[0, 0], [0, 1], [1, 1], [1, 0]];
 var bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
 ```
 
+Returns null if the <em>polygon</em> has fewer than three points.
+
 <a name="polygonCentroid" href="#polygonCentroid">#</a> geometric.<b>polygonCentroid</b>(<em>polygon</em>) [<>](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonCentroid.js "Source")
 
 Returns the weighted centroid of a <em>polygon</em>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [mean center](#polygonMean).

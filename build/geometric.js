@@ -65,6 +65,10 @@
 
   // Calculates the bounds of a polygon.
   function polygonBounds(polygon) {
+    if (polygon.length < 3) {
+      return null;
+    }
+
     var xMin = polygon[0][0],
         xMax = xMin,
         yMin = polygon[0][1],
