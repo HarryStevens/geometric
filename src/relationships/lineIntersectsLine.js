@@ -2,7 +2,7 @@
 // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
 // Returns a boolean.
 export function lineIntersectsLine(lineA, lineB) {
-  var a = lineA[0][0],
+  let a = lineA[0][0],
       b = lineA[0][1],
       c = lineA[1][0],
       d = lineA[1][1],

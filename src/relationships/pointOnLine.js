@@ -1,4 +1,4 @@
-import {cross} from "../utils/crossProduct"
+import { cross } from "../utils/crossProduct"
 
 // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
 function topPointFirst(line){
@@ -6,11 +6,11 @@ function topPointFirst(line){
 }
 
 export function pointLeftofLine(point, line){
-  var t = topPointFirst(line);
+  const t = topPointFirst(line);
   return cross(point, t[1], t[0]) < 0;
 }
 export function pointRightofLine(point, line){
-  var t = topPointFirst(line);
+  const t = topPointFirst(line);
   return cross(point, t[1], t[0]) > 0;
 }
 export function pointOnLine(point, line){

@@ -78,22 +78,10 @@
       var p = polygon[i],
           x = p[0],
           y = p[1];
-
-      if (x < xMin) {
-        xMin = x;
-      }
-
-      if (x > xMax) {
-        xMax = x;
-      }
-
-      if (y < yMin) {
-        yMin = y;
-      }
-
-      if (y > yMax) {
-        yMax = y;
-      }
+      if (x < xMin) xMin = x;
+      if (x > xMax) xMax = x;
+      if (y < yMin) yMin = y;
+      if (y > yMax) yMax = y;
     }
 
     return [[xMin, yMin], [xMax, yMax]];
@@ -163,6 +151,10 @@
 
   // Calculates the length of a polygon's perimeter. See https://github.com/d3/d3-polygon/blob/master/src/length.js
   function polygonLength(vertices) {
+    if (vertices.length === 0) {
+      return 0;
+    }
+
     var i = -1,
         n = vertices.length,
         b = vertices[n - 1],
@@ -268,9 +260,9 @@
     var output = [];
 
     for (var i = 0, l = polygon.length; i < l; i++) {
-      var v = polygon[i];
-      var d = lineLength([origin, v]);
-      var a = lineAngle([origin, v]);
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]);
       output.push(pointTranslate(origin, a, d * scale));
     }
 
@@ -329,8 +321,8 @@
   // Returns a boolean.
   function pointInPolygon(point, polygon) {
     var x = point[0],
-        y = point[1];
-    var inside = false;
+        y = point[1],
+        inside = false;
 
     for (var i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
       var xi = polygon[i][0],

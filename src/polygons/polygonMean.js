@@ -1,9 +1,9 @@
 // Calculates the arithmetic mean of a polygon's vertices.
 export function polygonMean(vertices){
-  var x = 0, y = 0, l = vertices.length;
+  let x = 0, y = 0, l = vertices.length;
 
-  for (var i = 0; i < l; i++) {
-    var v = vertices[i];        
+  for (let i = 0; i < l; i++) {
+    const v = vertices[i];        
 
     x += v[0];
     y += v[1];
