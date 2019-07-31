@@ -21,7 +21,7 @@ If you'd rather host it yourself, download the latest release from the [`build` 
 npm i geometric -S
 ```
 ```js
-var geometric = require("geometric");
+const geometric = require("geometric");
 ```
 
 ## API
@@ -77,8 +77,8 @@ Returns the area of a <em>polygon</em>.
 Returns the bounds of a <em>polygon</em>. The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
 
 ```js
-var rectangle = [[0, 0], [0, 1], [1, 1], [1, 0]];
-var bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
+const rectangle = [[0, 0], [0, 1], [1, 1], [1, 0]];
+const bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
 ```
 
 Returns null if the <em>polygon</em> has fewer than three points.
