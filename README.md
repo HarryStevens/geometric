@@ -109,7 +109,7 @@ Returns the vertices resulting from rotating a <em>polygon</em> about an origin 
 
 <a name="polygonScale" href="#polygonScale">#</a> geometric.<b>polygonScale</b>(<em>polygon</em>, <em>scaleFactor</em>[, <em>origin</em>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScale.js "Source")
 
-Returns the vertices resulting from sacling a <em>polygon</em> by a <em>scaleFactor</em> (where 1 is the polygon's current size) from an <em>origin</em> point. If <em>origin</em> is not specified, the origin defaults to the polygon's centroid.
+Returns the vertices resulting from scaling a <em>polygon</em> by a <em>scaleFactor</em> (where 1 is the polygon's current size) from an origin point. If <em>origin</em> is not specified, the origin defaults to the polygon's centroid.
 
 <a name="polygonTranslate" href="#polygonTranslate">#</a> geometric.<b>polygonTranslate</b>(<em>polygon</em>, <em>angle</em>, <em>distance</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonTranslate.js "Source")
 
