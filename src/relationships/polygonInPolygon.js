@@ -1,3 +1,4 @@
+import { lineIntersectsPolygon } from "./lineIntersectsPolygon";
 import { pointInPolygon } from "./pointInPolygon";
 
 // Determines whether a polygon is contained by another polygon.
@@ -7,13 +8,26 @@ import { pointInPolygon } from "./pointInPolygon";
 export function polygonInPolygon(polygonA, polygonB){
   let inside = true;
 
-  for (let i = 0, l = polygonA.length; i < l; i++){
+  // Make it a closed polygon
+  if (polygonA[0] !== polygonA[polygonA.length - 1]){
+    polygonA.push(polygonA[0]);
+  }
+  
+  for (let i = 0, l = polygonA.length - 1; i < l; i++){
     const p = polygonA[i];
+    
+    // Points test  
     if (!pointInPolygon(p, polygonB)){
       inside = false;
       break;
     }
+    
+    // Lines test
+    if (lineIntersectsPolygon([p, polygonA[i + 1]], polygonB)){
+      inside = false;
+      break;
+    }
   }
-
+  
   return inside;
 }

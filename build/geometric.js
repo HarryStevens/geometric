@@ -359,12 +359,22 @@
   // Returns a boolean.
 
   function polygonInPolygon(polygonA, polygonB) {
-    var inside = true;
+    var inside = true; // Make it a closed polygon
 
-    for (var i = 0, l = polygonA.length; i < l; i++) {
-      var p = polygonA[i];
+    if (polygonA[0] !== polygonA[polygonA.length - 1]) {
+      polygonA.push(polygonA[0]);
+    }
+
+    for (var i = 0, l = polygonA.length - 1; i < l; i++) {
+      var p = polygonA[i]; // Points test  
 
       if (!pointInPolygon(p, polygonB)) {
+        inside = false;
+        break;
+      } // Lines test
+
+
+      if (lineIntersectsPolygon([p, polygonA[i + 1]], polygonB)) {
         inside = false;
         break;
       }
