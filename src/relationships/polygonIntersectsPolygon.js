@@ -7,13 +7,12 @@ import { lineIntersectsPolygon } from "./lineIntersectsPolygon";
 export function polygonIntersectsPolygon(polygonA, polygonB){
   let intersects = false;
 
-  // Make it a closed polygon
-  if (polygonA[0] !== polygonA[polygonA.length - 1]){
-    polygonA.push(polygonA[0]);
-  }
+  // Make it a closed polygon if it's not already
+  // This will not alter the input polygonA
+  const closed = polygonA[0] !== polygonA[polygonA.length - 1] ? [...polygonA, polygonA[0]] : polygonA;
 
-  for (let i = 0, l = polygonA.length - 1; i < l; i++){
-    if (lineIntersectsPolygon([polygonA[i], polygonA[i + 1]], polygonB)){
+  for (let i = 0, l = closed.length - 1; i < l; i++){
+    if (lineIntersectsPolygon([closed[i], closed[i + 1]], polygonB)){
       intersects = true;
       break;
     }

@@ -295,17 +295,36 @@
     }
   }
 
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  }
+
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    }
+  }
+
+  function _iterableToArray(iter) {
+    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  }
+
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance");
+  }
+
   // Returns a boolean.
 
   function lineIntersectsPolygon(line, polygon) {
-    var intersects = false; // Make it a closed polygon.
+    var intersects = false; // Make it a closed polygon if it's not already
+    // This will not alter the input polygonA
 
-    if (polygon[0] !== polygon[polygon.length - 1]) {
-      polygon.push(polygon[0]);
-    }
+    var closed = polygon[0] !== polygon[polygon.length - 1] ? [].concat(_toConsumableArray(polygon), [polygon[0]]) : polygon;
 
-    for (var i = 0, l = polygon.length - 1; i < l; i++) {
-      if (lineIntersectsLine(line, [polygon[i], polygon[i + 1]])) {
+    for (var i = 0, l = closed.length - 1; i < l; i++) {
+      if (lineIntersectsLine(line, [closed[i], closed[i + 1]])) {
         intersects = true;
         break;
       }
@@ -359,14 +378,13 @@
   // Returns a boolean.
 
   function polygonInPolygon(polygonA, polygonB) {
-    var inside = true; // Make it a closed polygon
+    var inside = true; // Make it a closed polygon if it's not already
+    // This will not alter the input polygonA
 
-    if (polygonA[0] !== polygonA[polygonA.length - 1]) {
-      polygonA.push(polygonA[0]);
-    }
+    var closed = polygonA[0] !== polygonA[polygonA.length - 1] ? [].concat(_toConsumableArray(polygonA), [polygonA[0]]) : polygonA;
 
-    for (var i = 0, l = polygonA.length - 1; i < l; i++) {
-      var p = polygonA[i]; // Points test  
+    for (var i = 0, l = closed.length - 1; i < l; i++) {
+      var p = closed[i]; // Points test  
 
       if (!pointInPolygon(p, polygonB)) {
         inside = false;
@@ -374,7 +392,7 @@
       } // Lines test
 
 
-      if (lineIntersectsPolygon([p, polygonA[i + 1]], polygonB)) {
+      if (lineIntersectsPolygon([p, closed[i + 1]], polygonB)) {
         inside = false;
         break;
       }
@@ -388,14 +406,13 @@
   // Returns a boolean.
 
   function polygonIntersectsPolygon(polygonA, polygonB) {
-    var intersects = false; // Make it a closed polygon
+    var intersects = false; // Make it a closed polygon if it's not already
+    // This will not alter the input polygonA
 
-    if (polygonA[0] !== polygonA[polygonA.length - 1]) {
-      polygonA.push(polygonA[0]);
-    }
+    var closed = polygonA[0] !== polygonA[polygonA.length - 1] ? [].concat(_toConsumableArray(polygonA), [polygonA[0]]) : polygonA;
 
-    for (var i = 0, l = polygonA.length - 1; i < l; i++) {
-      if (lineIntersectsPolygon([polygonA[i], polygonA[i + 1]], polygonB)) {
+    for (var i = 0, l = closed.length - 1; i < l; i++) {
+      if (lineIntersectsPolygon([closed[i], closed[i + 1]], polygonB)) {
         intersects = true;
         break;
       }

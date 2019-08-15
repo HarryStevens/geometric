@@ -17,3 +17,12 @@ tape("polygonInPolygon(polygonA, polygonB) returns false if all of polygonA's ve
   
   test.end();
 });
+
+tape("If polygonA in polygonInPolygon is forced closed, polygonA will not be altered", test => {
+  const openPolygon = [[0, 0], [1, 0], [1, 1]];
+  const clonedBefore = openPolygon.slice();
+  geometric.polygonInPolygon(openPolygon, [[10, 0], [11, 0], [11, 11]]);
+  test.deepEqual(clonedBefore, openPolygon);
+
+  test.end();
+});

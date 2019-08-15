@@ -8,13 +8,12 @@ import { pointInPolygon } from "./pointInPolygon";
 export function polygonInPolygon(polygonA, polygonB){
   let inside = true;
 
-  // Make it a closed polygon
-  if (polygonA[0] !== polygonA[polygonA.length - 1]){
-    polygonA.push(polygonA[0]);
-  }
+  // Make it a closed polygon if it's not already
+  // This will not alter the input polygonA
+  const closed = polygonA[0] !== polygonA[polygonA.length - 1] ? [...polygonA, polygonA[0]] : polygonA;
   
-  for (let i = 0, l = polygonA.length - 1; i < l; i++){
-    const p = polygonA[i];
+  for (let i = 0, l = closed.length - 1; i < l; i++){
+    const p = closed[i];
     
     // Points test  
     if (!pointInPolygon(p, polygonB)){
@@ -23,7 +22,7 @@ export function polygonInPolygon(polygonA, polygonB){
     }
     
     // Lines test
-    if (lineIntersectsPolygon([p, polygonA[i + 1]], polygonB)){
+    if (lineIntersectsPolygon([p, closed[i + 1]], polygonB)){
       inside = false;
       break;
     }
