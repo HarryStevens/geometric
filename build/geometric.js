@@ -370,6 +370,10 @@
     return cross(point, t[1], t[0]) > 0;
   }
   function pointOnLine(point, line) {
+    var l = lineLength(line);
+    return pointWithLine(point, line) && lineLength([line[0], point]) <= l && lineLength([line[1], point]) <= l;
+  }
+  function pointWithLine(point, line) {
     return cross(point, line[0], line[1]) === 0;
   }
 
@@ -459,6 +463,7 @@
   exports.pointLeftofLine = pointLeftofLine;
   exports.pointRightofLine = pointRightofLine;
   exports.pointOnLine = pointOnLine;
+  exports.pointWithLine = pointWithLine;
   exports.polygonInPolygon = polygonInPolygon;
   exports.polygonIntersectsPolygon = polygonIntersectsPolygon;
   exports.angleReflect = angleReflect;
