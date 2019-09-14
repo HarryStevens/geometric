@@ -1,3 +1,4 @@
+import { close } from "../utils/closePolygon.js";
 import { lineIntersectsPolygon } from "./lineIntersectsPolygon";
 
 // Determines whether a polygon intersects but is not contained by another polygon.
@@ -8,8 +9,8 @@ export function polygonIntersectsPolygon(polygonA, polygonB){
   let intersects = false;
 
   // Make it a closed polygon if it's not already
-  // This will not alter the input polygonA
-  const closed = polygonA[0] !== polygonA[polygonA.length - 1] ? [...polygonA, polygonA[0]] : polygonA;
+  // This will not modify the input polygonA
+  const closed = close(polygonA);
 
   for (let i = 0, l = closed.length - 1; i < l; i++){
     if (lineIntersectsPolygon([closed[i], closed[i + 1]], polygonB)){

@@ -10,15 +10,15 @@ export function polygonScale(polygon, scale, origin){
     origin = polygonCentroid(polygon);
   }
 
-  let output = [];
+  let p = [];
 
   for (let i = 0, l = polygon.length; i < l; i++){
     const v = polygon[i],
           d = lineLength([origin, v]),
           a = lineAngle([origin, v]);
 
-    output.push(pointTranslate(origin, a, d * scale));
+    p[i] = pointTranslate(origin, a, d * scale);
   }
 
-  return output;
+  return p;
 }

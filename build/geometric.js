@@ -208,7 +208,7 @@
     var p = [];
 
     for (var i = 0, l = polygon.length; i < l; i++) {
-      p.push(pointTranslate(polygon[i], angle, distance));
+      p[i] = pointTranslate(polygon[i], angle, distance);
     }
 
     return p;
@@ -241,13 +241,13 @@
   }
 
   function polygonRotate(polygon, angle, origin) {
-    var out = [];
+    var p = [];
 
     for (var i = 0, l = polygon.length; i < l; i++) {
-      out.push(pointRotate(polygon[i], angle, origin));
+      p[i] = pointRotate(polygon[i], angle, origin);
     }
 
-    return out;
+    return p;
   }
 
   // The origin defaults to the polygon's centroid.
@@ -257,16 +257,16 @@
       origin = polygonCentroid(polygon);
     }
 
-    var output = [];
+    var p = [];
 
     for (var i = 0, l = polygon.length; i < l; i++) {
       var v = polygon[i],
           d = lineLength([origin, v]),
           a = lineAngle([origin, v]);
-      output.push(pointTranslate(origin, a, d * scale));
+      p[i] = pointTranslate(origin, a, d * scale);
     }
 
-    return output;
+    return p;
   }
 
   // Determines if lineA intersects lineB. 
@@ -315,16 +315,43 @@
     throw new TypeError("Invalid attempt to spread non-iterable instance");
   }
 
+  function close(polygon) {
+    return polygon[0] !== polygon[polygon.length - 1] ? [].concat(_toConsumableArray(polygon), [polygon[0]]) : polygon;
+  }
+
+  function topPointFirst(line) {
+    return line[1][1] > line[0][1] ? line : [line[1], line[0]];
+  }
+
+  function pointLeftofLine(point, line) {
+    var t = topPointFirst(line);
+    return cross(point, t[1], t[0]) < 0;
+  }
+  function pointRightofLine(point, line) {
+    var t = topPointFirst(line);
+    return cross(point, t[1], t[0]) > 0;
+  }
+  function pointOnLine(point, line) {
+    var l = lineLength(line);
+    return pointWithLine(point, line) && lineLength([line[0], point]) <= l && lineLength([line[1], point]) <= l;
+  }
+  function pointWithLine(point, line) {
+    return cross(point, line[0], line[1]) === 0;
+  }
+
   // Returns a boolean.
 
   function lineIntersectsPolygon(line, polygon) {
     var intersects = false; // Make it a closed polygon if it's not already
-    // This will not alter the input polygonA
+    // This will not modify the input polygon
 
-    var closed = polygon[0] !== polygon[polygon.length - 1] ? [].concat(_toConsumableArray(polygon), [polygon[0]]) : polygon;
+    var closed = close(polygon);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
-      if (lineIntersectsLine(line, [closed[i], closed[i + 1]])) {
+      var vertex0 = closed[i],
+          vertex1 = closed[i + 1];
+
+      if (lineIntersectsLine(line, [vertex0, vertex1]) || pointOnLine(vertex0, line) && pointOnLine(vertex1, line)) {
         intersects = true;
         break;
       }
@@ -357,35 +384,15 @@
     return inside;
   }
 
-  function topPointFirst(line) {
-    return line[1][1] > line[0][1] ? line : [line[1], line[0]];
-  }
-
-  function pointLeftofLine(point, line) {
-    var t = topPointFirst(line);
-    return cross(point, t[1], t[0]) < 0;
-  }
-  function pointRightofLine(point, line) {
-    var t = topPointFirst(line);
-    return cross(point, t[1], t[0]) > 0;
-  }
-  function pointOnLine(point, line) {
-    var l = lineLength(line);
-    return pointWithLine(point, line) && lineLength([line[0], point]) <= l && lineLength([line[1], point]) <= l;
-  }
-  function pointWithLine(point, line) {
-    return cross(point, line[0], line[1]) === 0;
-  }
-
   // Polygons are represented as an array of vertices, each of which is an array of two numbers,
   // where the first number represents its x-coordinate and the second its y-coordinate.
   // Returns a boolean.
 
   function polygonInPolygon(polygonA, polygonB) {
     var inside = true; // Make it a closed polygon if it's not already
-    // This will not alter the input polygonA
+    // This will not modify the input polygonA
 
-    var closed = polygonA[0] !== polygonA[polygonA.length - 1] ? [].concat(_toConsumableArray(polygonA), [polygonA[0]]) : polygonA;
+    var closed = close(polygonA);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       var p = closed[i]; // Points test  
@@ -411,9 +418,9 @@
 
   function polygonIntersectsPolygon(polygonA, polygonB) {
     var intersects = false; // Make it a closed polygon if it's not already
-    // This will not alter the input polygonA
+    // This will not modify the input polygonA
 
-    var closed = polygonA[0] !== polygonA[polygonA.length - 1] ? [].concat(_toConsumableArray(polygonA), [polygonA[0]]) : polygonA;
+    var closed = close(polygonA);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       if (lineIntersectsPolygon([closed[i], closed[i + 1]], polygonB)) {
