@@ -131,21 +131,21 @@ Returns a boolean representing whether a <em>line</em> intersects a <em>polygon<
 
 Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 
-<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L16 "Source")
+<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L17 "Source")
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em> and is also located on the line segment. See also [pointWithLine](#pointWithLine).
 
 [<img width="150" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
 
-<a name="pointWithLine" href="#pointWithLine">#</a> geometric.<b>pointWithLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointWithLine.js#L16 "Source")
+<a name="pointWithLine" href="#pointWithLine">#</a> geometric.<b>pointWithLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointWithLine.js#L21 "Source")
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em>. See also [pointOnLine](#pointOnLine).
 
-<a name="pointLeftofLine" href="#pointLeftofLine">#</a> geometric.<b>pointLeftofLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L8 "Source")
+<a name="pointLeftofLine" href="#pointLeftofLine">#</a> geometric.<b>pointLeftofLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L9 "Source")
 
 Returns a boolean representing whether a <em>point</em> is to the left of a <em>line</em>.
 
-<a name="pointRightofLine" href="#pointRightofLine">#</a> geometric.<b>pointRightofLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L12 "Source")
+<a name="pointRightofLine" href="#pointRightofLine">#</a> geometric.<b>pointRightofLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L13 "Source")
 
 Returns a boolean representing whether a <em>point</em> is to the right of a <em>line</em>.
 
