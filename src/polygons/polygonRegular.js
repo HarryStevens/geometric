@@ -5,10 +5,10 @@ import { polygonTranslate } from "./polygonTranslate";
 
 // Returns the vertices of a regular polygon of the specified number of sides, area, and center coordinates.
 export function polygonRegular(sides = 3, area = 100, center){ 
-  let polygon = [];
-  let point = [0, 0];
-  let sum = [0, 0];
-  let angle = 0;
+  let polygon = [],
+      point = [0, 0],
+      sum = [0, 0],
+      angle = 0;
   
   for (let i = 0; i < sides; i++){
     polygon[i] = point;

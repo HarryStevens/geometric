@@ -218,10 +218,10 @@
     var sides = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
     var area = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
     var center = arguments.length > 2 ? arguments[2] : undefined;
-    var polygon = [];
-    var point = [0, 0];
-    var sum = [0, 0];
-    var angle = 0;
+    var polygon = [],
+        point = [0, 0],
+        sum = [0, 0],
+        angle = 0;
 
     for (var i = 0; i < sides; i++) {
       polygon[i] = point;
@@ -315,8 +315,13 @@
     throw new TypeError("Invalid attempt to spread non-iterable instance");
   }
 
+  // Closes a polygon if it's not closed already. Does not modify input polygon.
   function close(polygon) {
-    return polygon[0] !== polygon[polygon.length - 1] ? [].concat(_toConsumableArray(polygon), [polygon[0]]) : polygon;
+    return isClosed(polygon) ? polygon : [].concat(_toConsumableArray(polygon), [polygon[0]]);
+  } // Tests whether a polygon is closed
+
+  function isClosed(polygon) {
+    return polygon[0] === polygon[polygon.length - 1];
   }
 
   function topPointFirst(line) {
@@ -342,16 +347,14 @@
   // Returns a boolean.
 
   function lineIntersectsPolygon(line, polygon) {
-    var intersects = false; // Make it a closed polygon if it's not already
-    // This will not modify the input polygon
-
+    var intersects = false;
     var closed = close(polygon);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
-      var vertex0 = closed[i],
-          vertex1 = closed[i + 1];
+      var v0 = closed[i],
+          v1 = closed[i + 1];
 
-      if (lineIntersectsLine(line, [vertex0, vertex1]) || pointOnLine(vertex0, line) && pointOnLine(vertex1, line)) {
+      if (lineIntersectsLine(line, [v0, v1]) || pointOnLine(v0, line) && pointOnLine(v1, line)) {
         intersects = true;
         break;
       }
@@ -372,8 +375,8 @@
 
     for (var i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
       var xi = polygon[i][0],
-          yi = polygon[i][1];
-      var xj = polygon[j][0],
+          yi = polygon[i][1],
+          xj = polygon[j][0],
           yj = polygon[j][1];
 
       if (yi > y != yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi) {
@@ -384,26 +387,44 @@
     return inside;
   }
 
+  // Returns a boolean.
+
+  function pointOnPolygon(point, polygon) {
+    var on = false;
+    var closed = close(polygon);
+
+    for (var i = 0, l = closed.length - 1; i < l; i++) {
+      var v0 = closed[i],
+          v1 = closed[i + 1],
+          s = [v0, v1];
+
+      if (pointOnLine(point, s)) {
+        on = true;
+        break;
+      }
+    }
+
+    return on;
+  }
+
   // Polygons are represented as an array of vertices, each of which is an array of two numbers,
   // where the first number represents its x-coordinate and the second its y-coordinate.
   // Returns a boolean.
 
   function polygonInPolygon(polygonA, polygonB) {
-    var inside = true; // Make it a closed polygon if it's not already
-    // This will not modify the input polygonA
-
+    var inside = true;
     var closed = close(polygonA);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
-      var p = closed[i]; // Points test  
+      var v0 = closed[i]; // Points test  
 
-      if (!pointInPolygon(p, polygonB)) {
+      if (!pointInPolygon(v0, polygonB)) {
         inside = false;
         break;
       } // Lines test
 
 
-      if (lineIntersectsPolygon([p, closed[i + 1]], polygonB)) {
+      if (lineIntersectsPolygon([v0, closed[i + 1]], polygonB)) {
         inside = false;
         break;
       }
@@ -417,13 +438,24 @@
   // Returns a boolean.
 
   function polygonIntersectsPolygon(polygonA, polygonB) {
-    var intersects = false; // Make it a closed polygon if it's not already
-    // This will not modify the input polygonA
-
+    var intersects = false,
+        onCount = 0;
     var closed = close(polygonA);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
-      if (lineIntersectsPolygon([closed[i], closed[i + 1]], polygonB)) {
+      var v0 = closed[i],
+          v1 = closed[i + 1];
+
+      if (lineIntersectsPolygon([v0, v1], polygonB)) {
+        intersects = true;
+        break;
+      }
+
+      if (pointOnPolygon(v0, polygonB)) {
+        ++onCount;
+      }
+
+      if (onCount === 2) {
         intersects = true;
         break;
       }
@@ -467,6 +499,7 @@
   exports.lineIntersectsLine = lineIntersectsLine;
   exports.lineIntersectsPolygon = lineIntersectsPolygon;
   exports.pointInPolygon = pointInPolygon;
+  exports.pointOnPolygon = pointOnPolygon;
   exports.pointLeftofLine = pointLeftofLine;
   exports.pointRightofLine = pointRightofLine;
   exports.pointOnLine = pointOnLine;

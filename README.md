@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.4.2/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.4.2/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@1.5.0/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@1.5.0/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -130,6 +130,10 @@ Returns a boolean representing whether a <em>line</em> intersects a <em>polygon<
 <a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<em>point</em>, <em>polygon</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointInPolygon.js "Source")
 
 Returns a boolean representing whether a <em>point</em> is inside of a <em>polygon</em>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
+
+<a name="pointOnPolygon" href="#pointOnPolygon">#</a> geometric.<b>pointOnPolygon</b>(<em>point</em>, <em>polygon</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnPolygon.js "Source")
+
+Returns a boolean representing whether a <em>point</em> is located on one of the edges of a <em>polygon</em>.
 
 <a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L17 "Source")
 

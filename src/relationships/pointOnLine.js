@@ -1,4 +1,4 @@
-import { lineLength } from "../lines/lineLength.js";
+import { lineLength } from "../lines/lineLength";
 import { cross } from "../utils/crossProduct";
 
 // See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located

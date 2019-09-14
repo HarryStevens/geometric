@@ -1,4 +1,4 @@
-import { close } from "../utils/closePolygon.js";
+import { close } from "../utils/closePolygon";
 import { lineIntersectsPolygon } from "./lineIntersectsPolygon";
 import { pointInPolygon } from "./pointInPolygon";
 
@@ -8,22 +8,19 @@ import { pointInPolygon } from "./pointInPolygon";
 // Returns a boolean.
 export function polygonInPolygon(polygonA, polygonB){
   let inside = true;
-
-  // Make it a closed polygon if it's not already
-  // This will not modify the input polygonA
   const closed = close(polygonA);
   
   for (let i = 0, l = closed.length - 1; i < l; i++){
-    const p = closed[i];
+    const v0 = closed[i];
     
     // Points test  
-    if (!pointInPolygon(p, polygonB)){
+    if (!pointInPolygon(v0, polygonB)){
       inside = false;
       break;
     }
     
     // Lines test
-    if (lineIntersectsPolygon([p, closed[i + 1]], polygonB)){
+    if (lineIntersectsPolygon([v0, closed[i + 1]], polygonB)){
       inside = false;
       break;
     }

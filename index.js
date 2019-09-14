@@ -20,6 +20,7 @@ export { polygonTranslate } from "./src/polygons/polygonTranslate";
 export { lineIntersectsLine } from "./src/relationships/lineIntersectsLine";
 export { lineIntersectsPolygon } from "./src/relationships/lineIntersectsPolygon";
 export { pointInPolygon } from "./src/relationships/pointInPolygon";
+export { pointOnPolygon } from "./src/relationships/pointOnPolygon";
 export { pointLeftofLine, pointRightofLine, pointOnLine, pointWithLine } from "./src/relationships/pointOnLine";
 export { polygonInPolygon } from "./src/relationships/polygonInPolygon";
 export { polygonIntersectsPolygon } from "./src/relationships/polygonIntersectsPolygon";
