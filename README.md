@@ -139,7 +139,7 @@ Returns a boolean representing whether a <em>point</em> is to the left of a <em>
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em> and is also located on the line segment. See also [pointWithLine](#pointWithLine).
 
-[<img style="width: 145px;" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
+[<img style="width: 145px;" width="134" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
 
 <a name="pointRightofLine" href="#pointRightofLine">#</a> geometric.<b>pointRightofLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L12 "Source")
 
