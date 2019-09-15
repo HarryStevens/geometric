@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@1.5.0/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@1.5.0/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.0.0/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.0.0/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -33,7 +33,7 @@ Geometric.js uses the geometric primitives <b>points</b>, <b>lines</b>, and <b>p
 * There are also functions to [calculate relationships](#relationships) between these primitives.
 
 You will also encounter <b>angles</b>, <b>areas</b>, <b>distances</b>, and <b>lengths</b>.
-* [<b>Angles</b>](#angles) are represented as numbers, measured in degrees. Geometric.js also provides functions to convert angles from [degrees to radians](#degreesToRadians) or [vice versa](#radiansToDegrees).
+* [<b>Angles</b>](#angles) are represented as numbers, measured in degrees. Geometric.js also provides functions to convert angles from [degrees to radians](#angleToRadians) or [vice versa](#angleToDegrees).
 * <b>Areas</b>, <b>distances</b>, and <b>lengths</b> are represented as numbers, measured in pixels.
 
 <hr />
@@ -169,10 +169,10 @@ Returns a boolean representing whether <em>polygonA</em> intersects but is not c
 
 Returns the angle of reflection given a starting angle, also known as the angle of <em>incidence</em>, and the angle of the <em>surface</em> off of which it is reflected.
 
-<a name="degreesToRadians" href="#degreesToRadians">#</a> geometric.<b>degreesToRadians</b>(<em>angle</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/utils/degreesToRadians.js "Source")
-
-Returns the result of a converting an <em>angle</em> in degrees to the same angle in radians.
-
-<a name="radiansToDegrees" href="#radiansToDegrees">#</a> geometric.<b>radiansToDegrees</b>(<em>angle</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/utils/radiansToDegrees.js "Source")
+<a name="angleToDegrees" href="#angleToDegrees">#</a> geometric.<b>angleToDegrees</b>(<em>angle</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/angles/angleToDegrees.js "Source")
 
 Returns the result of a converting an <em>angle</em> in radians to the same angle in degrees.
+
+<a name="angleToRadians" href="#angleToRadians">#</a> geometric.<b>angleToRadians</b>(<em>angle</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/angles/angleToRadians.js "Source")
+
+Returns the result of a converting an <em>angle</em> in degrees to the same angle in radians.

@@ -4,7 +4,9 @@
 // Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
 // Returns a boolean.
 export function pointInPolygon(point, polygon) {
-  let x = point[0], y = point[1], inside = false;
+  let x = point[0],
+      y = point[1],
+      inside = false;
 
   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
     const xi = polygon[i][0], yi = polygon[i][1],

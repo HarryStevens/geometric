@@ -11,7 +11,6 @@ export { polygonCentroid } from "./src/polygons/polygonCentroid";
 export { polygonHull } from "./src/polygons/polygonHull";
 export { polygonLength } from "./src/polygons/polygonLength";
 export { polygonMean } from "./src/polygons/polygonMean";
-export { polygonPerimeter } from "./src/polygons/polygonPerimeter";
 export { polygonRegular } from "./src/polygons/polygonRegular";
 export { polygonRotate } from "./src/polygons/polygonRotate";
 export { polygonScale } from "./src/polygons/polygonScale";
@@ -26,5 +25,5 @@ export { polygonInPolygon } from "./src/relationships/polygonInPolygon";
 export { polygonIntersectsPolygon } from "./src/relationships/polygonIntersectsPolygon";
 
 export { angleReflect } from "./src/angles/angleReflect";
-export { degreesToRadians } from "./src/utils/degreesToRadians";
-export { radiansToDegrees } from "./src/utils/radiansToDegrees";
+export { angleToDegrees } from "./src/angles/angleToDegrees";
+export { angleToRadians } from "./src/angles/angleToRadians";

@@ -5,9 +5,13 @@
   (factory((global.geometric = {})));
 }(this, (function (exports) { 'use strict';
 
-  // Calculates the angle of a line, in degrees.
+  // Converts radians to degrees.
+  function angleToDegrees(angle) {
+    return angle * 180 / Math.PI;
+  }
+
   function lineAngle(line) {
-    return Math.atan2(line[1][1] - line[0][1], line[1][0] - line[0][0]) * 180 / Math.PI;
+    return angleToDegrees(Math.atan2(line[1][1] - line[0][1], line[1][0] - line[0][0]));
   }
 
   // Calculates the distance between the endpoints of a line segment.
@@ -20,19 +24,23 @@
     return [(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2];
   }
 
-  // Rotates a point by an angle in degrees around an origin.
+  // Converts degrees to radians.
+  function angleToRadians(angle) {
+    return angle / 180 * Math.PI;
+  }
+
   function pointRotate(point, angle, origin) {
-    angle = angle / 180 * Math.PI;
+    var r = angleToRadians(angle);
 
     if (!origin || origin[0] === 0 && origin[1] === 0) {
-      return rotate(point, angle);
+      return rotate(point, r);
     } else {
       // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
       var p0 = point.map(function (c, i) {
         return c - origin[i];
       });
-      var r = rotate(p0, angle);
-      return r.map(function (c, i) {
+      var rotated = rotate(p0, r);
+      return rotated.map(function (c, i) {
         return c + origin[i];
       });
     }
@@ -43,10 +51,9 @@
     }
   }
 
-  // Translates a point by an angle in degrees and distance
   function pointTranslate(point, angle, distance) {
-    angle = angle / 180 * Math.PI;
-    return [point[0] + distance * Math.cos(angle), point[1] + distance * Math.sin(angle)];
+    var r = angleToRadians(angle);
+    return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
   }
 
   // Calculates the area of a polygon.
@@ -191,17 +198,6 @@
     }
 
     return [x / l, y / l];
-  }
-
-  function polygonPerimeter(vertices) {
-    var perimeter = 0;
-    var n = vertices.length;
-
-    for (var i = 0; i < n; i++) {
-      perimeter += lineLength([vertices[i], vertices[i === n - 1 ? 0 : i + 1]]);
-    }
-
-    return perimeter;
   }
 
   function polygonTranslate(polygon, angle, distance) {
@@ -470,16 +466,6 @@
     return a >= 360 ? a - 360 : a < 0 ? a + 360 : a;
   }
 
-  // Converts degrees to radians.
-  function degreesToRadians(angle) {
-    return angle / 180 * Math.PI;
-  }
-
-  // Converts radians to degrees.
-  function radiansToDegrees(angle) {
-    return angle * 180 / Math.PI;
-  }
-
   exports.lineAngle = lineAngle;
   exports.lineLength = lineLength;
   exports.lineMidpoint = lineMidpoint;
@@ -491,7 +477,6 @@
   exports.polygonHull = polygonHull;
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
-  exports.polygonPerimeter = polygonPerimeter;
   exports.polygonRegular = polygonRegular;
   exports.polygonRotate = polygonRotate;
   exports.polygonScale = polygonScale;
@@ -507,8 +492,8 @@
   exports.polygonInPolygon = polygonInPolygon;
   exports.polygonIntersectsPolygon = polygonIntersectsPolygon;
   exports.angleReflect = angleReflect;
-  exports.degreesToRadians = degreesToRadians;
-  exports.radiansToDegrees = radiansToDegrees;
+  exports.angleToDegrees = angleToDegrees;
+  exports.angleToRadians = angleToRadians;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
