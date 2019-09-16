@@ -141,7 +141,7 @@ Returns a boolean representing whether a <em>point</em> is collinear with a <em>
 
 [<img width="150" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
 
-<a name="pointWithLine" href="#pointWithLine">#</a> geometric.<b>pointWithLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointWithLine.js#L21 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonline-geometric-pointwithline "Example")
+<a name="pointWithLine" href="#pointWithLine">#</a> geometric.<b>pointWithLine</b>(<em>point</em>, <em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L21 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonline-geometric-pointwithline "Example")
 
 Returns a boolean representing whether a <em>point</em> is collinear with a <em>line</em>. See also [pointOnLine](#pointOnLine).
 
