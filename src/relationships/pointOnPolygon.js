@@ -8,11 +8,7 @@ export function pointOnPolygon(point, polygon){
   const closed = close(polygon);
   
   for (let i = 0, l = closed.length - 1; i < l; i++){
-    const v0 = closed[i],
-          v1 = closed[i + 1],
-          s = [v0, v1];
-    
-    if (pointOnLine(point, s)){
+    if (pointOnLine(point, [closed[i], closed[i + 1]])){
       on = true;
       break;
     }

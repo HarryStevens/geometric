@@ -390,11 +390,7 @@
     var closed = close(polygon);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
-      var v0 = closed[i],
-          v1 = closed[i + 1],
-          s = [v0, v1];
-
-      if (pointOnLine(point, s)) {
+      if (pointOnLine(point, [closed[i], closed[i + 1]])) {
         on = true;
         break;
       }

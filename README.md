@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.0.0/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.0.0/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.0.1/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.0.1/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
