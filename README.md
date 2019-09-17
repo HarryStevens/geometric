@@ -60,7 +60,7 @@ Returns the angle of a <em>line</em>, in degrees, with respect to the horizontal
 
 Returns the length of a <em>line</em>.
 
-<a name="lineMidpoint" href="#lineMidpoint">#</a> geometric.<b>lineMidpoint</b>(<em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineMidpoint.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linelength "Example"), [Example](https://observablehq.com/@harrystevens/geometric-linemidpoint "Example")
+<a name="lineMidpoint" href="#lineMidpoint">#</a> geometric.<b>lineMidpoint</b>(<em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineMidpoint.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linemidpoint "Example")
 
 Returns the midpoint of a <em>line</em>.
 
