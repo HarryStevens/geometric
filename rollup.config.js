@@ -9,7 +9,7 @@ export default {
   },
   plugins: [
     babel({
-      exclude: 'node_modules/**'
+      exclude: "node_modules/**"
     })
   ] 
-}
+};
