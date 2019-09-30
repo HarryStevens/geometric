@@ -76,22 +76,27 @@
       return null;
     }
 
-    var xMin = polygon[0][0],
-        xMax = xMin,
-        yMin = polygon[0][1],
-        yMax = yMin;
+    var xMin = Infinity,
+        xMax = -Infinity,
+        yMin = Infinity,
+        yMax = -Infinity,
+        found = false;
 
-    for (var i = 1, l = polygon.length; i < l; i++) {
+    for (var i = 0, l = polygon.length; i < l; i++) {
       var p = polygon[i],
           x = p[0],
           y = p[1];
-      if (x < xMin) xMin = x;
-      if (x > xMax) xMax = x;
-      if (y < yMin) yMin = y;
-      if (y > yMax) yMax = y;
+
+      if (x != null && isFinite(x) && y != null && isFinite(y)) {
+        found = true;
+        if (x < xMin) xMin = x;
+        if (x > xMax) xMax = x;
+        if (y < yMin) yMin = y;
+        if (y > yMax) yMax = y;
+      }
     }
 
-    return [[xMin, yMin], [xMax, yMax]];
+    return found ? [[xMin, yMin], [xMax, yMax]] : null;
   }
 
   // Calculates the weighted centroid a polygon.

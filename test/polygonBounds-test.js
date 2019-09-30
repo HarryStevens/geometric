@@ -19,3 +19,11 @@ tape("polygonBounds(polygon) calculates the bounds a polygon", function(test) {
   test.equal(bounds[1][1], 270);
   test.end();
 });
+
+tape("polygonBounds(polygon) ignores null values", function(test) {
+  test.deepEqual(geometric.polygonBounds([[null, 5], [0, 1], [1, 2], [0, 3]]), [[0, 1], [1, 3]]);
+  test.deepEqual(geometric.polygonBounds([[undefined, 5], [0, 1], [1, 2], [0, 3]]), [[0, 1], [1, 3]]);
+  test.deepEqual(geometric.polygonBounds([[NaN, 5], [0, 1], [1, 2], [0, 3]]), [[0, 1], [1, 3]]);
+  test.deepEqual(geometric.polygonBounds([[5, Infinity], [0, 1], [1, 2], [0, 3]]), [[0, 1], [1, 3]]);
+  test.end();
+});

@@ -74,7 +74,7 @@ Returns the area of a <em>polygon</em>.
 
 <a name="polygonBounds" href="#polygonBounds">#</a> geometric.<b>polygonBounds</b>(<em>polygon</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonBounds.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonbounds "Example")
 
-Returns the bounds of a <em>polygon</em>. The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
+Returns the bounds of a <em>polygon</em>, ignoring points with invalid values (null, undefined, NaN, Infinity). The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
 
 ```js
 const rectangle = [[0, 0], [0, 1], [1, 1], [1, 0]];
