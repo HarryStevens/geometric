@@ -19,14 +19,29 @@
     return Math.sqrt(Math.pow(line[1][0] - line[0][0], 2) + Math.pow(line[1][1] - line[0][1], 2));
   }
 
-  // Calculates the midpoint of a line segment.
-  function lineMidpoint(line) {
-    return [(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2];
-  }
-
   // Converts degrees to radians.
   function angleToRadians(angle) {
     return angle / 180 * Math.PI;
+  }
+
+  function pointTranslate(point, angle, distance) {
+    var r = angleToRadians(angle);
+    return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
+  }
+
+  // The returned interpolator function takes a single argument t, where t is a number ranging from 0 to 1;
+  // a value of 0 returns a, while a value of 1 returns b.
+  // Intermediate values interpolate from start to end along the line segment.
+
+  function lineInterpolate(line) {
+    return function (t) {
+      return t === 0 ? line[0] : t === 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);
+    };
+  }
+
+  // Calculates the midpoint of a line segment.
+  function lineMidpoint(line) {
+    return [(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2];
   }
 
   function pointRotate(point, angle, origin) {
@@ -49,11 +64,6 @@
       // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
       return [point[0] * Math.cos(angle) - point[1] * Math.sin(angle), point[0] * Math.sin(angle) + point[1] * Math.cos(angle)];
     }
-  }
-
-  function pointTranslate(point, angle, distance) {
-    var r = angleToRadians(angle);
-    return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
   }
 
   // Calculates the area of a polygon.
@@ -468,6 +478,7 @@
   }
 
   exports.lineAngle = lineAngle;
+  exports.lineInterpolate = lineInterpolate;
   exports.lineLength = lineLength;
   exports.lineMidpoint = lineMidpoint;
   exports.pointRotate = pointRotate;

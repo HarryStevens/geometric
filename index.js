@@ -1,4 +1,5 @@
 export { lineAngle } from "./src/lines/lineAngle";
+export { lineInterpolate } from "./src/lines/lineInterpolate";
 export { lineLength } from "./src/lines/lineLength";
 export { lineMidpoint } from "./src/lines/lineMidpoint";
 

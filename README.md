@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.0.2/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.0.2/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.1.0/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.1.0/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -55,6 +55,10 @@ Returns the coordinates resulting from translating a <em>point</em> by an <em>an
 <a name="lineAngle" href="#lineAngle">#</a> geometric.<b>lineAngle</b>(<em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineAngle.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineangle "Example")
 
 Returns the angle of a <em>line</em>, in degrees, with respect to the horizontal axis.
+
+<a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
+
+Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number ranging from 0 to 1; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
 
 <a name="lineLength" href="#lineLength">#</a> geometric.<b>lineLength</b>(<em>line</em>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineLength.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linelength "Example")
 
