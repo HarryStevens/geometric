@@ -3,6 +3,9 @@
   "version": "2.1.0",
   "description": "A JavaScript library with geometric functions.",
   "main": "build/geometric.js",
+  "unpkg": "build/geometric.min.js",
+  "jsdelivr": "build/geometric.min.js",
+  "module": "index",
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup -c --banner \"$(preamble)\"",
     "test": "tape 'test/**/*-test.js'",
