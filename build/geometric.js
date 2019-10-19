@@ -68,6 +68,7 @@
 
   // Calculates the area of a polygon.
   function polygonArea(vertices) {
+    var signed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     var a = 0;
 
     for (var i = 0, l = vertices.length; i < l; i++) {
@@ -77,7 +78,7 @@
       a -= v1[0] * v0[1];
     }
 
-    return Math.abs(a / 2);
+    return signed ? a / 2 : Math.abs(a / 2);
   }
 
   // Calculates the bounds of a polygon.

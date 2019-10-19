@@ -1,5 +1,5 @@
 // Calculates the area of a polygon.
-export function polygonArea(vertices){
+export function polygonArea(vertices, signed = false){
   let a = 0;
 
   for (let i = 0, l = vertices.length; i < l; i++) {
@@ -10,5 +10,5 @@ export function polygonArea(vertices){
     a -= v1[0] * v0[1];
   }
 
-  return Math.abs(a / 2);
+  return signed ? a / 2 : Math.abs(a / 2);
 }
