@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 2.2.0. Copyright 2019 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 2.2.0. Copyright 2020 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -285,6 +285,8 @@
   // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
   // Returns a boolean.
   function lineIntersectsLine(lineA, lineB) {
+    // First test to see if the lines share an endpoint
+    if (sharePoint(lineA, lineB)) return true;
     var a = lineA[0][0],
         b = lineA[0][1],
         c = lineA[1][0],
@@ -305,6 +307,25 @@
       gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
       return 0 < lambda && lambda < 1 && 0 < gamma && gamma < 1;
     }
+  }
+
+  function sharePoint(lineA, lineB) {
+    var share = false;
+
+    for (var i = 0; i < 2; i++) {
+      for (var j = 0; j < 2; j++) {
+        if (equal(lineA[i], lineB[j])) {
+          share = true;
+          break;
+        }
+      }
+    }
+
+    return share;
+  }
+
+  function equal(pointA, pointB) {
+    return pointA[0] === pointB[0] && pointA[1] === pointB[1];
   }
 
   function _toConsumableArray(arr) {
