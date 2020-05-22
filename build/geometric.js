@@ -354,7 +354,9 @@
   } // Tests whether a polygon is closed
 
   function isClosed(polygon) {
-    return polygon[0] === polygon[polygon.length - 1];
+    var first = polygon[0],
+        last = polygon[polygon.length - 1];
+    return first[0] === last[0] && first[1] === last[1];
   }
 
   function topPointFirst(line) {
