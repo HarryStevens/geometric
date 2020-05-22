@@ -36,3 +36,13 @@ tape("polygonIntersectsPolygon(polygonA, polygonB) returns true if overlapping r
 
   test.end();
 });
+
+tape("polygonIntersectsPolygon(polygonA, polygonB) detects intersections in special cases", test => {
+  // One of the polygons just has two points. See https://github.com/HarryStevens/geometric/issues/13
+  const a = [[180, 140], [180, 205]],
+        b = [[160, 180], [170, 181.72], [180, 187.64], [185, 193.41]];
+
+  test.equal(geometric.polygonIntersectsPolygon(a, b), true);
+
+  test.end();
+});
