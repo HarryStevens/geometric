@@ -105,7 +105,7 @@ Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertic
 
 <a name="polygonRegular" href="#polygonRegular">#</a> geometric.<b>polygonRegular</b>([<i>sides</i>[, <i>area</i>[, <i>center</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRegular.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonregular "Example")
 
-Returns the vertices of a regular polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>center</i> coordinates. If <i>sides</i> is not specified, deafults to 3. If <i>area</i> is not specified, defaults to 100. If <i>center</i> is not specified, defaults to [0, 0].
+Returns the vertices of a regular polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>center</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>center</i> is not specified, defaults to [0, 0].
 
 <a name="polygonRotate" href="#polygonRotate">#</a> geometric.<b>polygonRotate</b>(<i>polygon</i>, <i>angle</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRotate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonrotate "Example")
 
