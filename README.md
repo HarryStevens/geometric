@@ -1,5 +1,3 @@
-<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/geometric-logo.svg" />
-
 # Geometric.js
 A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/HarryStevens/geometric.svg?branch=master)](https://travis-ci.org/HarryStevens/geometric)
 
