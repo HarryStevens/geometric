@@ -115,11 +115,11 @@ Returns the vertices resulting from rotating a <i>polygon</i> about an origin by
 
 Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
-<a name="polygonScaleX" href="#polygonScaleX">#</a> geometric.<b>polygonScaleX</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleX.js "Source"), [Example]("https://observablehq.com/@harrystevens/geometric-polygonscalex" "Example")
+<a name="polygonScaleX" href="#polygonScaleX">#</a> geometric.<b>polygonScaleX</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleX.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscalex "Example")
 
 Returns the vertices resulting from scaling the horizontal coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The vertical coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
-<a name="polygonScaleY" href="#polygonScaleY">#</a> geometric.<b>polygonScaleY</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleY.js "Source"), [Example]("https://observablehq.com/@harrystevens/geometric-polygonscaley" "Example")
+<a name="polygonScaleY" href="#polygonScaleY">#</a> geometric.<b>polygonScaleY</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleY.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscaley "Example")
 
 Returns the vertices resulting from scaling the vertical coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The horizontal coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
