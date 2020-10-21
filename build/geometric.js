@@ -281,6 +281,46 @@
     return p;
   }
 
+  // The origin defaults to the polygon's centroid.
+
+  function polygonScaleX(polygon, scale, origin) {
+    if (!origin) {
+      origin = polygonCentroid(polygon);
+    }
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]),
+          t = pointTranslate(origin, a, d * scale);
+      p[i] = [t[0], v[1]];
+    }
+
+    return p;
+  }
+
+  // The origin defaults to the polygon's centroid.
+
+  function polygonScaleY(polygon, scale, origin) {
+    if (!origin) {
+      origin = polygonCentroid(polygon);
+    }
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]),
+          t = pointTranslate(origin, a, d * scale);
+      p[i] = [v[0], t[1]];
+    }
+
+    return p;
+  }
+
   // Determines if lineA intersects lineB. 
   // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
   // Returns a boolean.
@@ -516,6 +556,8 @@
   exports.polygonRegular = polygonRegular;
   exports.polygonRotate = polygonRotate;
   exports.polygonScale = polygonScale;
+  exports.polygonScaleX = polygonScaleX;
+  exports.polygonScaleY = polygonScaleY;
   exports.polygonTranslate = polygonTranslate;
   exports.lineIntersectsLine = lineIntersectsLine;
   exports.lineIntersectsPolygon = lineIntersectsPolygon;

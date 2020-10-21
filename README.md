@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.2.3/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.2.3/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.2.4/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.2.4/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -114,6 +114,14 @@ Returns the vertices resulting from rotating a <i>polygon</i> about an origin by
 <a name="polygonScale" href="#polygonScale">#</a> geometric.<b>polygonScale</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScale.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscale "Example")
 
 Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+
+<a name="polygonScaleX" href="#polygonScaleX">#</a> geometric.<b>polygonScaleX</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleX.js "Source")
+
+Returns the vertices resulting from scaling the horizontal coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The vertical coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+
+<a name="polygonScaleY" href="#polygonScaleY">#</a> geometric.<b>polygonScale</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleY.js "Source")
+
+Returns the vertices resulting from scaling the vertical coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The horizontal coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
 <a name="polygonTranslate" href="#polygonTranslate">#</a> geometric.<b>polygonTranslate</b>(<i>polygon</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygontranslate "Example")
 
