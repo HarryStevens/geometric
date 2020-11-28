@@ -412,11 +412,13 @@
     return cross(point, t[1], t[0]) > 0;
   }
   function pointOnLine(point, line) {
+    var epsilon = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     var l = lineLength(line);
-    return pointWithLine(point, line) && lineLength([line[0], point]) <= l && lineLength([line[1], point]) <= l;
+    return pointWithLine(point, line, epsilon) && lineLength([line[0], point]) <= l && lineLength([line[1], point]) <= l;
   }
   function pointWithLine(point, line) {
-    return cross(point, line[0], line[1]) === 0;
+    var epsilon = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    return Math.abs(cross(point, line[0], line[1])) <= epsilon;
   }
 
   // Returns a boolean.

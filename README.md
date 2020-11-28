@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.2.4/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.2.4/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.2.5/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.2.5/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -143,19 +143,19 @@ Returns a boolean representing whether a <i>line</i> intersects a <i>polygon</i>
 
 Returns a boolean representing whether a <i>point</i> is inside of a <i>polygon</i>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 
-<a name="pointOnPolygon" href="#pointOnPolygon">#</a> geometric.<b>pointOnPolygon</b>(<i>point</i>, <i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnPolygon.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonpolygon "Example")
+<a name="pointOnPolygon" href="#pointOnPolygon">#</a> geometric.<b>pointOnPolygon</b>(<i>point</i>, <i>polygon</i>[, <i>epsilon</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnPolygon.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonpolygon "Example")
 
-Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>.
+Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
 
 <a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<i>point</i>, <i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L17 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonline-geometric-pointwithline "Example")
 
-Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i> and is also located on the line segment. See also [pointWithLine](#pointWithLine).
+Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i> and is also located on the line segment. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointWithLine](#pointWithLine).
 
 [<img width="150" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
 
-<a name="pointWithLine" href="#pointWithLine">#</a> geometric.<b>pointWithLine</b>(<i>point</i>, <i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L21 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonline-geometric-pointwithline "Example")
+<a name="pointWithLine" href="#pointWithLine">#</a> geometric.<b>pointWithLine</b>(<i>point</i>, <i>line</i>[, <i>epsilon</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L21 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonline-geometric-pointwithline "Example")
 
-Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i>. See also [pointOnLine](#pointOnLine).
+Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointOnLine](#pointOnLine).
 
 <a name="pointLeftofLine" href="#pointLeftofLine">#</a> geometric.<b>pointLeftofLine</b>(<i>point</i>, <i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L9 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointleftofline-geometric-pointrightofline-g "Example")
 

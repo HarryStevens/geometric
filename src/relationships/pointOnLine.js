@@ -14,10 +14,10 @@ export function pointRightofLine(point, line){
   const t = topPointFirst(line);
   return cross(point, t[1], t[0]) > 0;
 }
-export function pointOnLine(point, line){
+export function pointOnLine(point, line, epsilon = 0){
   const l = lineLength(line);
-  return pointWithLine(point, line) && lineLength([line[0], point]) <= l && lineLength([line[1], point]) <= l;
+  return pointWithLine(point, line, epsilon) && lineLength([line[0], point]) <= l && lineLength([line[1], point]) <= l;
 }
-export function pointWithLine(point, line){
-  return cross(point, line[0], line[1]) === 0;
+export function pointWithLine(point, line, epsilon = 0){
+  return Math.abs(cross(point, line[0], line[1])) <= epsilon;
 }
