@@ -147,7 +147,7 @@ Returns a boolean representing whether a <i>point</i> is inside of a <i>polygon<
 
 Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
 
-<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<i>point</i>, <i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L17 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonline-geometric-pointwithline "Example")
+<a name="pointOnLine" href="#pointOnLine">#</a> geometric.<b>pointOnLine</b>(<i>point</i>, <i>line</i>[, <i>epsilon</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointOnLine.js#L17 "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointonline-geometric-pointwithline "Example")
 
 Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i> and is also located on the line segment. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointWithLine](#pointWithLine).
 
