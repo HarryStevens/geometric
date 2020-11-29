@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 2.2.4. Copyright 2020 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 2.2.5. Copyright 2020 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -467,11 +467,12 @@
   // Returns a boolean.
 
   function pointOnPolygon(point, polygon) {
+    var epsilon = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     var on = false;
     var closed = close(polygon);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
-      if (pointOnLine(point, [closed[i], closed[i + 1]])) {
+      if (pointOnLine(point, [closed[i], closed[i + 1]], epsilon)) {
         on = true;
         break;
       }
