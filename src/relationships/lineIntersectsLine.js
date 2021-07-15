@@ -14,9 +14,23 @@ export function lineIntersectsLine(lineA, lineB) {
 
   det = ((c - a) * (s - q) - (r - p) * (d - b));
   
+  // Check if lines are parallel:
   if (floatEqual(det, 0)) {
+    // Check if parallel lines have same origin:
+    const lineAConst = ( d - b ) * a - ( c - a ) * b;
+    const lineBConst = ( s - q ) * p - ( r - p ) * q;
+    if (floatEqual(lineBConst, lineAConst)) {
+      // Check if segments overlap:
+      const minLineXA = Math.min(a, c);
+      const maxXLineA = Math.max(a, c);
+      const minLineXB = Math.min(p, r);
+      const maxXLineB = Math.max(p, r);
+      return minLineXB <= maxXLineA + Number.EPSILON || maxXLineB >= minLineXA - Number.EPSILON;
+    } else {
       return false;
+    }
   } else {
+    // Check if lines are crossing in the segments:
     lambda = (((s - q) * (r - a) + (p - r) * (s - b)) / det);
     gamma = (((b - d) * (r - a) + (c - a) * (s - b)) / det);
     return (0 <= lambda + Number.EPSILON  && lambda <= 1 + Number.EPSILON ) && (0 <= gamma + Number.EPSILON && gamma <= 1 + Number.EPSILON);
