@@ -1,43 +1,44 @@
 // Determines if lineA intersects lineB. 
 // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
+// See also https://github.com/HarryStevens/geometric/issues/10#issuecomment-880587209
 // Returns a boolean.
 export function lineIntersectsLine(lineA, lineB) {
-  // First test to see if the lines share an endpoint
-  if (sharePoint(lineA, lineB)) return true;
+  const a = lineA[0][0],
+        b = lineA[0][1],
+        c = lineA[1][0],
+        d = lineA[1][1],
+        p = lineB[0][0],
+        q = lineB[0][1],
+        r = lineB[1][0],
+        s = lineB[1][1],
+        det = ((c - a) * (s - q) - (r - p) * (d - b));
+  
+  // Check if lines are parallel
+  if (floatEqual(det, 0)) {
+    // Check if parallel lines have same origin
+    const lineAConst = (d - b) * a - (c - a) * b;
+    const lineBConst = (s - q) * p - (r - p) * q;
 
-  let a = lineA[0][0],
-      b = lineA[0][1],
-      c = lineA[1][0],
-      d = lineA[1][1],
-      p = lineB[0][0],
-      q = lineB[0][1],
-      r = lineB[1][0],
-      s = lineB[1][1],
-      det, gamma, lambda;
+    if (floatEqual(lineBConst, lineAConst)) {
+      // Check if segments overlap
+      const minLineXA = Math.min(a, c);
+      const maxXLineA = Math.max(a, c);
+      const minLineXB = Math.min(p, r);
+      const maxXLineB = Math.max(p, r);
 
-  det = (c - a) * (s - q) - (r - p) * (d - b);
-  if (det === 0) {
-    return false;
-  } else {
-    lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
-    gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
-    return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
-  }
-}
-
-function sharePoint(lineA, lineB){
-  let share = false;
-  for (let i = 0; i < 2; i++){
-    for (let j = 0; j < 2; j++){
-      if (equal(lineA[i], lineB[j])){
-        share = true;
-        break;
-      }
+      return minLineXB <= maxXLineA + Number.EPSILON || maxXLineB >= minLineXA - Number.EPSILON;
+    } else {
+      return false;
     }
+  } else {
+    // Check if lines are crossing in the segments
+    const lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
+    const gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
+
+    return (0 <= lambda + Number.EPSILON  && lambda <= 1 + Number.EPSILON) && (0 <= gamma + Number.EPSILON && gamma <= 1 + Number.EPSILON);
   }
-  return share;
 }
 
-function equal(pointA, pointB){
-  return pointA[0] === pointB[0] && pointA[1] === pointB[1];
+function floatEqual(float1, float2) { 
+  return float1 <= float2 + Number.EPSILON && float1 >= float2 - Number.EPSILON;
 }
