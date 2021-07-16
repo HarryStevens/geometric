@@ -333,18 +333,15 @@
         q = lineB[0][1],
         r = lineB[1][0],
         s = lineB[1][1],
-        det,
-        gamma,
-        lambda;
-    det = (c - a) * (s - q) - (r - p) * (d - b); // Check if lines are parallel:
+        det = (c - a) * (s - q) - (r - p) * (d - b); // Check if lines are parallel
 
     if (floatEqual(det, 0)) {
-      // Check if parallel lines have same origin:
+      // Check if parallel lines have same origin
       var lineAConst = (d - b) * a - (c - a) * b;
       var lineBConst = (s - q) * p - (r - p) * q;
 
       if (floatEqual(lineBConst, lineAConst)) {
-        // Check if segments overlap:
+        // Check if segments overlap
         var minLineXA = Math.min(a, c);
         var maxXLineA = Math.max(a, c);
         var minLineXB = Math.min(p, r);
@@ -354,9 +351,9 @@
         return false;
       }
     } else {
-      // Check if lines are crossing in the segments:
-      lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
-      gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
+      // Check if lines are crossing in the segments
+      var lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
+      var gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
       return 0 <= lambda + Number.EPSILON && lambda <= 1 + Number.EPSILON && 0 <= gamma + Number.EPSILON && gamma <= 1 + Number.EPSILON;
     }
   }

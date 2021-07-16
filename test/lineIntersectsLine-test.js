@@ -38,6 +38,7 @@ tape("lineIntersectsLine(lineA, lineB) returns true if lineA and lineB share an 
   test.end();
 });
 
+// See https://github.com/HarryStevens/geometric/issues/10#issuecomment-880587209
 tape("lineIntersectsLine(lineA, lineB) returns true if one of lineA and lineB points is on the other line", test => {
   const line1 = [
     [0, 0],
