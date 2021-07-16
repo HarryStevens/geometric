@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 2.2.6. Copyright 2021 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 2.2.7. Copyright 2021 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -323,6 +323,7 @@
 
   // Determines if lineA intersects lineB. 
   // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
+  // See also https://github.com/HarryStevens/geometric/issues/10#issuecomment-880587209
   // Returns a boolean.
   function lineIntersectsLine(lineA, lineB) {
     var a = lineA[0][0],
