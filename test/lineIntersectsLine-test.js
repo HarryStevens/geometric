@@ -53,3 +53,14 @@ tape("lineIntersectsLine(lineA, lineB) returns true if one of lineA and lineB po
   test.equal(geometric.lineIntersectsLine(line2, line1), true);
   test.end();
 });
+
+// https://github.com/HarryStevens/geometric/pull/25
+tape("lineIntersectsLine(lineA, lineB) returns false if two segments are collinear but do not intersect", test => {
+  const line1 = [[0, 0], [10, 0]];
+  const line2 = [[0, 0], [11, 0]];
+  const line3 = [[15, 0],[25, 0]];
+
+  test.equal(geometric.lineIntersectsLine(line1, line3), false);
+  test.equal(geometric.lineIntersectsLine(line2, line3), false);
+  test.end();
+})

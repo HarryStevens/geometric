@@ -321,7 +321,7 @@
     return p;
   }
 
-  // Determines if lineA intersects lineB. 
+  // Determines if lineA intersects lineB.
   // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
   // See also https://github.com/HarryStevens/geometric/issues/10#issuecomment-880587209
   // Returns a boolean.
@@ -343,14 +343,22 @@
 
       if (floatEqual(lineBConst, lineAConst)) {
         // Check if segments overlap
-        var minLineXA = Math.min(a, c);
-        var maxXLineA = Math.max(a, c);
-        var minLineXB = Math.min(p, r);
-        var maxXLineB = Math.max(p, r);
-        return minLineXB <= maxXLineA + Number.EPSILON || maxXLineB >= minLineXA - Number.EPSILON;
-      } else {
-        return false;
+        if (floatEqual(b, q) && floatEqual(d, s)) {
+          var minLineXA = Math.min(a, c);
+          var maxLineXA = Math.max(a, c);
+          var minLineXB = Math.min(p, r);
+          var maxLineXB = Math.max(p, r);
+          return minLineXB <= maxLineXA + Number.EPSILON && maxLineXB >= minLineXA - Number.EPSILON;
+        }
+
+        var minLineYA = Math.min(b, d);
+        var maxLineYA = Math.max(b, d);
+        var minLineYB = Math.min(q, s);
+        var maxLineYB = Math.max(q, s);
+        return minLineYB <= maxLineYA + Number.EPSILON && maxLineYB >= minLineYA - Number.EPSILON;
       }
+
+      return false;
     } else {
       // Check if lines are crossing in the segments
       var lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
