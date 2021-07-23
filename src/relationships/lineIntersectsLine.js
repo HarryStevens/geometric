@@ -1,4 +1,4 @@
-// Determines if lineA intersects lineB. 
+// Determines if lineA intersects lineB.
 // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
 // See also https://github.com/HarryStevens/geometric/issues/10#issuecomment-880587209
 // Returns a boolean.
@@ -12,7 +12,7 @@ export function lineIntersectsLine(lineA, lineB) {
         r = lineB[1][0],
         s = lineB[1][1],
         det = ((c - a) * (s - q) - (r - p) * (d - b));
-  
+
   // Check if lines are parallel
   if (floatEqual(det, 0)) {
     // Check if parallel lines have same origin
@@ -21,15 +21,23 @@ export function lineIntersectsLine(lineA, lineB) {
 
     if (floatEqual(lineBConst, lineAConst)) {
       // Check if segments overlap
-      const minLineXA = Math.min(a, c);
-      const maxXLineA = Math.max(a, c);
-      const minLineXB = Math.min(p, r);
-      const maxXLineB = Math.max(p, r);
+      if (floatEqual(b, q) && floatEqual(d, s)) {
+        const minLineXA = Math.min(a, c);
+        const maxLineXA = Math.max(a, c);
+        const minLineXB = Math.min(p, r);
+        const maxLineXB = Math.max(p, r);
 
-      return minLineXB <= maxXLineA + Number.EPSILON || maxXLineB >= minLineXA - Number.EPSILON;
-    } else {
-      return false;
+        return minLineXB <= maxLineXA + Number.EPSILON && maxLineXB >= minLineXA - Number.EPSILON;
+      }
+
+      const minLineYA = Math.min(b, d);
+      const maxLineYA = Math.max(b, d);
+      const minLineYB = Math.min(q, s);
+      const maxLineYB = Math.max(q, s);
+
+      return minLineYB <= maxLineYA + Number.EPSILON && maxLineYB >= minLineYA - Number.EPSILON;
     }
+    return false;
   } else {
     // Check if lines are crossing in the segments
     const lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
@@ -39,6 +47,6 @@ export function lineIntersectsLine(lineA, lineB) {
   }
 }
 
-function floatEqual(float1, float2) { 
+function floatEqual(float1, float2) {
   return float1 <= float2 + Number.EPSILON && float1 >= float2 - Number.EPSILON;
 }
