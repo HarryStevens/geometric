@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 2.2.8. Copyright 2021 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 2.2.8. Copyright 2022 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -321,54 +321,8 @@
     return p;
   }
 
-  // Determines if lineA intersects lineB.
-  // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
-  // See also https://github.com/HarryStevens/geometric/issues/10#issuecomment-880587209
-  // Returns a boolean.
-  function lineIntersectsLine(lineA, lineB) {
-    var a = lineA[0][0],
-        b = lineA[0][1],
-        c = lineA[1][0],
-        d = lineA[1][1],
-        p = lineB[0][0],
-        q = lineB[0][1],
-        r = lineB[1][0],
-        s = lineB[1][1],
-        det = (c - a) * (s - q) - (r - p) * (d - b); // Check if lines are parallel
-
-    if (floatEqual(det, 0)) {
-      // Check if parallel lines have same origin
-      var lineAConst = (d - b) * a - (c - a) * b;
-      var lineBConst = (s - q) * p - (r - p) * q;
-
-      if (floatEqual(lineBConst, lineAConst)) {
-        // Check if segments overlap
-        if (floatEqual(b, q) && floatEqual(d, s)) {
-          var minLineXA = Math.min(a, c);
-          var maxLineXA = Math.max(a, c);
-          var minLineXB = Math.min(p, r);
-          var maxLineXB = Math.max(p, r);
-          return minLineXB <= maxLineXA + Number.EPSILON && maxLineXB >= minLineXA - Number.EPSILON;
-        }
-
-        var minLineYA = Math.min(b, d);
-        var maxLineYA = Math.max(b, d);
-        var minLineYB = Math.min(q, s);
-        var maxLineYB = Math.max(q, s);
-        return minLineYB <= maxLineYA + Number.EPSILON && maxLineYB >= minLineYA - Number.EPSILON;
-      }
-
-      return false;
-    } else {
-      // Check if lines are crossing in the segments
-      var lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
-      var gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
-      return 0 <= lambda + Number.EPSILON && lambda <= 1 + Number.EPSILON && 0 <= gamma + Number.EPSILON && gamma <= 1 + Number.EPSILON;
-    }
-  }
-
-  function floatEqual(float1, float2) {
-    return float1 <= float2 + Number.EPSILON && float1 >= float2 - Number.EPSILON;
+  function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
   }
 
   function _toConsumableArray(arr) {
@@ -383,23 +337,46 @@
     }
   }
 
+  function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+  }
+
   function _iterableToArray(iter) {
     if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  }
+
+  function _iterableToArrayLimit(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"] != null) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
   }
 
   function _nonIterableSpread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance");
   }
 
-  // Closes a polygon if it's not closed already. Does not modify input polygon.
-  function close(polygon) {
-    return isClosed(polygon) ? polygon : [].concat(_toConsumableArray(polygon), [polygon[0]]);
-  } // Tests whether a polygon is closed
-
-  function isClosed(polygon) {
-    var first = polygon[0],
-        last = polygon[polygon.length - 1];
-    return first[0] === last[0] && first[1] === last[1];
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
 
   function topPointFirst(line) {
@@ -422,6 +399,52 @@
   function pointWithLine(point, line) {
     var epsilon = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     return Math.abs(cross(point, line[0], line[1])) <= epsilon;
+  }
+
+  // Returns a boolean.
+
+  function lineIntersectsLine(lineA, lineB) {
+    var _lineA = _slicedToArray(lineA, 2),
+        _lineA$ = _slicedToArray(_lineA[0], 2),
+        a0x = _lineA$[0],
+        a0y = _lineA$[1],
+        _lineA$2 = _slicedToArray(_lineA[1], 2),
+        a1x = _lineA$2[0],
+        a1y = _lineA$2[1],
+        _lineB = _slicedToArray(lineB, 2),
+        _lineB$ = _slicedToArray(_lineB[0], 2),
+        b0x = _lineB$[0],
+        b0y = _lineB$[1],
+        _lineB$2 = _slicedToArray(_lineB[1], 2),
+        b1x = _lineB$2[0],
+        b1y = _lineB$2[1]; // Test for shared points
+
+
+    if (a0x === b0x && a0y === b0y) return true;
+    if (a1x === b1x && a1y === b1y) return true; // Test for point on line
+
+    if (pointOnLine(lineA[0], lineB) || pointOnLine(lineA[1], lineB)) return true;
+    if (pointOnLine(lineB[0], lineA) || pointOnLine(lineB[1], lineA)) return true;
+    var denom = (b1y - b0y) * (a1x - a0x) - (b1x - b0x) * (a1y - a0y);
+    if (denom === 0) return false;
+    var deltaY = a0y - b0y,
+        deltaX = a0x - b0x,
+        numer0 = (b1x - b0x) * deltaY - (b1y - b0y) * deltaX,
+        numer1 = (a1x - a0x) * deltaY - (a1y - a0y) * deltaX,
+        quotA = numer0 / denom,
+        quotB = numer1 / denom;
+    return quotA > 0 && quotA < 1 && quotB > 0 && quotB < 1;
+  }
+
+  // Closes a polygon if it's not closed already. Does not modify input polygon.
+  function close(polygon) {
+    return isClosed(polygon) ? polygon : [].concat(_toConsumableArray(polygon), [polygon[0]]);
+  } // Tests whether a polygon is closed
+
+  function isClosed(polygon) {
+    var first = polygon[0],
+        last = polygon[polygon.length - 1];
+    return first[0] === last[0] && first[1] === last[1];
   }
 
   // Returns a boolean.

@@ -1,52 +1,30 @@
+import { pointOnLine } from "../relationships/pointOnLine";
+
 // Determines if lineA intersects lineB.
-// See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
-// See also https://github.com/HarryStevens/geometric/issues/10#issuecomment-880587209
 // Returns a boolean.
 export function lineIntersectsLine(lineA, lineB) {
-  const a = lineA[0][0],
-        b = lineA[0][1],
-        c = lineA[1][0],
-        d = lineA[1][1],
-        p = lineB[0][0],
-        q = lineB[0][1],
-        r = lineB[1][0],
-        s = lineB[1][1],
-        det = ((c - a) * (s - q) - (r - p) * (d - b));
+  const [[a0x, a0y], [a1x, a1y]] = lineA,
+        [[b0x, b0y], [b1x, b1y]] = lineB;
+  
+  // Test for shared points
+  if (a0x === b0x && a0y === b0y) return true;
+  if (a1x === b1x && a1y === b1y) return true;
 
-  // Check if lines are parallel
-  if (floatEqual(det, 0)) {
-    // Check if parallel lines have same origin
-    const lineAConst = (d - b) * a - (c - a) * b;
-    const lineBConst = (s - q) * p - (r - p) * q;
+  // Test for point on line
+  if (pointOnLine(lineA[0], lineB) || pointOnLine(lineA[1], lineB)) return true;
+  if (pointOnLine(lineB[0], lineA) || pointOnLine(lineB[1], lineA)) return true;
 
-    if (floatEqual(lineBConst, lineAConst)) {
-      // Check if segments overlap
-      if (floatEqual(b, q) && floatEqual(d, s)) {
-        const minLineXA = Math.min(a, c);
-        const maxLineXA = Math.max(a, c);
-        const minLineXB = Math.min(p, r);
-        const maxLineXB = Math.max(p, r);
+  const denom = ((b1y - b0y) * (a1x - a0x)) - ((b1x - b0x) * (a1y - a0y));
+  
+  if (denom === 0) return false;
+  
+  const deltaY = a0y - b0y,
+        deltaX = a0x - b0x,
+        numer0 = ((b1x - b0x) * deltaY) - ((b1y - b0y) * deltaX),
+        numer1 = ((a1x - a0x) * deltaY) - ((a1y - a0y) * deltaX),
+        quotA = numer0 / denom,
+        quotB = numer1 / denom;
 
-        return minLineXB <= maxLineXA + Number.EPSILON && maxLineXB >= minLineXA - Number.EPSILON;
-      }
-
-      const minLineYA = Math.min(b, d);
-      const maxLineYA = Math.max(b, d);
-      const minLineYB = Math.min(q, s);
-      const maxLineYB = Math.max(q, s);
-
-      return minLineYB <= maxLineYA + Number.EPSILON && maxLineYB >= minLineYA - Number.EPSILON;
-    }
-    return false;
-  } else {
-    // Check if lines are crossing in the segments
-    const lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
-    const gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
-
-    return (0 <= lambda + Number.EPSILON  && lambda <= 1 + Number.EPSILON) && (0 <= gamma + Number.EPSILON && gamma <= 1 + Number.EPSILON);
-  }
+  return quotA > 0 && quotA < 1 && quotB > 0 && quotB < 1;
 }
 
-function floatEqual(float1, float2) {
-  return float1 <= float2 + Number.EPSILON && float1 >= float2 - Number.EPSILON;
-}

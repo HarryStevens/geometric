@@ -46,3 +46,13 @@ tape("polygonIntersectsPolygon(polygonA, polygonB) detects intersections in spec
 
   test.end();
 });
+
+// https://github.com/HarryStevens/geometric/issues/29
+tape("polygonIntersectsPolygon(polygonA, polygonB) returns false in open U configuration", test => {
+  const a = [[3, 3], [3, 4], [4, 4], [4, 3]],
+        b = [[1, 1], [1, 4], [2, 4], [2, 2], [5, 2], [5, 4], [6, 4], [6, 1]];
+
+  test.equal(geometric.polygonIntersectsPolygon(a, b), false);
+
+  test.end();
+});
