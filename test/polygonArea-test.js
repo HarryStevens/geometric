@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("polygonArea(polygon) calculates the area of a polygon", test => {
   test.equal(geometric.polygonArea([[0, 0], [1, 0], [1, 1], [0, 1]]), 1);

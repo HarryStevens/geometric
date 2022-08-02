@@ -1,5 +1,5 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("pointTranslate(point, angle, distance) translates a point by an angle in degrees and distance", function(test) {
   test.equal(geometric.pointTranslate([0, 0], 0, 1)[0], 1);

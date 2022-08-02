@@ -1,6 +1,6 @@
 const tape = require("tape"),
-    geometric = require("../"),
-    polygon = [[10, 10], [50, 10], [50, 50], [10, 50]];
+      geometric = require("../"),
+      polygon = [[10, 10], [50, 10], [50, 50], [10, 50]];
 
 tape("pointOnPolygon(point, polygon) determines whether a point is located on one of the edges of a polygon", function(test) {
   test.equal(geometric.pointOnPolygon([30, 10], polygon), true);

@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("polygonIntersectsPolygon(polygonA, polygonB) determines whether two polygons intersect but neither contains the other", function(test) {
   const polygon = [[0, 0], [2, 0], [2, 2], [0, 2]];

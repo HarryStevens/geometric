@@ -1,5 +1,5 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("pointRotate(point, angle, origin) rotates a point by an angle in degrees around an origin", function(test) {
   test.equal(geometric.pointRotate([1, 1], 90).map(d => Math.round(d))[0], -1);

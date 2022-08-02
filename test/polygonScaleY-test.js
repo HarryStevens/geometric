@@ -1,9 +1,9 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("polygonScaleY(polygon, scaleFactor, origin) scales a polygon's y-coordinates by a scale factor from an origin point.", function(test) {
-  var polygon = [[738.5, 168.5], [838.5, 138.5], [938.5, 168.5], [988.5, 268.5], [938.5, 368.5], [838.5, 398.5], [738.5, 368.5], [688.5, 268.5]];
-  var polygonDoubled = geometric.polygonScaleY(polygon, 2);
+  const polygon = [[738.5, 168.5], [838.5, 138.5], [938.5, 168.5], [988.5, 268.5], [938.5, 368.5], [838.5, 398.5], [738.5, 368.5], [688.5, 268.5]];
+  const polygonDoubled = geometric.polygonScaleY(polygon, 2);
 
   test.equal(polygonDoubled[0][0], polygon[0][0]);
   test.equal(Math.round(polygonDoubled[0][1]), 68);

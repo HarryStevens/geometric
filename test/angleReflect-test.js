@@ -1,5 +1,5 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("angleReflect(incidenceAngle, surfaceAngle) returns the angle of reflection.", function(test) {
   test.equal(geometric.angleReflect(0, 90), 180);

@@ -1,10 +1,10 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("polygonTranslate(polygon, angle, distance) translates a polygon by an angle in degrees and distance.", function(test) {
-  var myPolygon = [[100, 100], [150, 100], [125, 125], [150, 150], [100, 150]];
+  const myPolygon = [[100, 100], [150, 100], [125, 125], [150, 150], [100, 150]];
 
-  var newPolygon = geometric.polygonTranslate(myPolygon, 90, 100);
+  const newPolygon = geometric.polygonTranslate(myPolygon, 90, 100);
 
   test.equal(newPolygon[0][0], 100);
   test.equal(newPolygon[0][1], 200);

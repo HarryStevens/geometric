@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("polygonHull(points) returns null if there are fewer than 3 input points", function(test) {
   test.equal(geometric.polygonHull([]), null);

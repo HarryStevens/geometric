@@ -1,5 +1,5 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("polygonBounds(polygon) returns null if the polygon has fewer than 3 points", function(test) {
   test.equal(geometric.polygonBounds([]), null);
@@ -10,8 +10,8 @@ tape("polygonBounds(polygon) returns null if the polygon has fewer than 3 points
 });
 
 tape("polygonBounds(polygon) calculates the bounds a polygon", function(test) {
-  var polygon = [[110, 40], [210, 10], [310, 40], [360, 140], [310, 240], [210, 270], [110, 240], [60, 140]];
-  var bounds = geometric.polygonBounds(polygon);
+  const polygon = [[110, 40], [210, 10], [310, 40], [360, 140], [310, 240], [210, 270], [110, 240], [60, 140]];
+  const bounds = geometric.polygonBounds(polygon);
   
   test.equal(bounds[0][0], 60);
   test.equal(bounds[0][1], 10);

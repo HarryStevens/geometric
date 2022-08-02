@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("lineInterpolate(line) returns points along a line", test => {
   const line = [[236, 0], [708, 190]];
