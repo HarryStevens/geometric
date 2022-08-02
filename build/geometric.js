@@ -216,132 +216,6 @@
     return [x / l, y / l];
   }
 
-  function polygonTranslate(polygon, angle, distance) {
-    var p = [];
-
-    for (var i = 0, l = polygon.length; i < l; i++) {
-      p[i] = pointTranslate(polygon[i], angle, distance);
-    }
-
-    return p;
-  }
-
-  function polygonRegular() {
-    var sides = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
-    var area = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
-    var center = arguments.length > 2 ? arguments[2] : undefined;
-    var polygon = [],
-        point = [0, 0],
-        sum = [0, 0],
-        angle = 0;
-
-    for (var i = 0; i < sides; i++) {
-      polygon[i] = point;
-      sum[0] += point[0];
-      sum[1] += point[1];
-      point = pointTranslate(point, angle, Math.sqrt(4 * area * Math.tan(Math.PI / sides) / sides)); // https://web.archive.org/web/20180404142713/http://keisan.casio.com/exec/system/1355985985
-
-      angle -= 360 / sides;
-    }
-
-    if (center) {
-      var line = [[sum[0] / sides, sum[1] / sides], center];
-      polygon = polygonTranslate(polygon, lineAngle(line), lineLength(line));
-    }
-
-    return polygon;
-  }
-
-  function polygonRotate(polygon, angle, origin) {
-    var p = [];
-
-    for (var i = 0, l = polygon.length; i < l; i++) {
-      p[i] = pointRotate(polygon[i], angle, origin);
-    }
-
-    return p;
-  }
-
-  // The returned polygon's area is equal to the input polygon's area multiplied by the square of the scaleFactor.
-  // The origin defaults to the polygon's centroid.
-
-  function polygonScale(polygon, scale, origin) {
-    if (!origin) {
-      origin = polygonCentroid(polygon);
-    }
-
-    var p = [];
-
-    for (var i = 0, l = polygon.length; i < l; i++) {
-      var v = polygon[i],
-          d = lineLength([origin, v]),
-          a = lineAngle([origin, v]);
-      p[i] = pointTranslate(origin, a, d * scale);
-    }
-
-    return p;
-  }
-
-  // The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
-  // The origin defaults to the polygon's centroid.
-
-  function polygonScaleArea(polygon, scale, origin) {
-    if (!origin) {
-      origin = polygonCentroid(polygon);
-    }
-
-    var p = [];
-
-    for (var i = 0, l = polygon.length; i < l; i++) {
-      var v = polygon[i],
-          d = lineLength([origin, v]),
-          a = lineAngle([origin, v]);
-      p[i] = pointTranslate(origin, a, d * Math.sqrt(scale));
-    }
-
-    return p;
-  }
-
-  // The origin defaults to the polygon's centroid.
-
-  function polygonScaleX(polygon, scale, origin) {
-    if (!origin) {
-      origin = polygonCentroid(polygon);
-    }
-
-    var p = [];
-
-    for (var i = 0, l = polygon.length; i < l; i++) {
-      var v = polygon[i],
-          d = lineLength([origin, v]),
-          a = lineAngle([origin, v]),
-          t = pointTranslate(origin, a, d * scale);
-      p[i] = [t[0], v[1]];
-    }
-
-    return p;
-  }
-
-  // The origin defaults to the polygon's centroid.
-
-  function polygonScaleY(polygon, scale, origin) {
-    if (!origin) {
-      origin = polygonCentroid(polygon);
-    }
-
-    var p = [];
-
-    for (var i = 0, l = polygon.length; i < l; i++) {
-      var v = polygon[i],
-          d = lineLength([origin, v]),
-          a = lineAngle([origin, v]),
-          t = pointTranslate(origin, a, d * scale);
-      p[i] = [v[0], t[1]];
-    }
-
-    return p;
-  }
-
   function _slicedToArray(arr, i) {
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
   }
@@ -400,6 +274,219 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
 
+  // Closes a polygon if it's not closed already. Does not modify input polygon.
+  function close(polygon) {
+    return isClosed(polygon) ? polygon : [].concat(_toConsumableArray(polygon), [polygon[0]]);
+  } // Tests whether a polygon is closed
+
+  function isClosed(polygon) {
+    var first = polygon[0],
+        last = polygon[polygon.length - 1];
+    return first[0] === last[0] && first[1] === last[1];
+  }
+
+  // The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
+  // The origin defaults to the polygon's centroid.
+
+  function polygonScaleArea(polygon, scale, origin) {
+    if (!origin) {
+      origin = polygonCentroid(polygon);
+    }
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]);
+      p[i] = pointTranslate(origin, a, d * Math.sqrt(scale));
+    }
+
+    return p;
+  }
+
+  function polygonTranslate(polygon, angle, distance) {
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      p[i] = pointTranslate(polygon[i], angle, distance);
+    }
+
+    return p;
+  }
+
+  function polygonRandom() {
+    var sides = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
+    var area = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+    var centroid = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [0, 0];
+    var r = Math.sqrt(area / Math.PI),
+        xs = Array.from({
+      length: sides
+    }, function () {
+      return 2 * r * Math.random();
+    }),
+        ys = Array.from({
+      length: sides
+    }, function () {
+      return 2 * r * Math.random();
+    });
+    xs.sort(function (a, b) {
+      return a - b;
+    });
+    ys.sort(function (a, b) {
+      return a - b;
+    });
+    var vecXS = chain(xs, xs[0], xs[xs.length - 1]),
+        vecYS = chain(ys, ys[0], ys[ys.length - 1]);
+    shuffle(vecYS); //Make polygon coordinates from the vecs by laying them out end to end
+
+    var polygon = [],
+        x = 0,
+        y = 0; // Zip the vector arrays together
+    // Then, sort the vectors by angle, in a counter clockwise fashion. 
+    // a and b are tuples representing vectors. Compute angle for each vector and compare them.
+
+    var vecs = vecXS.map(function (d, i) {
+      return [d, vecYS[i]];
+    }).sort(function (a, b) {
+      return Math.atan2(a[1], a[0]) - Math.atan2(b[1], b[0]);
+    }).forEach(function (vec) {
+      x += vec[0] * 1;
+      y += vec[1] * 1;
+      polygon.push([x, y]);
+    }); // Scale and translate
+
+    var c = polygonCentroid(polygon);
+    return polygonTranslate(polygonScaleArea(polygon, area / polygonArea(polygon)), lineAngle([c, centroid]), lineLength([c, centroid]));
+  }
+
+  function chain(values, min, max) {
+    var lastMin = min,
+        lastMax = min;
+    var output = [];
+
+    for (var i = 1; i < values.length - 1; i++) {
+      var val = values[i];
+
+      if (Math.random() > 0.5) {
+        output.push(val - lastMin);
+        lastMin = val;
+      } else {
+        output.push(lastMax - val);
+        lastMax = val;
+      }
+    }
+
+    output.push(max - lastMin);
+    output.push(lastMax - max);
+    return output;
+  }
+
+  function shuffle(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var _ref = [array[j], array[i]];
+      array[i] = _ref[0];
+      array[j] = _ref[1];
+    }
+  }
+
+  function polygonRegular() {
+    var sides = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
+    var area = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+    var center = arguments.length > 2 ? arguments[2] : undefined;
+    var polygon = [],
+        point = [0, 0],
+        sum = [0, 0],
+        angle = 0;
+
+    for (var i = 0; i < sides; i++) {
+      polygon[i] = point;
+      sum[0] += point[0];
+      sum[1] += point[1];
+      point = pointTranslate(point, angle, Math.sqrt(4 * area * Math.tan(Math.PI / sides) / sides)); // https://web.archive.org/web/20180404142713/http://keisan.casio.com/exec/system/1355985985
+
+      angle -= 360 / sides;
+    }
+
+    if (center) {
+      var line = [[sum[0] / sides, sum[1] / sides], center];
+      polygon = polygonTranslate(polygon, lineAngle(line), lineLength(line));
+    }
+
+    return polygon;
+  }
+
+  function polygonRotate(polygon, angle, origin) {
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      p[i] = pointRotate(polygon[i], angle, origin);
+    }
+
+    return p;
+  }
+
+  // The returned polygon's area is equal to the input polygon's area multiplied by the square of the scaleFactor.
+  // The origin defaults to the polygon's centroid.
+
+  function polygonScale(polygon, scale, origin) {
+    if (!origin) {
+      origin = polygonCentroid(polygon);
+    }
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]);
+      p[i] = pointTranslate(origin, a, d * scale);
+    }
+
+    return p;
+  }
+
+  // The origin defaults to the polygon's centroid.
+
+  function polygonScaleX(polygon, scale, origin) {
+    if (!origin) {
+      origin = polygonCentroid(polygon);
+    }
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]),
+          t = pointTranslate(origin, a, d * scale);
+      p[i] = [t[0], v[1]];
+    }
+
+    return p;
+  }
+
+  // The origin defaults to the polygon's centroid.
+
+  function polygonScaleY(polygon, scale, origin) {
+    if (!origin) {
+      origin = polygonCentroid(polygon);
+    }
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]),
+          t = pointTranslate(origin, a, d * scale);
+      p[i] = [v[0], t[1]];
+    }
+
+    return p;
+  }
+
   function topPointFirst(line) {
     return line[1][1] > line[0][1] ? line : [line[1], line[0]];
   }
@@ -455,17 +542,6 @@
         quotA = numer0 / denom,
         quotB = numer1 / denom;
     return quotA > 0 && quotA < 1 && quotB > 0 && quotB < 1;
-  }
-
-  // Closes a polygon if it's not closed already. Does not modify input polygon.
-  function close(polygon) {
-    return isClosed(polygon) ? polygon : [].concat(_toConsumableArray(polygon), [polygon[0]]);
-  } // Tests whether a polygon is closed
-
-  function isClosed(polygon) {
-    var first = polygon[0],
-        last = polygon[polygon.length - 1];
-    return first[0] === last[0] && first[1] === last[1];
   }
 
   // Returns a boolean.
@@ -603,6 +679,7 @@
   exports.polygonHull = polygonHull;
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
+  exports.polygonRandom = polygonRandom;
   exports.polygonRegular = polygonRegular;
   exports.polygonRotate = polygonRotate;
   exports.polygonScale = polygonScale;
