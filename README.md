@@ -103,9 +103,9 @@ Returns the length of a <i>polygon</i>'s perimeter.
 
 Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
 
-<a name="polygonRandom" href="#polygonRandom">#</a> geometric.<b>polygonRandom</b>([<i>sides</i>[, <i>area</i>[, <i>center</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRandom.js "Source")
+<a name="polygonRandom" href="#polygonRandom">#</a> geometric.<b>polygonRandom</b>([<i>sides</i>[, <i>area</i>[, <i>centroid</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRandom.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonrandom "Example")
 
-Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i>. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. Based on an algorithm by Pavel Valtr and an [implementation by Maneesh Agrawala](https://observablehq.com/@magrawala/random-convex-polygon).
+Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. Based on an algorithm by Pavel Valtr and an [implementation by Maneesh Agrawala](https://observablehq.com/@magrawala/random-convex-polygon).
 
 <a name="polygonRegular" href="#polygonRegular">#</a> geometric.<b>polygonRegular</b>([<i>sides</i>[, <i>area</i>[, <i>center</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRegular.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonregular "Example")
 
