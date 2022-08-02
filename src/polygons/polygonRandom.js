@@ -1,10 +1,10 @@
-import { close } from "../utils/closePolygon.js";
-import { lineAngle } from "../lines/lineAngle.js";
-import { lineLength } from "../lines/lineLength.js";
-import { polygonArea } from "./polygonArea.js";
-import { polygonCentroid } from "./polygonCentroid.js";
-import { polygonScaleArea } from "./polygonScaleArea.js";
-import { polygonTranslate } from "./polygonTranslate.js";
+import { close } from "../utils/closePolygon";
+import { lineAngle } from "../lines/lineAngle";
+import { lineLength } from "../lines/lineLength";
+import { polygonArea } from "./polygonArea";
+import { polygonCentroid } from "./polygonCentroid";
+import { polygonScaleArea } from "./polygonScaleArea";
+import { polygonTranslate } from "./polygonTranslate";
 
 // Returns a random polygon according to the specific number of sides, area, and centroid.
 // Based on an algorithm by Pavel Valtr and an implementation by Maneesh Agrawala: https://observablehq.com/@magrawala/random-convex-polygon
