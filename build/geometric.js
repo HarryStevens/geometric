@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 2.3.0. Copyright 2022 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 2.3.1. Copyright 2022 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -314,6 +314,8 @@
 
     return p;
   }
+
+  // Based on an algorithm by Pavel Valtr and an implementation by Maneesh Agrawala: https://observablehq.com/@magrawala/random-convex-polygon
 
   function polygonRandom() {
     var sides = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
