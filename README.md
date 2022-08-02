@@ -117,7 +117,7 @@ Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor
 
 The returned polygon's area is equal to the input polygon's area multiplied by the square of the <i>scaleFactor</i>. To scale the polygon's area by the <i>scaleFactor</i> itself, see <a href="#polygonScaleArea">geometric.polygonScaleArea</a>.
 
-<a name="polygonScaleArea" href="#polygonScaleArea">#</a> geometric.<b>polygonScaleArea</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleArea.js "Source")
+<a name="polygonScaleArea" href="#polygonScaleArea">#</a> geometric.<b>polygonScaleArea</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleArea.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscalearea "Example")
 
 Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
