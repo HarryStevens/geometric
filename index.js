@@ -10,6 +10,7 @@ export { polygonArea } from "./src/polygons/polygonArea";
 export { polygonBounds } from "./src/polygons/polygonBounds";
 export { polygonCentroid } from "./src/polygons/polygonCentroid";
 export { polygonHull } from "./src/polygons/polygonHull";
+export { polygonInterpolate } from "./src/polygons/polygonInterpolate";
 export { polygonLength } from "./src/polygons/polygonLength";
 export { polygonMean } from "./src/polygons/polygonMean";
 export { polygonRandom } from "./src/polygons/polygonRandom";

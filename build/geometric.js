@@ -172,50 +172,6 @@
     return lower.concat(upper);
   }
 
-  // Calculates the length of a polygon's perimeter. See https://github.com/d3/d3-polygon/blob/master/src/length.js
-  function polygonLength(vertices) {
-    if (vertices.length === 0) {
-      return 0;
-    }
-
-    var i = -1,
-        n = vertices.length,
-        b = vertices[n - 1],
-        xa,
-        ya,
-        xb = b[0],
-        yb = b[1],
-        perimeter = 0;
-
-    while (++i < n) {
-      xa = xb;
-      ya = yb;
-      b = vertices[i];
-      xb = b[0];
-      yb = b[1];
-      xa -= xb;
-      ya -= yb;
-      perimeter += Math.sqrt(xa * xa + ya * ya);
-    }
-
-    return perimeter;
-  }
-
-  // Calculates the arithmetic mean of a polygon's vertices.
-  function polygonMean(vertices) {
-    var x = 0,
-        y = 0,
-        l = vertices.length;
-
-    for (var i = 0; i < l; i++) {
-      var v = vertices[i];
-      x += v[0];
-      y += v[1];
-    }
-
-    return [x / l, y / l];
-  }
-
   function _slicedToArray(arr, i) {
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
   }
@@ -283,6 +239,84 @@
     var first = polygon[0],
         last = polygon[polygon.length - 1];
     return first[0] === last[0] && first[1] === last[1];
+  }
+
+  // Calculates the length of a polygon's perimeter. See https://github.com/d3/d3-polygon/blob/master/src/length.js
+  function polygonLength(vertices) {
+    if (vertices.length === 0) {
+      return 0;
+    }
+
+    var i = -1,
+        n = vertices.length,
+        b = vertices[n - 1],
+        xa,
+        ya,
+        xb = b[0],
+        yb = b[1],
+        perimeter = 0;
+
+    while (++i < n) {
+      xa = xb;
+      ya = yb;
+      b = vertices[i];
+      xb = b[0];
+      yb = b[1];
+      xa -= xb;
+      ya -= yb;
+      perimeter += Math.sqrt(xa * xa + ya * ya);
+    }
+
+    return perimeter;
+  }
+
+  function polygonInterpolate(polygon) {
+    return function (t) {
+      if (t <= 0) {
+        return polygon[0];
+      }
+
+      var closed = close(polygon);
+
+      if (t >= 1) {
+        return closed[closed.length - 1];
+      }
+
+      var target = polygonLength(closed) * t;
+      var point = [],
+          track = 0;
+
+      for (var i = 0; i < closed.length - 1; i++) {
+        var side = [closed[i], closed[i + 1]],
+            length = lineLength(side),
+            angle = lineAngle(side),
+            delta = target - (track += length);
+
+        if (delta < 0) {
+          point = pointTranslate(side[0], angle, length + delta);
+          break;
+        } else if (i === polygon.length - 2) {
+          point = pointTranslate(side[0], angle, delta);
+        }
+      }
+
+      return point;
+    };
+  }
+
+  // Calculates the arithmetic mean of a polygon's vertices.
+  function polygonMean(vertices) {
+    var x = 0,
+        y = 0,
+        l = vertices.length;
+
+    for (var i = 0; i < l; i++) {
+      var v = vertices[i];
+      x += v[0];
+      y += v[1];
+    }
+
+    return [x / l, y / l];
   }
 
   // The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
@@ -679,6 +713,7 @@
   exports.polygonBounds = polygonBounds;
   exports.polygonCentroid = polygonCentroid;
   exports.polygonHull = polygonHull;
+  exports.polygonInterpolate = polygonInterpolate;
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
   exports.polygonRandom = polygonRandom;
