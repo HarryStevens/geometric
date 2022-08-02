@@ -15,6 +15,7 @@ export { polygonMean } from "./src/polygons/polygonMean";
 export { polygonRegular } from "./src/polygons/polygonRegular";
 export { polygonRotate } from "./src/polygons/polygonRotate";
 export { polygonScale } from "./src/polygons/polygonScale";
+export { polygonScaleArea } from "./src/polygons/polygonScaleArea";
 export { polygonScaleX } from "./src/polygons/polygonScaleX";
 export { polygonScaleY } from "./src/polygons/polygonScaleY";
 export { polygonTranslate } from "./src/polygons/polygonTranslate";

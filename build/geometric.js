@@ -262,6 +262,7 @@
     return p;
   }
 
+  // The returned polygon's area is equal to the input polygon's area multiplied by the square of the scaleFactor.
   // The origin defaults to the polygon's centroid.
 
   function polygonScale(polygon, scale, origin) {
@@ -276,6 +277,26 @@
           d = lineLength([origin, v]),
           a = lineAngle([origin, v]);
       p[i] = pointTranslate(origin, a, d * scale);
+    }
+
+    return p;
+  }
+
+  // The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
+  // The origin defaults to the polygon's centroid.
+
+  function polygonScaleArea(polygon, scale, origin) {
+    if (!origin) {
+      origin = polygonCentroid(polygon);
+    }
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var v = polygon[i],
+          d = lineLength([origin, v]),
+          a = lineAngle([origin, v]);
+      p[i] = pointTranslate(origin, a, d * Math.sqrt(scale));
     }
 
     return p;
@@ -585,6 +606,7 @@
   exports.polygonRegular = polygonRegular;
   exports.polygonRotate = polygonRotate;
   exports.polygonScale = polygonScale;
+  exports.polygonScaleArea = polygonScaleArea;
   exports.polygonScaleX = polygonScaleX;
   exports.polygonScaleY = polygonScaleY;
   exports.polygonTranslate = polygonTranslate;
