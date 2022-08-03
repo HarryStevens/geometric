@@ -135,9 +135,13 @@ The returned polygon's area is equal to the input polygon's area multiplied by t
 
 Returns the vertices resulting from scaling the horizontal coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The vertical coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
+The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
+
 <a name="polygonScaleY" href="#polygonScaleY">#</a> geometric.<b>polygonScaleY</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleY.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscaley "Example")
 
 Returns the vertices resulting from scaling the vertical coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The horizontal coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+
+The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
 
 <a name="polygonTranslate" href="#polygonTranslate">#</a> geometric.<b>polygonTranslate</b>(<i>polygon</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygontranslate "Example")
 
