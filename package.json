@@ -1,6 +1,6 @@
 {
   "name": "geometric",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "A JavaScript library with geometric functions.",
   "main": "build/geometric.js",
   "unpkg": "build/geometric.min.js",
