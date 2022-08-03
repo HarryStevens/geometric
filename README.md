@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.3.3/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.3.3/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.3.4/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.3.4/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -142,6 +142,10 @@ Returns the vertices resulting from scaling the vertical coordinates of a <i>pol
 <a name="polygonTranslate" href="#polygonTranslate">#</a> geometric.<b>polygonTranslate</b>(<i>polygon</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygontranslate "Example")
 
 Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle</i> in degrees and a <i>distance</i>.
+
+<a name="polygonWind" href="#polygonWind">#</a> geometric.<b>polygonWind</b>(<i>polygon</i>[, <i>order</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonWind.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonwind "Example")
+
+Returns a <i>polygon</i> in the specified winding order. If an <i>order</i> string is passed as either "cw" or "clockwise", returns a polygon with a clockwise winding order. Otherwise, returns a polygon with a counter-clockwise winding order.
 
 <hr />
 

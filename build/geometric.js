@@ -523,6 +523,22 @@
     return p;
   }
 
+  // If order is passed as a strings of "cw" or "clockwise", returns a polygon with a clockwise winding order.
+  // Otherwise, returns a polygon with a counter-clockwise winding order.
+
+  function polygonWind(polygon) {
+    var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "ccw";
+    if (polygon.length < 3) return null;
+    var reversed = polygon.slice().reverse();
+    var isClockwise = polygonArea(polygon, true) > 0;
+
+    if (order === "cw" || order === "clockwise") {
+      return isClockwise ? polygon : reversed;
+    } else {
+      return isClockwise ? reversed : polygon;
+    }
+  }
+
   function topPointFirst(line) {
     return line[1][1] > line[0][1] ? line : [line[1], line[0]];
   }
@@ -724,6 +740,7 @@
   exports.polygonScaleX = polygonScaleX;
   exports.polygonScaleY = polygonScaleY;
   exports.polygonTranslate = polygonTranslate;
+  exports.polygonWind = polygonWind;
   exports.lineIntersectsLine = lineIntersectsLine;
   exports.lineIntersectsPolygon = lineIntersectsPolygon;
   exports.pointInPolygon = pointInPolygon;

@@ -21,6 +21,7 @@ export { polygonScaleArea } from "./src/polygons/polygonScaleArea";
 export { polygonScaleX } from "./src/polygons/polygonScaleX";
 export { polygonScaleY } from "./src/polygons/polygonScaleY";
 export { polygonTranslate } from "./src/polygons/polygonTranslate";
+export { polygonWind } from "./src/polygons/polygonWind";
 
 export { lineIntersectsLine } from "./src/relationships/lineIntersectsLine";
 export { lineIntersectsPolygon } from "./src/relationships/lineIntersectsPolygon";

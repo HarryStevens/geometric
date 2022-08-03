@@ -18,4 +18,3 @@ tape("If the polygon's winding order is counter-clockwise and signed is set to t
   test.equal(geometric.polygonArea(p), 8065);
   test.end();
 });
-
