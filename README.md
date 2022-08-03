@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.3.4/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.3.4/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.3.5/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.3.5/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -145,7 +145,9 @@ Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle<
 
 <a name="polygonWind" href="#polygonWind">#</a> geometric.<b>polygonWind</b>(<i>polygon</i>[, <i>order</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonWind.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonwind "Example")
 
-Returns a <i>polygon</i> in the specified winding order. If an <i>order</i> string is passed as either "cw" or "clockwise", returns a polygon with a clockwise winding order. Otherwise, returns a polygon with a counter-clockwise winding order.
+Returns a <i>polygon</i> in the specified winding order. If an <i>order</i> string is passed as either "cw" or "clockwise", returns a polygon with a clockwise winding order. Otherwise, returns a polygon with a counter-clockwise winding order. Returns null if the <i>polygon</i> has fewer than three points.
+
+On computer screens where the top-left corder is at [0, 0], a polygon with a negative signed area has a counter-clockwise winding order.
 
 <hr />
 

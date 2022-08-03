@@ -29,3 +29,11 @@ tape("polygonWind(polygon) sets the winding order of a polygon", test => {
   
   test.end();
 });
+
+tape("polygonWind(polygon) returns null if the polygon has fewer than three points", test => {
+  test.equal(geometric.polygonWind([]), null);
+  test.equal(geometric.polygonWind([[0, 1]]), null);
+  test.equal(geometric.polygonWind([[0, 1], [1, 2]]), null);
+
+  test.end();
+});
