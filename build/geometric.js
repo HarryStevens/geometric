@@ -385,7 +385,7 @@
     var vecs = vecXS.map(function (d, i) {
       return [d, vecYS[i]];
     }).sort(function (a, b) {
-      return Math.atan2(a[1], a[0]) - Math.atan2(b[1], b[0]);
+      return Math.atan2(b[1], b[0]) - Math.atan2(a[1], a[0]);
     }).forEach(function (vec) {
       x += vec[0] * 1;
       y += vec[1] * 1;

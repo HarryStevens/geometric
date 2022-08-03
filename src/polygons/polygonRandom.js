@@ -30,7 +30,7 @@ export function polygonRandom(sides = 3, area = 100, centroid = [0, 0]) {
   // a and b are tuples representing vectors. Compute angle for each vector and compare them.
   const vecs = vecXS
     .map((d, i) => [d, vecYS[i]])
-    .sort((a, b) => Math.atan2(a[1], a[0]) - Math.atan2(b[1], b[0]))
+    .sort((a, b) => Math.atan2(b[1], b[0]) - Math.atan2(a[1], a[0]))
     .forEach(vec => {
       x += vec[0] * 1;
       y += vec[1] * 1;
