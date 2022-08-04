@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.3.5/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.3.5/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.4.0/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.4.0/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -67,6 +67,14 @@ Returns the length of a <i>line</i>.
 <a name="lineMidpoint" href="#lineMidpoint">#</a> geometric.<b>lineMidpoint</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineMidpoint.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linemidpoint "Example")
 
 Returns the midpoint of a <i>line</i>.
+
+<a name="lineRotate" href="#lineRotate">#</a> geometric.<b>lineRotate</b>(<i>line</i>, <i>angle</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineRotate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linerotate "Example")
+
+Returns the coordinates resulting from rotating a <i>line</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to the <a href="#lineMidpoint">midpoint</a> of the line.
+
+<a name="lineTranslate" href="#lineTranslate">#</a> geometric.<b>lineTranslate</b>(<i>line</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linetranslate "Example")
+
+Returns the coordinates resulting from translating a <i>line</i> by an <i>angle</i> in degrees and a <i>distance</i>.
 
 <hr />
 

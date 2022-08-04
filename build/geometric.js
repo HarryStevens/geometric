@@ -24,7 +24,9 @@
     return angle / 180 * Math.PI;
   }
 
-  function pointTranslate(point, angle, distance) {
+  function pointTranslate(point) {
+    var angle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var distance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     var r = angleToRadians(angle);
     return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
   }
@@ -45,7 +47,7 @@
   }
 
   function pointRotate(point, angle, origin) {
-    var r = angleToRadians(angle);
+    var r = angleToRadians(angle || 0);
 
     if (!origin || origin[0] === 0 && origin[1] === 0) {
       return rotate(point, r);
@@ -59,11 +61,25 @@
         return c + origin[i];
       });
     }
+  }
 
-    function rotate(point, angle) {
-      // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
-      return [point[0] * Math.cos(angle) - point[1] * Math.sin(angle), point[0] * Math.sin(angle) + point[1] * Math.cos(angle)];
-    }
+  function rotate(point, angle) {
+    // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
+    return [point[0] * Math.cos(angle) - point[1] * Math.sin(angle), point[0] * Math.sin(angle) + point[1] * Math.cos(angle)];
+  }
+
+  // If origin is not specified, the origin defaults to the midpoint of the line.
+
+  function lineRotate(line, angle, origin) {
+    return line.map(function (point) {
+      return pointRotate(point, angle, origin || lineMidpoint(line));
+    });
+  }
+
+  function lineTranslate(line, angle, distance) {
+    return line.map(function (point) {
+      return pointTranslate(point, angle, distance);
+    });
   }
 
   // Calculates the area of a polygon.
@@ -723,6 +739,8 @@
   exports.lineInterpolate = lineInterpolate;
   exports.lineLength = lineLength;
   exports.lineMidpoint = lineMidpoint;
+  exports.lineRotate = lineRotate;
+  exports.lineTranslate = lineTranslate;
   exports.pointRotate = pointRotate;
   exports.pointTranslate = pointTranslate;
   exports.polygonArea = polygonArea;
