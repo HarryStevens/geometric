@@ -2,7 +2,7 @@ import { angleToRadians } from "../angles/angleToRadians";
 
 // Rotates a point by an angle in degrees around an origin.
 export function pointRotate(point, angle, origin){
-  const r = angleToRadians(angle);
+  const r = angleToRadians(angle || 0);
 
   if (!origin || (origin[0] === 0 && origin[1] === 0)){
     return rotate(point, r);
@@ -13,9 +13,9 @@ export function pointRotate(point, angle, origin){
     const rotated = rotate(p0, r);
     return rotated.map((c, i) => c + origin[i]);
   }
-  
-  function rotate(point, angle){
-    // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
-    return [(point[0] * Math.cos(angle)) - point[1] * Math.sin(angle), (point[0] * Math.sin(angle)) + point[1] * Math.cos(angle)];
-  }
+}
+
+function rotate(point, angle){
+  // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
+  return [(point[0] * Math.cos(angle)) - point[1] * Math.sin(angle), (point[0] * Math.sin(angle)) + point[1] * Math.cos(angle)];
 }
