@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.4.0/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.4.0/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.5.0/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.5.0/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -118,6 +118,14 @@ Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertic
 <a name="polygonRandom" href="#polygonRandom">#</a> geometric.<b>polygonRandom</b>([<i>sides</i>[, <i>area</i>[, <i>centroid</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRandom.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonrandom "Example")
 
 Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise. Based on an algorithm by Pavel Valtr and an [implementation by Maneesh Agrawala](https://observablehq.com/@magrawala/random-convex-polygon).
+
+<a name="polygonReflectX" href="#polygonReflectX">#</a> geometric.<b>polygonReflectX</b>(<i>polygon</i>[, <i>reflectFactor</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonReflectX.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonreflectx "Example")
+
+Reflects a <em>polygon</em> over its vertical midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its vertical midline.
+
+<a name="polygonReflectX" href="#polygonReflectY">#</a> geometric.<b>polygonReflectY</b>(<i>polygon</i>[, <i>reflectFactor</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonReflectY.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonreflecty "Example")
+
+Reflects a <em>polygon</em> over its horizontal midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its horizontal midline.
 
 <a name="polygonRegular" href="#polygonRegular">#</a> geometric.<b>polygonRegular</b>([<i>sides</i>[, <i>area</i>[, <i>center</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRegular.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonregular "Example")
 

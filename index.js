@@ -16,6 +16,8 @@ export { polygonInterpolate } from "./src/polygons/polygonInterpolate";
 export { polygonLength } from "./src/polygons/polygonLength";
 export { polygonMean } from "./src/polygons/polygonMean";
 export { polygonRandom } from "./src/polygons/polygonRandom";
+export { polygonReflectX } from "./src/polygons/polygonReflectX";
+export { polygonReflectY } from "./src/polygons/polygonReflectY";
 export { polygonRegular } from "./src/polygons/polygonRegular";
 export { polygonRotate } from "./src/polygons/polygonRotate";
 export { polygonScale } from "./src/polygons/polygonScale";

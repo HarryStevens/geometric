@@ -443,6 +443,74 @@
     }
   }
 
+  function polygonReflectX(polygon) {
+    var reflectFactor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    var _polygonBounds = polygonBounds(polygon),
+        _polygonBounds2 = _slicedToArray(_polygonBounds, 2),
+        _polygonBounds2$ = _slicedToArray(_polygonBounds2[0], 2),
+        min = _polygonBounds2$[0],
+        _ = _polygonBounds2$[1],
+        _polygonBounds2$2 = _slicedToArray(_polygonBounds2[1], 2),
+        max = _polygonBounds2$2[0],
+        __ = _polygonBounds2$2[1];
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var _polygon$i = _slicedToArray(polygon[i], 2),
+          x = _polygon$i[0],
+          y = _polygon$i[1];
+
+      var r = [min + max - x, y];
+
+      if (reflectFactor === 0) {
+        p[i] = [x, y];
+      } else if (reflectFactor === 1) {
+        p[i] = r;
+      } else {
+        var t = lineInterpolate([[x, y], r]);
+        p[i] = t(Math.max(Math.min(reflectFactor, 1), 0));
+      }
+    }
+
+    return p;
+  }
+
+  function polygonReflectY(polygon) {
+    var reflectFactor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    var _polygonBounds = polygonBounds(polygon),
+        _polygonBounds2 = _slicedToArray(_polygonBounds, 2),
+        _polygonBounds2$ = _slicedToArray(_polygonBounds2[0], 2),
+        _ = _polygonBounds2$[0],
+        min = _polygonBounds2$[1],
+        _polygonBounds2$2 = _slicedToArray(_polygonBounds2[1], 2),
+        __ = _polygonBounds2$2[0],
+        max = _polygonBounds2$2[1];
+
+    var p = [];
+
+    for (var i = 0, l = polygon.length; i < l; i++) {
+      var _polygon$i = _slicedToArray(polygon[i], 2),
+          x = _polygon$i[0],
+          y = _polygon$i[1];
+
+      var r = [x, min + max - y];
+
+      if (reflectFactor === 0) {
+        p[i] = [x, y];
+      } else if (reflectFactor === 1) {
+        p[i] = r;
+      } else {
+        var t = lineInterpolate([[x, y], r]);
+        p[i] = t(Math.max(Math.min(reflectFactor, 1), 0));
+      }
+    }
+
+    return p;
+  }
+
   function polygonRegular() {
     var sides = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
     var area = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
@@ -751,6 +819,8 @@
   exports.polygonLength = polygonLength;
   exports.polygonMean = polygonMean;
   exports.polygonRandom = polygonRandom;
+  exports.polygonReflectX = polygonReflectX;
+  exports.polygonReflectY = polygonReflectY;
   exports.polygonRegular = polygonRegular;
   exports.polygonRotate = polygonRotate;
   exports.polygonScale = polygonScale;
