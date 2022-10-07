@@ -225,8 +225,8 @@ Returns the angle of reflection given a starting angle, also known as the angle 
 
 <a name="angleToDegrees" href="#angleToDegrees">#</a> geometric.<b>angleToDegrees</b>(<i>angle</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/angles/angleToDegrees.js "Source")
 
-Returns the result of a converting an <i>angle</i> in radians to the same angle in degrees.
+Returns the result of converting an <i>angle</i> in radians to the same angle in degrees.
 
 <a name="angleToRadians" href="#angleToRadians">#</a> geometric.<b>angleToRadians</b>(<i>angle</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/angles/angleToRadians.js "Source")
 
-Returns the result of a converting an <i>angle</i> in degrees to the same angle in radians.
+Returns the result of converting an <i>angle</i> in degrees to the same angle in radians.
