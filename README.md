@@ -167,7 +167,7 @@ Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle<
 
 Returns a <i>polygon</i> in the specified winding order. If an <i>order</i> string is passed as either "cw" or "clockwise", returns a polygon with a clockwise winding order. Otherwise, returns a polygon with a counter-clockwise winding order. Returns null if the <i>polygon</i> has fewer than three points.
 
-On computer screens where the top-left corder is at [0, 0], a polygon with a negative signed area has a counter-clockwise winding order.
+On computer screens where the top-left corner is at [0, 0], a polygon with a negative signed area has a counter-clockwise winding order.
 
 <hr />
 
