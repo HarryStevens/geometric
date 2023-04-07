@@ -60,7 +60,7 @@ Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal a
 
 Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number ranging from 0 to 1; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
 
-By default, the interpolator will return points outside of the line segment if t is less than 0 or greater than 1. You can pass an optional boolean indicating whether to <i>clamp</i> the returned point to inside of the line segment, even if t is greater than 1 or less then 0.
+By default, the interpolator will return points outside of the line segment if t is less than 0 or greater than 1. You can pass an optional boolean indicating whether to <i>clamp</i> the returned point to inside of the line segment, even if t is greater than 1 or less than 0.
 
 <a name="lineLength" href="#lineLength">#</a> geometric.<b>lineLength</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineLength.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linelength "Example")
 
