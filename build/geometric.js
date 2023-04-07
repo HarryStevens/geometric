@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 2.5.0. Copyright 2022 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 2.5.0. Copyright 2023 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -34,11 +34,22 @@
   // The returned interpolator function takes a single argument t, where t is a number ranging from 0 to 1;
   // a value of 0 returns a, while a value of 1 returns b.
   // Intermediate values interpolate from start to end along the line segment.
+  // By default, the returned interpolator will output points outside of the line segment if t is less than 0 or greater than 1.
+  // You can pass an optional boolean indicating whether to the returned point to inside of the line segment,
+  // even if t is greater than 1 or less then 0.
 
   function lineInterpolate(line) {
-    return function (t) {
-      return t === 0 ? line[0] : t === 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);
-    };
+    var clamp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    if (clamp) {
+      return function (t) {
+        return t <= 0 ? line[0] : t >= 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);
+      };
+    } else {
+      return function (t) {
+        return t === 0 ? line[0] : t === 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);
+      };
+    }
   }
 
   // Calculates the midpoint of a line segment.

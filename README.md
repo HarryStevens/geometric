@@ -10,8 +10,8 @@ A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.5.0/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.5.0/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.5.1/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.5.1/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -59,6 +59,8 @@ Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal a
 <a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
 
 Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number ranging from 0 to 1; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
+
+By default, the interpolator will return points outside of the line segment if t is less than 0 or greater than 1. You can pass an optional boolean indicating whether to <i>clamp</i> the returned point to inside of the line segment, even if t is greater than 1 or less then 0.
 
 <a name="lineLength" href="#lineLength">#</a> geometric.<b>lineLength</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineLength.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linelength "Example")
 

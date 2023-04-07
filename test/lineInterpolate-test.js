@@ -17,3 +17,19 @@ tape("lineInterpolate(line) returns points along a line", test => {
   test.deepEqual(interpolator(.9), [660.8, 171]);
   test.end();
 });
+
+tape("lineInterpolate(line) returns points outside the line segment if clamp is false", test => {
+  const line = [[236, 0], [708, 190]];
+  const interpolator = geometric.lineInterpolate(line);
+  test.deepEqual(interpolator(-0.1), [188.8, -19]);
+  test.deepEqual(interpolator(1.1), [755.2, 209]);
+  test.end();
+});
+
+tape("lineInterpolate(line) returns points inside the line segment if clamp is true", test => {
+  const line = [[236, 0], [708, 190]];
+  const interpolator = geometric.lineInterpolate(line, true);
+  test.deepEqual(interpolator(-0.1), line[0]);
+  test.deepEqual(interpolator(1.1), line[1]);
+  test.end();
+});
