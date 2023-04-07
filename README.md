@@ -56,7 +56,7 @@ Returns the coordinates resulting from translating a <i>point</i> by an <i>angle
 
 Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal axis.
 
-<a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>[, <i>clamp</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
+<a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>[, <i>clamp</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
 
 Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
 
