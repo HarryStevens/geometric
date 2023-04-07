@@ -56,7 +56,7 @@ Returns the coordinates resulting from translating a <i>point</i> by an <i>angle
 
 Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal axis.
 
-<a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
+<a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>[, <i>clamp</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
 
 Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
 
@@ -105,7 +105,7 @@ Returns the weighted centroid of a <i>polygon</i>. Not to be [confused](https://
 
 Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for an array of <i>points</i>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).
 
-<a name="polygonInterpolate" href="#polygonInterpolate">#</a> geometric.<b>polygonInterpolate</b>(<i>polygon</i>[, <i>clamp</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygoninterpolate "Example")
+<a name="polygonInterpolate" href="#polygonInterpolate">#</a> geometric.<b>polygonInterpolate</b>(<i>polygon</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygoninterpolate "Example")
 
 Returns an interpolator function given a <i>polygon</i> of vertices [a, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
 
