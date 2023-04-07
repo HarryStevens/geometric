@@ -58,7 +58,7 @@ Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal a
 
 <a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
 
-Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number ranging from 0 to 1; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
+Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
 
 By default, the interpolator will return points outside of the line segment if t is less than 0 or greater than 1. You can pass an optional boolean indicating whether to <i>clamp</i> the returned point to inside of the line segment, even if t is greater than 1 or less than 0.
 
@@ -107,7 +107,7 @@ Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represente
 
 <a name="polygonInterpolate" href="#polygonInterpolate">#</a> geometric.<b>polygonInterpolate</b>(<i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygoninterpolate "Example")
 
-Returns an interpolator function given a <i>polygon</i> of vertices [a, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number ranging from 0 to 1; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
+Returns an interpolator function given a <i>polygon</i> of vertices [a, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
 
 <a name="polygonLength" href="#polygonLength">#</a> geometric.<b>polygonLength</b>(<i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonLength.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonlength "Example")
 
