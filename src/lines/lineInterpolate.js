@@ -1,7 +1,3 @@
-import { lineAngle } from "./lineAngle";
-import { lineLength } from "./lineLength";
-import { pointTranslate } from "../points/pointTranslate";
-
 // Returns an interpolator function given a line [a, b].
 // The returned interpolator function takes a single argument t, where t is a number ranging from 0 to 1;
 // a value of 0 returns a, while a value of 1 returns b.
@@ -10,10 +6,18 @@ import { pointTranslate } from "../points/pointTranslate";
 // You can pass an optional boolean indicating whether to the returned point to inside of the line segment,
 // even if t is greater than 1 or less then 0.
 export function lineInterpolate(line, clamp = false){
-  if (clamp) {
-    return t => t <= 0 ? line[0] : t >= 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);
+  const [[x1, y1], [x2, y2]] = line;
+  const x = scale([0, 1], [x1, x2]);
+  const y = scale([0, 1], [y1, y2]);
+  return t => {
+    const t0 = clamp ? t < 0 ? 0 : t > 1 ? 1 : t : t;
+    return [x(t0), y(t0)];
   }
-  else {
-    return t => t === 0 ? line[0] : t === 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);  
-  }
+}
+
+// A linear scale
+function scale([d0, d1], [r0, r1]){
+  const dx = d1 - d0;
+  const rx = r1 - r0;
+  return v => rx * ((v - d0) / dx) + r0;
 }

@@ -14,47 +14,119 @@
     return angleToDegrees(Math.atan2(line[1][1] - line[0][1], line[1][0] - line[0][0]));
   }
 
-  // Calculates the distance between the endpoints of a line segment.
-  function lineLength(line) {
-    return Math.sqrt(Math.pow(line[1][0] - line[0][0], 2) + Math.pow(line[1][1] - line[0][1], 2));
+  function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
   }
 
-  // Converts degrees to radians.
-  function angleToRadians(angle) {
-    return angle / 180 * Math.PI;
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
   }
 
-  function pointTranslate(point) {
-    var angle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var distance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var r = angleToRadians(angle);
-    return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    }
   }
 
+  function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+  }
+
+  function _iterableToArray(iter) {
+    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  }
+
+  function _iterableToArrayLimit(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"] != null) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance");
+  }
+
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  }
+
+  // Returns an interpolator function given a line [a, b].
   // The returned interpolator function takes a single argument t, where t is a number ranging from 0 to 1;
   // a value of 0 returns a, while a value of 1 returns b.
   // Intermediate values interpolate from start to end along the line segment.
   // By default, the returned interpolator will output points outside of the line segment if t is less than 0 or greater than 1.
   // You can pass an optional boolean indicating whether to the returned point to inside of the line segment,
   // even if t is greater than 1 or less then 0.
-
   function lineInterpolate(line) {
     var clamp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-    if (clamp) {
-      return function (t) {
-        return t <= 0 ? line[0] : t >= 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);
-      };
-    } else {
-      return function (t) {
-        return t === 0 ? line[0] : t === 1 ? line[1] : pointTranslate(line[0], lineAngle(line), lineLength(line) * t);
-      };
-    }
+    var _line = _slicedToArray(line, 2),
+        _line$ = _slicedToArray(_line[0], 2),
+        x1 = _line$[0],
+        y1 = _line$[1],
+        _line$2 = _slicedToArray(_line[1], 2),
+        x2 = _line$2[0],
+        y2 = _line$2[1];
+
+    var x = scale([0, 1], [x1, x2]);
+    var y = scale([0, 1], [y1, y2]);
+    return function (t) {
+      var t0 = clamp ? t < 0 ? 0 : t > 1 ? 1 : t : t;
+      return [x(t0), y(t0)];
+    };
+  } // A linear scale
+
+  function scale(_ref, _ref2) {
+    var _ref3 = _slicedToArray(_ref, 2),
+        d0 = _ref3[0],
+        d1 = _ref3[1];
+
+    var _ref4 = _slicedToArray(_ref2, 2),
+        r0 = _ref4[0],
+        r1 = _ref4[1];
+
+    var dx = d1 - d0;
+    var rx = r1 - r0;
+    return function (v) {
+      return rx * ((v - d0) / dx) + r0;
+    };
+  }
+
+  // Calculates the distance between the endpoints of a line segment.
+  function lineLength(line) {
+    return Math.sqrt(Math.pow(line[1][0] - line[0][0], 2) + Math.pow(line[1][1] - line[0][1], 2));
   }
 
   // Calculates the midpoint of a line segment.
   function lineMidpoint(line) {
     return [(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2];
+  }
+
+  // Converts degrees to radians.
+  function angleToRadians(angle) {
+    return angle / 180 * Math.PI;
   }
 
   function pointRotate(point, angle, origin) {
@@ -85,6 +157,13 @@
     return line.map(function (point) {
       return pointRotate(point, angle, origin || lineMidpoint(line));
     });
+  }
+
+  function pointTranslate(point) {
+    var angle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var distance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var r = angleToRadians(angle);
+    return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
   }
 
   function lineTranslate(line, angle, distance) {
@@ -197,64 +276,6 @@
     upper.pop();
     lower.pop();
     return lower.concat(upper);
-  }
-
-  function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
-  }
-
-  function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-  }
-
-  function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) {
-      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-      return arr2;
-    }
-  }
-
-  function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-  }
-
-  function _iterableToArray(iter) {
-    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-  }
-
-  function _iterableToArrayLimit(arr, i) {
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _e = undefined;
-
-    try {
-      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-        _arr.push(_s.value);
-
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"] != null) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-
-    return _arr;
-  }
-
-  function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance");
-  }
-
-  function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
 
   // Closes a polygon if it's not closed already. Does not modify input polygon.
