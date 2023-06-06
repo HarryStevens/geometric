@@ -90,27 +90,17 @@
         x2 = _line$2[0],
         y2 = _line$2[1];
 
-    var x = scale([0, 1], [x1, x2]);
-    var y = scale([0, 1], [y1, y2]);
+    var x = function x(v) {
+      return (x2 - x1) * v + x1;
+    };
+
+    var y = function y(v) {
+      return (y2 - y1) * v + y1;
+    };
+
     return function (t) {
       var t0 = clamp ? t < 0 ? 0 : t > 1 ? 1 : t : t;
       return [x(t0), y(t0)];
-    };
-  } // A linear scale
-
-  function scale(_ref, _ref2) {
-    var _ref3 = _slicedToArray(_ref, 2),
-        d0 = _ref3[0],
-        d1 = _ref3[1];
-
-    var _ref4 = _slicedToArray(_ref2, 2),
-        r0 = _ref4[0],
-        r1 = _ref4[1];
-
-    var dx = d1 - d0;
-    var rx = r1 - r0;
-    return function (v) {
-      return rx * ((v - d0) / dx) + r0;
     };
   }
 
