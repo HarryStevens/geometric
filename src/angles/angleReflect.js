@@ -1,5 +1,4 @@
 // Returns the angle of reflection given an angle of incidence and a surface angle.
-export function angleReflect(incidenceAngle, surfaceAngle){
-  const a = surfaceAngle * 2 - incidenceAngle;
-  return a >= 360 ? a - 360 : a < 0 ? a + 360 : a;
+export function angleReflect(incidenceAngle, surfaceAngle) {
+  return (surfaceAngle * 2 - incidenceAngle % 360 + 360) % 360;
 }

@@ -1,4 +1,4 @@
-// https://github.com/HarryStevens/geometric#readme Version 2.5.4. Copyright 2023 Harry Stevens.
+// https://github.com/HarryStevens/geometric#readme Version 2.5.4. Copyright 2024 Harry Stevens.
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -821,8 +821,7 @@
 
   // Returns the angle of reflection given an angle of incidence and a surface angle.
   function angleReflect(incidenceAngle, surfaceAngle) {
-    var a = surfaceAngle * 2 - incidenceAngle;
-    return a >= 360 ? a - 360 : a < 0 ? a + 360 : a;
+    return (surfaceAngle * 2 - incidenceAngle % 360 + 360) % 360;
   }
 
   exports.lineAngle = lineAngle;

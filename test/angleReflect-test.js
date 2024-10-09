@@ -13,3 +13,10 @@ tape("angleReflect(incidenceAngle, surfaceAngle) returns the angle of reflection
   test.equal(geometric.angleReflect(45, 360), 315);
   test.end();
 });
+
+tape("angleReflect(incidenceAngle, surfaceAngle) returns an angle in [0, 360).", function(test) {
+  test.equal(geometric.angleReflect(361, 0), 359);
+  test.equal(geometric.angleReflect(-720, 0), 0);
+  test.end();
+});
+
