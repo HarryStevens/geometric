@@ -40,13 +40,13 @@ You will also encounter <b>angles</b>, <b>areas</b>, <b>distances</b>, and <b>le
 
 ### <a name="points"></a>Points
 
-<a name="pointRotate" href="#pointRotate">#</a> geometric.<b>pointRotate</b>(<i>point</i>, <i>angle</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/points/pointRotate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointrotate "Example")
+<a name="pointRotate" href="#pointRotate">#</a> geometric.<b>pointRotate</b>(<i>point</i>[, <i>angle</i>[, <i>origin</i>]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/points/pointRotate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointrotate "Example")
 
-Returns the coordinates resulting from rotating a <i>point</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to [0, 0].
+Returns the coordinates resulting from rotating a <i>point</i> about an origin by an <i>angle</i> in degrees. If <i>angle</i> is not specified, defaults to 0. If <i>origin</i> is not specified, the origin defaults to [0, 0].
 
 <a name="pointTranslate" href="#pointTranslate">#</a> geometric.<b>pointTranslate</b>(<i>point</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/points/pointTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointtranslate "Example")
 
-Returns the coordinates resulting from translating a <i>point</i> by an <i>angle</i> in degrees and a <i>distance</i>.
+Returns the coordinates resulting from translating a <i>point</i> by an <i>angle</i> in degrees and a <i>distance</i>. If <i>angle</i> is not specified, defaults to 0. If <i>distance</i> is not specified, defaults to 0.
 
 <hr />
 
@@ -74,9 +74,9 @@ Returns the midpoint of a <i>line</i>.
 
 Returns the coordinates resulting from rotating a <i>line</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to the <a href="#lineMidpoint">midpoint</a> of the line.
 
-<a name="lineTranslate" href="#lineTranslate">#</a> geometric.<b>lineTranslate</b>(<i>line</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linetranslate "Example")
+<a name="lineTranslate" href="#lineTranslate">#</a> geometric.<b>lineTranslate</b>(<i>line</i>[, <i>angle</i>[, <i>distance</i>]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linetranslate "Example")
 
-Returns the coordinates resulting from translating a <i>line</i> by an <i>angle</i> in degrees and a <i>distance</i>.
+Returns the coordinates resulting from translating a <i>line</i> by an <i>angle</i> in degrees and a <i>distance</i>. If <i>angle</i> is not specified, defaults to 0. If <i>distance</i> is not specified, defaults to 0.
 
 <hr />
 

@@ -1,40 +1,85 @@
-export { lineAngle } from "./src/lines/lineAngle";
-export { lineInterpolate } from "./src/lines/lineInterpolate";
-export { lineLength } from "./src/lines/lineLength";
-export { lineMidpoint } from "./src/lines/lineMidpoint";
-export { lineRotate } from "./src/lines/lineRotate";
-export { lineTranslate } from "./src/lines/lineTranslate";
+import { lineAngle } from "./src/lines/lineAngle";
+import { lineInterpolate } from "./src/lines/lineInterpolate";
+import { lineLength } from "./src/lines/lineLength";
+import { lineMidpoint } from "./src/lines/lineMidpoint";
+import { lineRotate } from "./src/lines/lineRotate";
+import { lineTranslate } from "./src/lines/lineTranslate";
 
-export { pointRotate } from "./src/points/pointRotate";
-export { pointTranslate } from "./src/points/pointTranslate";
+import { pointRotate } from "./src/points/pointRotate";
+import { pointTranslate } from "./src/points/pointTranslate";
 
-export { polygonArea } from "./src/polygons/polygonArea";
-export { polygonBounds } from "./src/polygons/polygonBounds";
-export { polygonCentroid } from "./src/polygons/polygonCentroid";
-export { polygonHull } from "./src/polygons/polygonHull";
-export { polygonInterpolate } from "./src/polygons/polygonInterpolate";
-export { polygonLength } from "./src/polygons/polygonLength";
-export { polygonMean } from "./src/polygons/polygonMean";
-export { polygonRandom } from "./src/polygons/polygonRandom";
-export { polygonReflectX } from "./src/polygons/polygonReflectX";
-export { polygonReflectY } from "./src/polygons/polygonReflectY";
-export { polygonRegular } from "./src/polygons/polygonRegular";
-export { polygonRotate } from "./src/polygons/polygonRotate";
-export { polygonScale } from "./src/polygons/polygonScale";
-export { polygonScaleArea } from "./src/polygons/polygonScaleArea";
-export { polygonScaleX } from "./src/polygons/polygonScaleX";
-export { polygonScaleY } from "./src/polygons/polygonScaleY";
-export { polygonTranslate } from "./src/polygons/polygonTranslate";
-export { polygonWind } from "./src/polygons/polygonWind";
+import { polygonArea } from "./src/polygons/polygonArea";
+import { polygonBounds } from "./src/polygons/polygonBounds";
+import { polygonCentroid } from "./src/polygons/polygonCentroid";
+import { polygonHull } from "./src/polygons/polygonHull";
+import { polygonInterpolate } from "./src/polygons/polygonInterpolate";
+import { polygonLength } from "./src/polygons/polygonLength";
+import { polygonMean } from "./src/polygons/polygonMean";
+import { polygonRandom } from "./src/polygons/polygonRandom";
+import { polygonReflectX } from "./src/polygons/polygonReflectX";
+import { polygonReflectY } from "./src/polygons/polygonReflectY";
+import { polygonRegular } from "./src/polygons/polygonRegular";
+import { polygonRotate } from "./src/polygons/polygonRotate";
+import { polygonScale } from "./src/polygons/polygonScale";
+import { polygonScaleArea } from "./src/polygons/polygonScaleArea";
+import { polygonScaleX } from "./src/polygons/polygonScaleX";
+import { polygonScaleY } from "./src/polygons/polygonScaleY";
+import { polygonTranslate } from "./src/polygons/polygonTranslate";
+import { polygonWind } from "./src/polygons/polygonWind";
 
-export { lineIntersectsLine } from "./src/relationships/lineIntersectsLine";
-export { lineIntersectsPolygon } from "./src/relationships/lineIntersectsPolygon";
-export { pointInPolygon } from "./src/relationships/pointInPolygon";
-export { pointOnPolygon } from "./src/relationships/pointOnPolygon";
-export { pointLeftofLine, pointRightofLine, pointOnLine, pointWithLine } from "./src/relationships/pointOnLine";
-export { polygonInPolygon } from "./src/relationships/polygonInPolygon";
-export { polygonIntersectsPolygon } from "./src/relationships/polygonIntersectsPolygon";
+import { lineIntersectsLine } from "./src/relationships/lineIntersectsLine";
+import { lineIntersectsPolygon } from "./src/relationships/lineIntersectsPolygon";
+import { pointInPolygon } from "./src/relationships/pointInPolygon";
+import { pointOnPolygon } from "./src/relationships/pointOnPolygon";
+import { pointLeftofLine, pointRightofLine, pointOnLine, pointWithLine } from "./src/relationships/pointOnLine";
+import { polygonInPolygon } from "./src/relationships/polygonInPolygon";
+import { polygonIntersectsPolygon } from "./src/relationships/polygonIntersectsPolygon";
 
-export { angleReflect } from "./src/angles/angleReflect";
-export { angleToDegrees } from "./src/angles/angleToDegrees";
-export { angleToRadians } from "./src/angles/angleToRadians";
+import { angleReflect } from "./src/angles/angleReflect";
+import { angleToDegrees } from "./src/angles/angleToDegrees";
+import { angleToRadians } from "./src/angles/angleToRadians";
+
+const geometric = {
+  lineAngle,
+  lineInterpolate,
+  lineLength,
+  lineMidpoint,
+  lineRotate,
+  lineTranslate,
+
+  pointRotate,
+  pointTranslate,
+
+  polygonArea,
+  polygonBounds,
+  polygonCentroid,
+  polygonHull,
+  polygonInterpolate,
+  polygonLength,
+  polygonMean,
+  polygonRandom,
+  polygonReflectX,
+  polygonReflectY,
+  polygonRegular,
+  polygonRotate,
+  polygonScale,
+  polygonScaleArea,
+  polygonScaleX,
+  polygonScaleY,
+  polygonTranslate,
+  polygonWind,
+
+  lineIntersectsLine,
+  lineIntersectsPolygon,
+  pointInPolygon,
+  pointOnPolygon,
+  pointLeftofLine, pointRightofLine, pointOnLine, pointWithLine,
+  polygonInPolygon,
+  polygonIntersectsPolygon,
+
+  angleReflect,
+  angleToDegrees,
+  angleToRadians
+};
+
+export default geometric;

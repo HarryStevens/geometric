@@ -1,0 +1,1 @@
+export function angleToDegrees(angle: number): number;

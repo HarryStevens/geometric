@@ -1,4 +1,3 @@
-import { close } from "../utils/closePolygon";
 import { lineAngle } from "../lines/lineAngle";
 import { lineLength } from "../lines/lineLength";
 import { polygonArea } from "./polygonArea";

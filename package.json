@@ -1,26 +1,41 @@
 {
   "name": "geometric",
-  "version": "2.5.5",
+  "version": "3.0.0",
   "description": "A JavaScript library with geometric functions.",
-  "main": "build/geometric.js",
-  "unpkg": "build/geometric.min.js",
-  "jsdelivr": "build/geometric.min.js",
-  "module": "index",
+  "type": "module",
+  "main": "./build/geometric.umd.js",
+  "module": "./build/geometric.js",
+  "exports": {
+    "import": "./build/geometric.js",
+    "require": "./build/geometric.umd.js",
+    "default": "./build/geometric.js"
+  },
+  "unpkg": "./build/geometric.min.js",
+  "jsdelivr": "./build/geometric.min.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "build/",
+    "types/"
+  ],
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup -c --banner \"$(preamble)\"",
-    "test": "tape 'test/**/*-test.js'",
-    "prepublishOnly": "npm run test && uglifyjs build/geometric.js -c -m -o build/geometric.min.js",
-    "postpublish": "zip -j build/geometric.zip -- LICENSE README.md build/geometric.js build/geometric.min.js"
+    "build:types": "rollup -c rollup.types.config.js",
+    "pretest": "rm -rf build && mkdir build && npm run build:types && rollup -c --banner \"$(preamble)\"",
+    "test": "mocha --require ts-node/register 'test/**/*-test.{js,ts}'",
+    "prepublishOnly": "npm run test && terser build/geometric.umd.js -c -m -o build/geometric.min.js",
+    "postpublish": "zip -j build/geometric.zip -- LICENSE README.md build/geometric.js build/geometric.min.js build/geometric.umd.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@types/mocha": "^10.0.10",
     "babel": "^6.23.0",
+    "mocha": "^11.0.1",
     "package-preamble": "0.1",
-    "rollup": "^0.62.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "tape": "4",
-    "uglify-js": "^2.8.11"
+    "rollup": "^4.30.1",
+    "rollup-plugin-dts": "^6.1.1",
+    "terser": "^5.37.0",
+    "ts-node": "^10.9.2"
   },
   "repository": {
     "type": "git",
