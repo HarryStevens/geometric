@@ -1,6 +1,6 @@
-import { close } from "../utils/closePolygon";
 import { lineIntersectsPolygon } from "./lineIntersectsPolygon";
 import { pointInPolygon } from "./pointInPolygon";
+import { polygonClose } from "../polygons/polygonClose";
 
 // Determines whether a polygon is contained by another polygon.
 // Polygons are represented as an array of vertices, each of which is an array of two numbers,
@@ -8,7 +8,7 @@ import { pointInPolygon } from "./pointInPolygon";
 // Returns a boolean.
 export function polygonInPolygon(polygonA, polygonB){
   let inside = true;
-  const closed = close(polygonA);
+  const closed = polygonClose(polygonA);
   
   for (let i = 0, l = closed.length - 1; i < l; i++){
     const v0 = closed[i];

@@ -101,6 +101,14 @@ Returns null if the <i>polygon</i> has fewer than three points.
 
 Returns the weighted centroid of a <i>polygon</i>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [mean center](#polygonMean).
 
+<a name="polygonClose" href="#polygonClose">#</a> geometric.<b>polygonClose</b>(<i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonClose.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonclose "Example")
+
+Returns a new <i>polygon</i> that is closed by appending the first point of the polygon to the end if it is not already closed. The input <i>polygon</i> is not modified.
+
+<a name="polygonClosed" href="#polygonClosed">#</a> geometric.<b>polygonClosed</b>(<i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonClose.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonclose "Example")
+
+Returns a boolean indicating whether the given <i>polygon</i> is closed. A polygon is considered closed if its first point is identical to its last point.
+
 <a name="polygonHull" href="#polygonHull">#</a> geometric.<b>polygonHull</b>(<i>points</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonHull.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonhull "Example")
 
 Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for an array of <i>points</i>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).

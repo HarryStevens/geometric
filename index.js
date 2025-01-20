@@ -11,6 +11,7 @@ import { pointTranslate } from "./src/points/pointTranslate";
 import { polygonArea } from "./src/polygons/polygonArea";
 import { polygonBounds } from "./src/polygons/polygonBounds";
 import { polygonCentroid } from "./src/polygons/polygonCentroid";
+import { polygonClose, polygonClosed } from "./src/polygons/polygonClose";
 import { polygonHull } from "./src/polygons/polygonHull";
 import { polygonInterpolate } from "./src/polygons/polygonInterpolate";
 import { polygonLength } from "./src/polygons/polygonLength";
@@ -53,6 +54,8 @@ const geometric = {
   polygonArea,
   polygonBounds,
   polygonCentroid,
+  polygonClose,
+  polygonClosed,
   polygonHull,
   polygonInterpolate,
   polygonLength,

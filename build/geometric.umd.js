@@ -203,6 +203,18 @@
     return [x / d, y / d];
   }
 
+  // Closes a polygon if it's not closed already. Does not modify input polygon.
+  function polygonClose(polygon) {
+    return polygonClosed(polygon) ? polygon : [].concat(_toConsumableArray(polygon), [polygon[0]]);
+  }
+
+  // Tests whether a polygon is closed
+  function polygonClosed(polygon) {
+    var first = polygon[0],
+      last = polygon[polygon.length - 1];
+    return first[0] === last[0] && first[1] === last[1];
+  }
+
   // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
   // and https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
   function cross(a, b, o) {
@@ -237,18 +249,6 @@
     return lower.concat(upper);
   }
 
-  // Closes a polygon if it's not closed already. Does not modify input polygon.
-  function close(polygon) {
-    return isClosed(polygon) ? polygon : [].concat(_toConsumableArray(polygon), [polygon[0]]);
-  }
-
-  // Tests whether a polygon is closed
-  function isClosed(polygon) {
-    var first = polygon[0],
-      last = polygon[polygon.length - 1];
-    return first[0] === last[0] && first[1] === last[1];
-  }
-
   // Calculates the length of a polygon's perimeter. See https://github.com/d3/d3-polygon/blob/master/src/length.js
   function polygonLength(vertices) {
     if (vertices.length === 0) {
@@ -280,7 +280,7 @@
       if (t <= 0) {
         return polygon[0];
       }
-      var closed = close(polygon);
+      var closed = polygonClose(polygon);
       if (t >= 1) {
         return closed[closed.length - 1];
       }
@@ -642,7 +642,7 @@
   // Returns a boolean.
   function lineIntersectsPolygon(line, polygon) {
     var intersects = false;
-    var closed = close(polygon);
+    var closed = polygonClose(polygon);
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       var v0 = closed[i],
         v1 = closed[i + 1];
@@ -680,7 +680,7 @@
   function pointOnPolygon(point, polygon) {
     var epsilon = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     var on = false;
-    var closed = close(polygon);
+    var closed = polygonClose(polygon);
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       if (pointOnLine(point, [closed[i], closed[i + 1]], epsilon)) {
         on = true;
@@ -696,7 +696,7 @@
   // Returns a boolean.
   function polygonInPolygon(polygonA, polygonB) {
     var inside = true;
-    var closed = close(polygonA);
+    var closed = polygonClose(polygonA);
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       var v0 = closed[i];
 
@@ -722,7 +722,7 @@
   function polygonIntersectsPolygon(polygonA, polygonB) {
     var intersects = false,
       onCount = 0;
-    var closed = close(polygonA);
+    var closed = polygonClose(polygonA);
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       var v0 = closed[i],
         v1 = closed[i + 1];
@@ -758,6 +758,8 @@
     polygonArea: polygonArea,
     polygonBounds: polygonBounds,
     polygonCentroid: polygonCentroid,
+    polygonClose: polygonClose,
+    polygonClosed: polygonClosed,
     polygonHull: polygonHull,
     polygonInterpolate: polygonInterpolate,
     polygonLength: polygonLength,

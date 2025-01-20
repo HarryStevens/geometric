@@ -1,7 +1,7 @@
-import { close } from "../utils/closePolygon";
 import { lineAngle } from "../lines/lineAngle";
 import { lineLength } from "../lines/lineLength";
 import { pointTranslate } from "../points/pointTranslate";
+import { polygonClose } from "./polygonClose";
 import { polygonLength } from "./polygonLength";
 
 export function polygonInterpolate(polygon){
@@ -10,7 +10,7 @@ export function polygonInterpolate(polygon){
       return polygon[0];
     }
   
-    const closed = close(polygon);
+    const closed = polygonClose(polygon);
       
     if (t >= 1){
       return closed[closed.length - 1];
