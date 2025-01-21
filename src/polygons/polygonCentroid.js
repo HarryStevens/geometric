@@ -1,5 +1,11 @@
+import { lineMidpoint } from "../lines/lineMidpoint";
+
 // Calculates the weighted centroid a polygon.
 export function polygonCentroid(vertices){
+  if (!vertices.length) return [];
+  if (vertices.length === 1) return vertices[0];
+  if (vertices.length === 2) return lineMidpoint(vertices);
+
   let a = 0, x = 0, y = 0, l = vertices.length;
 
   for (let i = 0; i < l; i++) {

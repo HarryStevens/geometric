@@ -180,6 +180,9 @@ function polygonBounds(polygon) {
 
 // Calculates the weighted centroid a polygon.
 function polygonCentroid(vertices) {
+  if (!vertices.length) return [];
+  if (vertices.length === 1) return vertices[0];
+  if (vertices.length === 2) return lineMidpoint(vertices);
   var a = 0,
     x = 0,
     y = 0,
@@ -299,6 +302,7 @@ function polygonInterpolate(polygon) {
 
 // Calculates the arithmetic mean of a polygon's vertices.
 function polygonMean(vertices) {
+  if (!vertices.length) return [];
   var x = 0,
     y = 0,
     l = vertices.length;

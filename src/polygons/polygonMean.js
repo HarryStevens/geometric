@@ -1,5 +1,7 @@
 // Calculates the arithmetic mean of a polygon's vertices.
 export function polygonMean(vertices){
+  if (!vertices.length) return [];
+
   let x = 0, y = 0, l = vertices.length;
 
   for (let i = 0; i < l; i++) {
