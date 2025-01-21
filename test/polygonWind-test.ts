@@ -15,7 +15,7 @@ describe("polygonWind", () => {
       [30, 159],
       [19, 101]
     ];
-    const isClockwise = geometric.polygonArea(polygon, true) > 0;
+    const isCounterClockwise = geometric.polygonArea(polygon, true) > 0;
 
     const reversed = polygon.slice().reverse(),
           wound = geometric.polygonWind(polygon),
@@ -23,11 +23,11 @@ describe("polygonWind", () => {
           cw = geometric.polygonWind(polygon, "cw"),
           clockwise = geometric.polygonWind(polygon, "clockwise");
 
-    assert.equal(isClockwise, true);
-    assert.deepEqual(wound, reversed);
-    assert.deepEqual(ccw, reversed);
-    assert.deepEqual(cw, polygon);
-    assert.deepEqual(clockwise, polygon);
+    assert.equal(isCounterClockwise, true);
+    assert.deepEqual(wound, polygon);
+    assert.deepEqual(ccw, polygon);
+    assert.deepEqual(cw, reversed);
+    assert.deepEqual(clockwise, reversed);
   });
 
   it("returns null if the polygon has fewer than three points", () => {

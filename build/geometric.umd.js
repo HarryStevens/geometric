@@ -574,7 +574,7 @@
     var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "ccw";
     if (polygon.length < 3) return null;
     var reversed = polygon.slice().reverse();
-    var isClockwise = polygonArea(polygon, true) > 0;
+    var isClockwise = polygonArea(polygon, true) < 0;
     if (order === "cw" || order === "clockwise") {
       return isClockwise ? polygon : reversed;
     } else {
