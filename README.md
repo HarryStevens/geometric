@@ -115,7 +115,9 @@ Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represente
 
 <a name="polygonInterpolate" href="#polygonInterpolate">#</a> geometric.<b>polygonInterpolate</b>(<i>polygon</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygoninterpolate "Example")
 
-Returns an interpolator function given a <i>polygon</i> of vertices [a, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
+Returns an interpolator function given a <i>polygon</i> of vertices [a, b, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
+
+You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1]. When clamp is false, the interpolator applies modular arithmetic to t. If t is less than 0, the interpolator wraps around the polygon's perimeter in reverse. If t is greater than 1, the interpolator continues forward along the perimeter.
 
 <a name="polygonLength" href="#polygonLength">#</a> geometric.<b>polygonLength</b>(<i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonLength.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonlength "Example")
 

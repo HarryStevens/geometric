@@ -1,6 +1,7 @@
+import { strict as assert } from "assert";
 import assertApproximatelyEqual from "./utils/assertApproximatelyEqual.js";
 import geometric from "../build/geometric.js";
-import type { Line } from "../types/common";
+import type { Line, Polygon } from "../types/common";
 
 describe("polygonInterpolate", () => {
   it("returns points along a polygon", () => {
@@ -28,5 +29,25 @@ describe("polygonInterpolate", () => {
         }
       }
     }
+  });
+
+  it("clamps t to [0, 1] by default but allows unclamping", () => {
+    const polygon: Polygon = [[109,101],[104,136],[96,195],[105,239],[157,403],[215,420],[335,412],[379,368],[402,340],[398,260],[383,194],[343,89],[109,101]];
+    const interpolatorClamped = geometric.polygonInterpolate(polygon);
+    const interpolatorUnclamped = geometric.polygonInterpolate(polygon, false);
+
+    assert.deepEqual(interpolatorClamped(0), polygon[0]);
+    assert.deepEqual(interpolatorClamped(-0.1), polygon[0]);
+    assert.deepEqual(interpolatorClamped(-1), polygon[0]);
+    assert.deepEqual(interpolatorClamped(1), polygon[polygon.length - 1]);
+    assert.deepEqual(interpolatorClamped(1.1), polygon[polygon.length - 1]);
+    assert.deepEqual(interpolatorClamped(2), polygon[polygon.length - 1]);
+
+    assert.deepEqual(interpolatorUnclamped(0), polygon[0]);
+    assert.deepEqual(interpolatorUnclamped(-0.1), [217.40469670189447, 95.44078478451823]);
+    assert.deepEqual(interpolatorUnclamped(-1), polygon[0]);
+    assert.deepEqual(interpolatorUnclamped(1), polygon[polygon.length - 1]);
+    assert.deepEqual(interpolatorUnclamped(1.1), [98.73579046679185, 208.37497561542685]);
+    assert.deepEqual(interpolatorUnclamped(2), polygon[polygon.length - 1]);
   });
 });

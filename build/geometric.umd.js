@@ -278,31 +278,46 @@
     return perimeter;
   }
 
+  // Returns an interpolator function given a polygon of vertices [a, b, ..., n]. 
+  // The returned interpolator function takes a single argument t,
+  // where t is a number in [0, 1]; 
+  // a value of 0 returns a, while a value of 1 returns n.
+  // Intermediate values interpolate from a to n along the polygon's perimeter.
+  // You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1]. 
+  // When clamp is false, the interpolator applies modular arithmetic to t.
+  // If t is less than 0, the interpolator wraps around the polygon's perimeter in reverse.
+  // If t is greater than 1, the interpolator continues forward along the perimeter.
+
   function polygonInterpolate(polygon) {
+    var clamp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    var closed = polygonClose(polygon);
+    var length = polygonLength(closed);
+    var segments = [];
+    for (var i = 0; i < closed.length - 1; i++) {
+      var p0 = closed[i];
+      var p1 = closed[i + 1];
+      var l = [p0, p1];
+      segments.push([p0, lineLength(l), lineAngle(l)]);
+    }
     return function (t) {
-      if (t <= 0) {
-        return polygon[0];
+      if (clamp) {
+        if (t <= 0) return polygon[0];
+        if (t >= 1) return closed[closed.length - 1];
       }
-      var closed = polygonClose(polygon);
-      if (t >= 1) {
-        return closed[closed.length - 1];
-      }
-      var target = polygonLength(closed) * t;
-      var point = [],
-        track = 0;
-      for (var i = 0; i < closed.length - 1; i++) {
-        var side = [closed[i], closed[i + 1]],
-          length = lineLength(side),
-          angle = lineAngle(side),
-          delta = target - (track += length);
+      var mod = t % 1;
+      var target = length * (mod < 0 ? 1 + mod : mod);
+      var track = 0;
+      for (var _i = 0, _segments = segments; _i < _segments.length; _i++) {
+        var _segments$_i = _slicedToArray(_segments[_i], 3),
+          point = _segments$_i[0],
+          _length = _segments$_i[1],
+          angle = _segments$_i[2];
+        var delta = target - (track += _length);
         if (delta < 0) {
-          point = pointTranslate(side[0], angle, length + delta);
-          break;
-        } else if (i === polygon.length - 2) {
-          point = pointTranslate(side[0], angle, delta);
+          return pointTranslate(point, angle, _length + delta);
         }
       }
-      return point;
+      return closed[closed.length - 1];
     };
   }
 
