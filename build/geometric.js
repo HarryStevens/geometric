@@ -57,11 +57,11 @@ function _nonIterableSpread() {
 // The returned interpolator function takes a single argument t, where t is a number ranging from 0 to 1;
 // a value of 0 returns a, while a value of 1 returns b.
 // Intermediate values interpolate from start to end along the line segment.
-// By default, the returned interpolator will output points outside of the line segment if t is less than 0 or greater than 1.
-// You can pass an optional boolean indicating whether to the returned point to inside of the line segment,
-// even if t is greater than 1 or less then 0.
+// By default, the returned interpolator will clamp the output to the ends of the line segment.
+// You can pass an optional boolean indicating whether to return points outside the line segment
+// if t is greater than 1 or less than 0.
 function lineInterpolate(line) {
-  var clamp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var clamp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   var _line = _slicedToArray(line, 2),
     _line$ = _slicedToArray(_line[0], 2),
     x1 = _line$[0],

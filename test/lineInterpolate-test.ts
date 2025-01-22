@@ -22,14 +22,14 @@ describe("lineInterpolate", () => {
 
   it("returns points outside the line segment if clamp is false", () => {
     const line: Line = [[236, 0], [708, 190]];
-    const interpolator = geometric.lineInterpolate(line);
+    const interpolator = geometric.lineInterpolate(line, false);
     assert.deepEqual(roundArray(interpolator(-0.1), 1), [188.8, -19]);
     assert.deepEqual(roundArray(interpolator(1.1), 1), [755.2, 209]);
   });
 
   it("returns points inside the line segment if clamp is true", () => {
     const line: Line = [[236, 0], [708, 190]];
-    const interpolator = geometric.lineInterpolate(line, true);
+    const interpolator = geometric.lineInterpolate(line);
     assert.deepEqual(interpolator(-0.1), line[0]);
     assert.deepEqual(interpolator(1.1), line[1]);
   });
