@@ -28,7 +28,7 @@ import { polygonScaleY } from "./src/polygons/polygonScaleY";
 import { polygonTranslate } from "./src/polygons/polygonTranslate";
 import { polygonWind } from "./src/polygons/polygonWind";
 
-import { lineIntersectsLine } from "./src/relationships/lineIntersectsLine";
+import { lineIntersection } from "./src/relationships/lineIntersection";
 import { lineIntersectsPolygon } from "./src/relationships/lineIntersectsPolygon";
 import { pointInPolygon } from "./src/relationships/pointInPolygon";
 import { pointOnPolygon } from "./src/relationships/pointOnPolygon";
@@ -72,7 +72,7 @@ const geometric = {
   polygonTranslate,
   polygonWind,
 
-  lineIntersectsLine,
+  lineIntersection,
   lineIntersectsPolygon,
   pointInPolygon,
   pointOnPolygon,

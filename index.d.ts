@@ -27,7 +27,7 @@ export { polygonScaleY } from "./types/polygons/polygonScaleY";
 export { polygonTranslate } from "./types/polygons/polygonTranslate";
 export { polygonWind } from "./types/polygons/polygonWind";
 
-export { lineIntersectsLine } from "./types/relationships/lineIntersectsLine";
+export { lineIntersection } from "./types/relationships/lineIntersection";
 export { lineIntersectsPolygon } from "./types/relationships/lineIntersectsPolygon";
 export { pointInPolygon } from "./types/relationships/pointInPolygon";
 export { pointOnPolygon } from "./types/relationships/pointOnPolygon";

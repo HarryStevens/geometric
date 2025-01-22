@@ -62,7 +62,7 @@ declare function polygonTranslate(polygon: Polygon, angle: number, distance: num
 
 declare function polygonWind(polygon: Polygon, order?: string): Polygon | null;
 
-declare function lineIntersectsLine(lineA: Line, lineB: Line): boolean;
+declare function lineIntersection(lineA: Line, lineB: Line): Point | null;
 
 declare function lineIntersectsPolygon(line: Line, polygon: Polygon): boolean;
 
@@ -85,4 +85,4 @@ declare function angleToDegrees(angle: number): number;
 
 declare function angleToRadians(angle: number): number;
 
-export { angleReflect, angleToDegrees, angleToRadians, lineAngle, lineInterpolate, lineIntersectsLine, lineIntersectsPolygon, lineLength, lineMidpoint, lineRotate, lineTranslate, pointInPolygon, pointLeftofLine, pointOnLine, pointOnPolygon, pointRightofLine, pointRotate, pointTranslate, pointWithLine, polygonArea, polygonBounds, polygonCentroid, polygonHull, polygonInPolygon, polygonInterpolate, polygonIntersectsPolygon, polygonLength, polygonMean, polygonRandom, polygonReflectX, polygonReflectY, polygonRegular, polygonRotate, polygonScale, polygonScaleArea, polygonScaleX, polygonScaleY, polygonTranslate, polygonWind };
+export { angleReflect, angleToDegrees, angleToRadians, lineAngle, lineInterpolate, lineIntersection, lineIntersectsPolygon, lineLength, lineMidpoint, lineRotate, lineTranslate, pointInPolygon, pointLeftofLine, pointOnLine, pointOnPolygon, pointRightofLine, pointRotate, pointTranslate, pointWithLine, polygonArea, polygonBounds, polygonCentroid, polygonHull, polygonInPolygon, polygonInterpolate, polygonIntersectsPolygon, polygonLength, polygonMean, polygonRandom, polygonReflectX, polygonReflectY, polygonRegular, polygonRotate, polygonScale, polygonScaleArea, polygonScaleX, polygonScaleY, polygonTranslate, polygonWind };

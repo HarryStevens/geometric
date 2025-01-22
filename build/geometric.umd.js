@@ -623,38 +623,46 @@
     return Math.abs(cross(point, line[0], line[1])) <= epsilon;
   }
 
-  // Determines if lineA intersects lineB.
-  // Returns a boolean.
-  function lineIntersectsLine(lineA, lineB) {
-    var _lineA = _slicedToArray(lineA, 2),
-      _lineA$ = _slicedToArray(_lineA[0], 2),
-      a0x = _lineA$[0],
-      a0y = _lineA$[1],
-      _lineA$2 = _slicedToArray(_lineA[1], 2),
-      a1x = _lineA$2[0],
-      a1y = _lineA$2[1],
-      _lineB = _slicedToArray(lineB, 2),
-      _lineB$ = _slicedToArray(_lineB[0], 2),
-      b0x = _lineB$[0],
-      b0y = _lineB$[1],
-      _lineB$2 = _slicedToArray(_lineB[1], 2),
-      b1x = _lineB$2[0],
-      b1y = _lineB$2[1]; // Test for shared points
-    if (a0x === b0x && a0y === b0y) return true;
-    if (a1x === b1x && a1y === b1y) return true;
+  // Returns a point where line <i>a</i> intersects line <i>b</i>.
+  // If the two lines do not intersect, returns null.
+  function lineIntersection(a, b) {
+    var _a$ = _slicedToArray(a[0], 2),
+      a0x = _a$[0],
+      a0y = _a$[1],
+      _a$2 = _slicedToArray(a[1], 2),
+      a1x = _a$2[0],
+      a1y = _a$2[1];
+    var _b$ = _slicedToArray(b[0], 2),
+      b0x = _b$[0],
+      b0y = _b$[1],
+      _b$2 = _slicedToArray(b[1], 2),
+      b1x = _b$2[0],
+      b1y = _b$2[1]; // Bounding box overlap check
+    if (Math.min(a0x, a1x) > Math.max(b0x, b1x) || Math.min(b0x, b1x) > Math.max(a0x, a1x) || Math.min(a0y, a1y) > Math.max(b0y, b1y) || Math.min(b0y, b1y) > Math.max(a0y, a1y)) {
+      return null;
+    }
 
-    // Test for point on line
-    if (pointOnLine(lineA[0], lineB) || pointOnLine(lineA[1], lineB)) return true;
-    if (pointOnLine(lineB[0], lineA) || pointOnLine(lineB[1], lineA)) return true;
-    var denom = (b1y - b0y) * (a1x - a0x) - (b1x - b0x) * (a1y - a0y);
-    if (denom === 0) return false;
-    var deltaY = a0y - b0y,
-      deltaX = a0x - b0x,
-      numer0 = (b1x - b0x) * deltaY - (b1y - b0y) * deltaX,
-      numer1 = (a1x - a0x) * deltaY - (a1y - a0y) * deltaX,
-      quotA = numer0 / denom,
-      quotB = numer1 / denom;
-    return quotA > 0 && quotA < 1 && quotB > 0 && quotB < 1;
+    // Shared points or points on line
+    if (a0x === b0x && a0y === b0y || pointOnLine(a[0], b)) return a[0];
+    if (a1x === b1x && a1y === b1y || pointOnLine(a[1], b)) return a[1];
+    if (pointOnLine(b[0], a)) return b[0];
+    if (pointOnLine(b[1], a)) return b[1];
+
+    // Vectorized calculation
+    var dxA = a1x - a0x,
+      dyA = a1y - a0y;
+    var dxB = b1x - b0x,
+      dyB = b1y - b0y;
+    var denom = dyB * dxA - dxB * dyA;
+    if (denom === 0) return null; // Parallel lines
+
+    var dy = a0y - b0y,
+      dx = a0x - b0x;
+    var numerA = dxB * dy - dyB * dx;
+    var numerB = dxA * dy - dyA * dx;
+    var quotA = numerA / denom,
+      quotB = numerB / denom;
+    return quotA >= 0 && quotA <= 1 && quotB >= 0 && quotB <= 1 ? [a0x + quotA * dxA, a0y + quotA * dyA] : null;
   }
 
   // Determines whether a line intersects a polygon.
@@ -665,7 +673,7 @@
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       var v0 = closed[i],
         v1 = closed[i + 1];
-      if (lineIntersectsLine(line, [v0, v1]) || pointOnLine(v0, line) && pointOnLine(v1, line)) {
+      if (lineIntersection(line, [v0, v1]) || pointOnLine(v0, line) && pointOnLine(v1, line)) {
         intersects = true;
         break;
       }
@@ -794,7 +802,7 @@
     polygonScaleY: polygonScaleY,
     polygonTranslate: polygonTranslate,
     polygonWind: polygonWind,
-    lineIntersectsLine: lineIntersectsLine,
+    lineIntersection: lineIntersection,
     lineIntersectsPolygon: lineIntersectsPolygon,
     pointInPolygon: pointInPolygon,
     pointOnPolygon: pointOnPolygon,

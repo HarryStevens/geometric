@@ -185,9 +185,9 @@ Uses the convention that a polygon with a negative signed area has a clockwise w
 
 ### <a name="relationships"></a>Relationships
 
-<a name="lineIntersectsLine" href="#lineIntersectsLine">#</a> geometric.<b>lineIntersectsLine</b>(<i>lineA</i>, <i>lineB</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersectsLine.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineintersectsline "Example")
+<a name="lineIntersection" href="#lineIntersection">#</a> geometric.<b>lineIntersection</b>(<i>lineA</i>, <i>lineB</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersection.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineintersection "Example")
 
-Returns a boolean representing whether <i>lineA</i> intersects <i>lineB</i>.
+Returns a point where line <i>a</i> intersects line <i>b</i>. If the two lines do not intersect, returns null.
 
 <a name="lineIntersectsPolygon" href="#lineIntersectsPolygon">#</a> geometric.<b>lineIntersectsPolygon</b>(<i>line</i>, <i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersectsPolygon.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineintersectspolygon "Example")
 
