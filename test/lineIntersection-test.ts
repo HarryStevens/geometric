@@ -70,4 +70,26 @@ describe("lineIntersection", () => {
 
     assert.equal(geometric.lineIntersection(lineA, lineB), null);
   });
+
+  it("returns null when lines are nearly parallel", () => {
+    const lineA: Line = [[0, 0], [1000000, 1]];
+    const lineB: Line = [[0, 1], [1000000, 2]];
+
+    assert.equal(geometric.lineIntersection(lineA, lineB), null);
+  });
+
+  it("works with very small coordinates", () => {
+    const lineA: Line = [[1e9, 1e9], [1e9 + 1, 1e9 + 1]];
+    const lineB: Line = [[1e9, 1e9 + 1], [1e9 + 1, 1e9]];
+    const expected: Point = [1e9 + 0.5, 1e9 + 0.5]
+
+    assert.deepEqual(geometric.lineIntersection(lineA, lineB), expected);
+  });
+
+  it("handles degenerate points", () => {
+    const lineA: Line = [[0, 0], [0, 0]];
+    const lineB: Line = [[1, 1], [2, 2]];
+    
+    assert.equal(geometric.lineIntersection(lineA, lineB), null);
+  });
 });
