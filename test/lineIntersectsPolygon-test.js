@@ -2,25 +2,81 @@ import { strict as assert } from "assert";
 import * as geometric from "../build/geometric.js";
 
 describe("lineIntersectsPolygon", () => {
-  it("determines whether a line intersects a polygon", () => {
-    const polygon = [[5, 3], [10, 3], [10, 8], [5, 8]],
-          lineA = [[4, 6], [8, 2]],
-          lineB = [[4, 6], [11, 6]],
-          lineC = [[4, 9], [11, 9]];
+  it("returns intersection points when the line intersects the polygon", () => {
+    const line = [[0, 10], [60, 50]];
+    const polygon = [[10, 10], [10, 50], [50, 50], [50, 10]];
 
-    assert.equal(geometric.lineIntersectsPolygon(lineA, polygon), true);
-    assert.equal(geometric.lineIntersectsPolygon(lineB, polygon), true);
-    assert.equal(geometric.lineIntersectsPolygon(lineC, polygon), false);
+    assert.deepEqual(geometric.lineIntersectsPolygon(line, polygon), [
+      [10, 16.666666666666664],
+      [50, 43.333333333333336]
+    ]);
   });
 
-  it("returns true even if the line is only collinear with one of the polygon's segments", () => {
-    const polygon = [
-            [388, 150], [458, 150], [458, 110], [478, 53], [486, 50], 
-            [488, 20], [490, 50], [498, 53], [518, 110], [518, 150], 
-            [588, 150], [588, 270], [388, 270]
-          ],
-          line = [[98, 150], [878, 150]];
+  it("returns null when the line does not intersect the polygon", () => {
+    const line = [[60, 60], [70, 70]];
+    const polygon = [[0, 0], [0, 50], [50, 50], [50, 0]];
 
-    assert.equal(geometric.lineIntersectsPolygon(line, polygon), true);
+    assert.equal(geometric.lineIntersectsPolygon(line, polygon), null);
+  });
+
+  it("handles a line tangent to the polygon", () => {
+    const line = [[0, 50], [60, 50]];
+    const polygon = [[10, 0], [10, 50], [50, 50], [50, 0]];
+
+    assert.deepEqual(geometric.lineIntersectsPolygon(line, polygon), [
+      [10, 50],
+      [50, 50]
+    ]);
+  });
+
+  it("returns null for a line completely inside the polygon", () => {
+    const line = [[10, 10], [40, 40]];
+    const polygon = [[0, 0], [0, 50], [50, 50], [50, 0]];
+
+    assert.equal(geometric.lineIntersectsPolygon(line, polygon), null);
+  });
+
+  it("returns correct intersections for polygons with collinear edges", () => {
+    const line = [[0, 25], [100, 25]];
+    const polygon = [[0, 0], [0, 50], [50, 50], [50, 0], [0, 0]];
+
+    assert.deepEqual(geometric.lineIntersectsPolygon(line, polygon), [
+      [0, 25],
+      [50, 25]
+    ]);
+  });
+
+  it("returns null for a line completely outside the polygon's bounding box", () => {
+    const line = [[100, 100], [200, 200]];
+    const polygon = [[0, 0], [0, 50], [50, 50], [50, 0]];
+
+    assert.equal(geometric.lineIntersectsPolygon(line, polygon), null);
+  });
+
+  it("handles degenerate polygons (single point)", () => {
+    const line = [[0, 0], [10, 10]];
+    const polygon = [[5, 5]];
+
+    assert.equal(geometric.lineIntersectsPolygon(line, polygon), null);
+  });
+
+  it("returns intersections for a line crossing multiple edges", () => {
+    const line = [[-10, 25], [60, 25]];
+    const polygon = [[0, 0], [0, 50], [50, 50], [50, 0]];
+
+    assert.deepEqual(geometric.lineIntersectsPolygon(line, polygon), [
+      [0, 25],
+      [50, 25]
+    ]);
+  });
+
+  it("works with very large polygons", () => {
+    const line = [[0, 0], [100, 100]];
+    const polygon = geometric.polygonRegular(100, 1000, [50, 50]);
+
+    assert.deepEqual(geometric.lineIntersectsPolygon(line, polygon), [
+      [62.61981422601329, 62.61981422601329],
+      [37.38018577398674, 37.38018577398674]
+    ]);
   });
 });

@@ -623,7 +623,7 @@
     return Math.abs(cross(point, line[0], line[1])) <= epsilon;
   }
 
-  // Returns a point where line <i>a</i> intersects line <i>b</i>.
+  // Returns a point where line a intersects line b.
   // If the two lines do not intersect, returns null.
   function lineIntersection(a, b) {
     var _a$ = _slicedToArray(a[0], 2),
@@ -665,20 +665,25 @@
     return quotA >= 0 && quotA <= 1 && quotB >= 0 && quotB <= 1 ? [a0x + quotA * dxA, a0y + quotA * dyA] : null;
   }
 
-  // Determines whether a line intersects a polygon.
-  // Returns a boolean.
+  // Returns an array of points where a line intersects a polygon.
+  // If the line does not intersect the polygon, returns null.
   function lineIntersectsPolygon(line, polygon) {
-    var intersects = false;
+    var intersections = [];
     var closed = polygonClose(polygon);
+    var pointExists = function pointExists(arr, point) {
+      return arr.some(function (p) {
+        return Math.abs(p[0] - point[0]) < 1e-9 && Math.abs(p[1] - point[1]) < 1e-9;
+      });
+    };
     for (var i = 0, l = closed.length - 1; i < l; i++) {
       var v0 = closed[i],
         v1 = closed[i + 1];
-      if (lineIntersection(line, [v0, v1]) || pointOnLine(v0, line) && pointOnLine(v1, line)) {
-        intersects = true;
-        break;
+      var intersection = lineIntersection(line, [v0, v1]);
+      if (intersection && !pointExists(intersections, intersection)) {
+        intersections.push(intersection);
       }
     }
-    return intersects;
+    return intersections.length ? intersections : null;
   }
 
   // Determines whether a point is inside of a polygon, represented as an array of vertices.

@@ -225,7 +225,7 @@ Returns a point where line <i>a</i> intersects line <i>b</i>. If the two lines d
 
 <a name="lineIntersectsPolygon" href="#lineIntersectsPolygon">#</a> geometric.<b>lineIntersectsPolygon</b>(<i>line</i>, <i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/lineIntersectsPolygon.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineintersectspolygon "Example")
 
-Returns a boolean representing whether a <i>line</i> intersects a <i>polygon</i>.
+Returns an array of points where a <i>line</i> intersects a </i>polygon</i>. If the line does not intersect the polygon, returns null.
 
 <a name="pointInPolygon" href="#pointInPolygon">#</a> geometric.<b>pointInPolygon</b>(<i>point</i>, <i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointInPolygon.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointinpolygon "Example")
 

@@ -1,3 +1,3 @@
 import { Line, Polygon } from "../common";
 
-export function lineIntersectsPolygon(line: Line, polygon: Polygon): boolean;
+export function lineIntersectsPolygon(line: Line, polygon: Polygon): number[][] | null;

@@ -1,22 +1,25 @@
 import { lineIntersection } from "./lineIntersection";
-import { pointOnLine } from "./pointOnLine";
 import { polygonClose } from "../polygons/polygonClose";
 
-// Determines whether a line intersects a polygon.
-// Returns a boolean.
-export function lineIntersectsPolygon(line, polygon){
-  let intersects = false;
+// Returns an array of points where a line intersects a polygon.
+// If the line does not intersect the polygon, returns null.
+export function lineIntersectsPolygon(line, polygon) {
+  const intersections = [];
   const closed = polygonClose(polygon);
 
-  for (let i = 0, l = closed.length - 1; i < l; i++){
+  const pointExists = (arr, point) => {
+    return arr.some(p => Math.abs(p[0] - point[0]) < 1e-9 && Math.abs(p[1] - point[1]) < 1e-9);
+  };
+
+  for (let i = 0, l = closed.length - 1; i < l; i++) {
     const v0 = closed[i],
           v1 = closed[i + 1];
-    
-    if (lineIntersection(line, [v0, v1]) || (pointOnLine(v0, line) && pointOnLine(v1, line))){
-      intersects = true;
-      break;
+
+    const intersection = lineIntersection(line, [v0, v1]);
+    if (intersection && !pointExists(intersections, intersection)) {
+      intersections.push(intersection);
     }
   }
 
-  return intersects;
+  return intersections.length ? intersections : null;
 }

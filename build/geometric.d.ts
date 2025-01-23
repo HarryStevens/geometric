@@ -67,7 +67,7 @@ declare function polygonWind(polygon: Polygon, order?: string): Polygon | null;
 
 declare function lineIntersection(lineA: Line, lineB: Line): Point | null;
 
-declare function lineIntersectsPolygon(line: Line, polygon: Polygon): boolean;
+declare function lineIntersectsPolygon(line: Line, polygon: Polygon): number[][] | null;
 
 declare function pointInPolygon(point: Point, polygon: Polygon): boolean;
 

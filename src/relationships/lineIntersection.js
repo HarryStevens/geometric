@@ -1,6 +1,6 @@
 import { pointOnLine } from "./pointOnLine";
 
-// Returns a point where line <i>a</i> intersects line <i>b</i>.
+// Returns a point where line a intersects line b.
 // If the two lines do not intersect, returns null.
 export function lineIntersection(a, b) {
   const [a0x, a0y] = a[0], [a1x, a1y] = a[1];
