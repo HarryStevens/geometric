@@ -5,14 +5,38 @@ A JavaScript library for doing geometry.
 [<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/length-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
 [<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/centroid-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/37287b23b345f394f8276dc87a9c2bc6)
 
+TypeScript declarations are available via [the build directory](https://github.com/HarryStevens/geometric/blob/master/build/geometric.d.ts).
+
 ## Installation
 
 ### Web browser
-In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
+In vanilla HTML, you can load geometric from a CDN such as unpkg or you can download it locally. You can the CDN-hosted ES module bundle.
 ```html
-<script src="https://unpkg.com/geometric@2.5.5/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.5.5/build/geometric.min.js"></script>
+<!DOCTYPE html>
+<script type="module">
+
+import * as geometric from "https://unpkg.com/geometric@3.0.0/build/geometric.js"
+
+const point = [10, 10];
+// Translate a point 45 degrees by 100 pixels
+const translated = geometric.pointTranslate(point, 45, 100);
+
+</script>
 ```
+
+You can also use a UMD bundle that exports the d3 global when loaded as a plain script.
+
+```html
+<!DOCTYPE html>
+<script src="https://unpkg.com/geometric@3.0.0/build/geometric.min.js"></script>
+<script type="module">
+
+const point = [10, 10];
+// Translate a point 45 degrees by 100 pixels
+const translated = geometric.pointTranslate(point, 45, 100);
+</script>
+```
+
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
 ### npm
@@ -21,7 +45,17 @@ If you'd rather host it yourself, download the latest release from the [`build` 
 npm i geometric -S
 ```
 ```js
-const geometric = require("geometric");
+import { pointTranslate } from "geometric"
+
+const point = [10, 10];
+// Translate a point 45 degrees by 100 pixels
+const translated = geometric.pointTranslate(point, 45, 100);
+```
+
+You can also import the entire library.
+
+```js
+import * as geometric from "geometric"
 ```
 
 ## API
