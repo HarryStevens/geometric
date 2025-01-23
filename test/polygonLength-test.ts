@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("polygonLength", () => {
   it("calculates the length of a polygon's perimeter", () => {

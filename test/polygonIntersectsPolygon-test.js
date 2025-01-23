@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("polygonIntersectsPolygon", () => {
   it("determines whether two polygons intersect but neither contains the other", () => {

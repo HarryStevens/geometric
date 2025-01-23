@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 const line = [[1, 0], [1, 2]];
 

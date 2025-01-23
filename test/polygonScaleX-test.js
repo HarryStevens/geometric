@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("polygonScaleX", () => {
   it("scales a polygon's x-coordinates by a scale factor from an origin point.", () => {

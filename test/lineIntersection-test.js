@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("lineIntersection", () => {
   it("returns the intersection point when lineA intersects lineB", () => {

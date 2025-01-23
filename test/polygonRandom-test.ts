@@ -1,5 +1,5 @@
 import assertApproximatelyEqual from "./utils/assertApproximatelyEqual.js";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("polygonRandom", () => {
   it("returns a random polygon with the expected number of vertices, area, and centroid", () => {

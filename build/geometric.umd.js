@@ -1,9 +1,9 @@
 // https://github.com/HarryStevens/geometric#readme Version 3.0.0. Copyright 2025 Harry Stevens.
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.geometric = factory());
-})(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.geometric = {}));
+})(this, (function (exports) { 'use strict';
 
   // Converts radians to degrees.
   function angleToDegrees(angle) {
@@ -773,50 +773,46 @@
     return (surfaceAngle * 2 - incidenceAngle % 360 + 360) % 360;
   }
 
-  var geometric = {
-    lineAngle: lineAngle,
-    lineInterpolate: lineInterpolate,
-    lineLength: lineLength,
-    lineMidpoint: lineMidpoint,
-    lineRotate: lineRotate,
-    lineTranslate: lineTranslate,
-    pointRotate: pointRotate,
-    pointTranslate: pointTranslate,
-    polygonArea: polygonArea,
-    polygonBounds: polygonBounds,
-    polygonCentroid: polygonCentroid,
-    polygonClose: polygonClose,
-    polygonClosed: polygonClosed,
-    polygonHull: polygonHull,
-    polygonInterpolate: polygonInterpolate,
-    polygonLength: polygonLength,
-    polygonMean: polygonMean,
-    polygonRandom: polygonRandom,
-    polygonReflectX: polygonReflectX,
-    polygonReflectY: polygonReflectY,
-    polygonRegular: polygonRegular,
-    polygonRotate: polygonRotate,
-    polygonScale: polygonScale,
-    polygonScaleArea: polygonScaleArea,
-    polygonScaleX: polygonScaleX,
-    polygonScaleY: polygonScaleY,
-    polygonTranslate: polygonTranslate,
-    polygonWind: polygonWind,
-    lineIntersection: lineIntersection,
-    lineIntersectsPolygon: lineIntersectsPolygon,
-    pointInPolygon: pointInPolygon,
-    pointOnPolygon: pointOnPolygon,
-    pointLeftofLine: pointLeftofLine,
-    pointRightofLine: pointRightofLine,
-    pointOnLine: pointOnLine,
-    pointWithLine: pointWithLine,
-    polygonInPolygon: polygonInPolygon,
-    polygonIntersectsPolygon: polygonIntersectsPolygon,
-    angleReflect: angleReflect,
-    angleToDegrees: angleToDegrees,
-    angleToRadians: angleToRadians
-  };
-
-  return geometric;
+  exports.angleReflect = angleReflect;
+  exports.angleToDegrees = angleToDegrees;
+  exports.angleToRadians = angleToRadians;
+  exports.lineAngle = lineAngle;
+  exports.lineInterpolate = lineInterpolate;
+  exports.lineIntersection = lineIntersection;
+  exports.lineIntersectsPolygon = lineIntersectsPolygon;
+  exports.lineLength = lineLength;
+  exports.lineMidpoint = lineMidpoint;
+  exports.lineRotate = lineRotate;
+  exports.lineTranslate = lineTranslate;
+  exports.pointInPolygon = pointInPolygon;
+  exports.pointLeftofLine = pointLeftofLine;
+  exports.pointOnLine = pointOnLine;
+  exports.pointOnPolygon = pointOnPolygon;
+  exports.pointRightofLine = pointRightofLine;
+  exports.pointRotate = pointRotate;
+  exports.pointTranslate = pointTranslate;
+  exports.pointWithLine = pointWithLine;
+  exports.polygonArea = polygonArea;
+  exports.polygonBounds = polygonBounds;
+  exports.polygonCentroid = polygonCentroid;
+  exports.polygonClose = polygonClose;
+  exports.polygonClosed = polygonClosed;
+  exports.polygonHull = polygonHull;
+  exports.polygonInPolygon = polygonInPolygon;
+  exports.polygonInterpolate = polygonInterpolate;
+  exports.polygonIntersectsPolygon = polygonIntersectsPolygon;
+  exports.polygonLength = polygonLength;
+  exports.polygonMean = polygonMean;
+  exports.polygonRandom = polygonRandom;
+  exports.polygonReflectX = polygonReflectX;
+  exports.polygonReflectY = polygonReflectY;
+  exports.polygonRegular = polygonRegular;
+  exports.polygonRotate = polygonRotate;
+  exports.polygonScale = polygonScale;
+  exports.polygonScaleArea = polygonScaleArea;
+  exports.polygonScaleX = polygonScaleX;
+  exports.polygonScaleY = polygonScaleY;
+  exports.polygonTranslate = polygonTranslate;
+  exports.polygonWind = polygonWind;
 
 }));

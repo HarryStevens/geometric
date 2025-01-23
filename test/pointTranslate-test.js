@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
 import assertApproximatelyEqual from "./utils/assertApproximatelyEqual.js";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("pointTranslate", () => {
   it("translates a point by an angle in degrees and distance", () => {

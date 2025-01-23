@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("lineTranslate", () => {
   it("translates a line by an angle in degrees and a distance", () => {

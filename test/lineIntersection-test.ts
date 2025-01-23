@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 import type { Line, Point } from "../types/common";
 
 describe("lineIntersection", () => {
@@ -89,7 +89,7 @@ describe("lineIntersection", () => {
   it("handles degenerate points", () => {
     const lineA: Line = [[0, 0], [0, 0]];
     const lineB: Line = [[1, 1], [2, 2]];
-    
+
     assert.equal(geometric.lineIntersection(lineA, lineB), null);
   });
 });

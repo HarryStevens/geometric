@@ -767,48 +767,4 @@ function angleReflect(incidenceAngle, surfaceAngle) {
   return (surfaceAngle * 2 - incidenceAngle % 360 + 360) % 360;
 }
 
-var geometric = {
-  lineAngle: lineAngle,
-  lineInterpolate: lineInterpolate,
-  lineLength: lineLength,
-  lineMidpoint: lineMidpoint,
-  lineRotate: lineRotate,
-  lineTranslate: lineTranslate,
-  pointRotate: pointRotate,
-  pointTranslate: pointTranslate,
-  polygonArea: polygonArea,
-  polygonBounds: polygonBounds,
-  polygonCentroid: polygonCentroid,
-  polygonClose: polygonClose,
-  polygonClosed: polygonClosed,
-  polygonHull: polygonHull,
-  polygonInterpolate: polygonInterpolate,
-  polygonLength: polygonLength,
-  polygonMean: polygonMean,
-  polygonRandom: polygonRandom,
-  polygonReflectX: polygonReflectX,
-  polygonReflectY: polygonReflectY,
-  polygonRegular: polygonRegular,
-  polygonRotate: polygonRotate,
-  polygonScale: polygonScale,
-  polygonScaleArea: polygonScaleArea,
-  polygonScaleX: polygonScaleX,
-  polygonScaleY: polygonScaleY,
-  polygonTranslate: polygonTranslate,
-  polygonWind: polygonWind,
-  lineIntersection: lineIntersection,
-  lineIntersectsPolygon: lineIntersectsPolygon,
-  pointInPolygon: pointInPolygon,
-  pointOnPolygon: pointOnPolygon,
-  pointLeftofLine: pointLeftofLine,
-  pointRightofLine: pointRightofLine,
-  pointOnLine: pointOnLine,
-  pointWithLine: pointWithLine,
-  polygonInPolygon: polygonInPolygon,
-  polygonIntersectsPolygon: polygonIntersectsPolygon,
-  angleReflect: angleReflect,
-  angleToDegrees: angleToDegrees,
-  angleToRadians: angleToRadians
-};
-
-export { geometric as default };
+export { angleReflect, angleToDegrees, angleToRadians, lineAngle, lineInterpolate, lineIntersection, lineIntersectsPolygon, lineLength, lineMidpoint, lineRotate, lineTranslate, pointInPolygon, pointLeftofLine, pointOnLine, pointOnPolygon, pointRightofLine, pointRotate, pointTranslate, pointWithLine, polygonArea, polygonBounds, polygonCentroid, polygonClose, polygonClosed, polygonHull, polygonInPolygon, polygonInterpolate, polygonIntersectsPolygon, polygonLength, polygonMean, polygonRandom, polygonReflectX, polygonReflectY, polygonRegular, polygonRotate, polygonScale, polygonScaleArea, polygonScaleX, polygonScaleY, polygonTranslate, polygonWind };

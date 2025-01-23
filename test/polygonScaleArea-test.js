@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import geometric from "../build/geometric.js";
+import * as geometric from "../build/geometric.js";
 
 describe("polygonScaleArea", () => {
   it("scales a polygon by a scale factor from an origin point. The returned polygon's area is equal to the input polygon's area multiplied by the scale factor.", () => {
