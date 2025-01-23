@@ -87,6 +87,35 @@
     };
   }
 
+  // Projects a point onto a line segment
+  // See https://observablehq.com/@fil/distance-to-a-segment
+  function segmentProject(point, line) {
+    var _point = _slicedToArray(point, 2),
+      x = _point[0],
+      y = _point[1];
+    var _line = _slicedToArray(line, 2),
+      _line$ = _slicedToArray(_line[0], 2),
+      x1 = _line$[0],
+      y1 = _line$[1],
+      _line$2 = _slicedToArray(_line[1], 2),
+      x2 = _line$2[0],
+      y2 = _line$2[1];
+    var dx = x2 - x1;
+    var dy = y2 - y1;
+    var a = dx * (x - x1) + dy * (y - y1);
+    var b = dx * (x2 - x) + dy * (y2 - y);
+    var t = a > 0 && b > 0 ? b / (a + b) : +(b > a);
+    return {
+      t: t,
+      dist2: Math.pow(x - x2 + t * dx, 2) + Math.pow(y - y2 + t * dy, 2)
+    };
+  }
+
+  // Returns the closest position on a line to a point
+  function lineClosest(line, point) {
+    return lineInterpolate(line)(1 - segmentProject(point, line).t);
+  }
+
   // Calculates the distance between the endpoints of a line segment.
   function lineLength(line) {
     return Math.sqrt(Math.pow(line[1][0] - line[0][0], 2) + Math.pow(line[1][1] - line[0][1], 2));
@@ -216,6 +245,25 @@
     var first = polygon[0],
       last = polygon[polygon.length - 1];
     return first[0] === last[0] && first[1] === last[1];
+  }
+
+  // Returns the closest position on a polygon's perimeter to a point
+  function polygonClosest(polygon, point) {
+    if (polygon.length === 1) return polygon[0];
+    var closestD = Infinity,
+      closest = [];
+    var closed = polygonClose(polygon);
+    for (var i = 0, l = closed.length - 1; i < l; i++) {
+      var line = [closed[i], closed[i + 1]];
+      var _segmentProject = segmentProject(point, line),
+        t = _segmentProject.t,
+        dist2 = _segmentProject.dist2;
+      if (dist2 < closestD) {
+        closestD = dist2;
+        closest = lineInterpolate(line)(1 - t);
+      }
+    }
+    return closest;
   }
 
   // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
@@ -782,6 +830,7 @@
   exports.angleToDegrees = angleToDegrees;
   exports.angleToRadians = angleToRadians;
   exports.lineAngle = lineAngle;
+  exports.lineClosest = lineClosest;
   exports.lineInterpolate = lineInterpolate;
   exports.lineIntersection = lineIntersection;
   exports.lineIntersectsPolygon = lineIntersectsPolygon;
@@ -802,6 +851,7 @@
   exports.polygonCentroid = polygonCentroid;
   exports.polygonClose = polygonClose;
   exports.polygonClosed = polygonClosed;
+  exports.polygonClosest = polygonClosest;
   exports.polygonHull = polygonHull;
   exports.polygonInPolygon = polygonInPolygon;
   exports.polygonInterpolate = polygonInterpolate;

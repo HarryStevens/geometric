@@ -90,6 +90,10 @@ Returns the coordinates resulting from translating a <i>point</i> by an <i>angle
 
 Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal axis.
 
+<a name="lineClosest" href="#lineClosest">#</a> geometric.<b>lineClosest</b>(<i>line</i>, <i>point</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineClosest.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineclosest "Example")
+
+Returns the closest position on a <i>line</i> to a <i>point</i>.
+
 <a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>[, <i>clamp</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
 
 Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
@@ -142,6 +146,10 @@ Returns a new <i>polygon</i> that is closed by appending the first point of the 
 <a name="polygonClosed" href="#polygonClosed">#</a> geometric.<b>polygonClosed</b>(<i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonClose.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonclose "Example")
 
 Returns a boolean indicating whether the given <i>polygon</i> is closed. A polygon is considered closed if its first point is identical to its last point.
+
+<a name="polygonClosest" href="#polygonClosest">#</a> geometric.<b>polygonClosest</b>(<i>polygon</i>, <i>point</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonClosest.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonclosest "Example")
+
+Returns the closest position on the perimeter of a <i>polygon</i> to a <i>point</i>.
 
 <a name="polygonHull" href="#polygonHull">#</a> geometric.<b>polygonHull</b>(<i>points</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonHull.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonhull "Example")
 

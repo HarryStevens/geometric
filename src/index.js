@@ -1,4 +1,5 @@
 export { lineAngle } from "./lines/lineAngle";
+export { lineClosest } from "./lines/lineClosest";
 export { lineInterpolate } from "./lines/lineInterpolate";
 export { lineLength } from "./lines/lineLength";
 export { lineMidpoint } from "./lines/lineMidpoint";
@@ -12,6 +13,7 @@ export { polygonArea } from "./polygons/polygonArea";
 export { polygonBounds } from "./polygons/polygonBounds";
 export { polygonCentroid } from "./polygons/polygonCentroid";
 export { polygonClose, polygonClosed } from "./polygons/polygonClose";
+export { polygonClosest } from "./polygons/polygonClosest";
 export { polygonHull } from "./polygons/polygonHull";
 export { polygonInterpolate } from "./polygons/polygonInterpolate";
 export { polygonLength } from "./polygons/polygonLength";
