@@ -9,8 +9,6 @@ type Polygon = Point[];
 
 declare function lineAngle(line: Line): number;
 
-declare function lineClosest(line: Line, point: Point): Point;
-
 declare function lineInterpolate(
   line: Line,
   clamp?: boolean
@@ -36,8 +34,6 @@ declare function polygonCentroid(vertices: Polygon): Point;
 
 declare function polygonClose(polygon: Polygon): Polygon;
 declare function polygonClosed(polygon: Polygon): boolean;
-
-declare function polygonClosest(polygon: Polygon, point: Point): Point;
 
 declare function polygonHull(points: Point[]): Polygon | null;
 
@@ -82,6 +78,10 @@ declare function pointRightofLine(point: Point, line: Line): boolean;
 declare function pointOnLine(point: Point, line: Line, epsilon?: number): boolean;
 declare function pointWithLine(point: Point, line: Line, epsilon?: number): boolean;
 
+declare function pointToLine(line: Line, point: Point): Point;
+
+declare function pointToPolygon(polygon: Polygon, point: Point): Point;
+
 declare function polygonInPolygon(polygonA: Polygon, polygonB: Polygon): boolean;
 
 declare function polygonIntersectsPolygon(polygonA: Polygon, polygonB: Polygon): boolean;
@@ -92,4 +92,4 @@ declare function angleToDegrees(angle: number): number;
 
 declare function angleToRadians(angle: number): number;
 
-export { angleReflect, angleToDegrees, angleToRadians, lineAngle, lineClosest, lineInterpolate, lineIntersection, lineIntersectsPolygon, lineLength, lineMidpoint, lineRotate, lineTranslate, pointInPolygon, pointLeftofLine, pointOnLine, pointOnPolygon, pointRightofLine, pointRotate, pointTranslate, pointWithLine, polygonArea, polygonBounds, polygonCentroid, polygonClose, polygonClosed, polygonClosest, polygonHull, polygonInPolygon, polygonInterpolate, polygonIntersectsPolygon, polygonLength, polygonMean, polygonRandom, polygonReflectX, polygonReflectY, polygonRegular, polygonRotate, polygonScale, polygonScaleArea, polygonScaleX, polygonScaleY, polygonTranslate, polygonWind };
+export { angleReflect, angleToDegrees, angleToRadians, lineAngle, lineInterpolate, lineIntersection, lineIntersectsPolygon, lineLength, lineMidpoint, lineRotate, lineTranslate, pointInPolygon, pointLeftofLine, pointOnLine, pointOnPolygon, pointRightofLine, pointRotate, pointToLine, pointToPolygon, pointTranslate, pointWithLine, polygonArea, polygonBounds, polygonCentroid, polygonClose, polygonClosed, polygonHull, polygonInPolygon, polygonInterpolate, polygonIntersectsPolygon, polygonLength, polygonMean, polygonRandom, polygonReflectX, polygonReflectY, polygonRegular, polygonRotate, polygonScale, polygonScaleArea, polygonScaleX, polygonScaleY, polygonTranslate, polygonWind };

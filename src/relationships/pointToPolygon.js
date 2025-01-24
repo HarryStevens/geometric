@@ -1,9 +1,9 @@
 import { lineInterpolate } from "../lines/lineInterpolate";
-import { polygonClose } from "./polygonClose";
+import { polygonClose } from "../polygons/polygonClose";
 import { segmentProject } from "../utils/segmentProject";
 
 // Returns the closest position on a polygon's perimeter to a point
-export function polygonClosest(polygon, point) {
+export function pointToPolygon(polygon, point) {
   if (polygon.length === 1) return polygon[0];
 
   let closestD = Infinity, closest = [];
