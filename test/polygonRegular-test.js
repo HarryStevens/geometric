@@ -1,8 +1,8 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("polygonRegular() returns the expected default", function(test) {
-  var p = geometric.polygonRegular();
+  const p = geometric.polygonRegular();
   
   test.deepEqual(p, [[0, 0], [15.196713713031848, 0], [7.598356856515927, -13.160740129524923]]);
   test.end();

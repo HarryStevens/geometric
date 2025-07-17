@@ -4,9 +4,9 @@ import { pointTranslate } from "../points/pointTranslate";
 import { polygonCentroid } from "./polygonCentroid";
 
 // Scales a polygon by a scale factor (where 1 is the original size) from an origin point.
-// The returned polygon's area is equal to the input polygon's area multiplied by the square of the scaleFactor.
+// The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
 // The origin defaults to the polygon's centroid.
-export function polygonScale(polygon, scale, origin){
+export function polygonScaleArea(polygon, scale, origin){
   if (!origin){
     origin = polygonCentroid(polygon);
   }
@@ -18,7 +18,7 @@ export function polygonScale(polygon, scale, origin){
           d = lineLength([origin, v]),
           a = lineAngle([origin, v]);
 
-    p[i] = pointTranslate(origin, a, d * scale);
+    p[i] = pointTranslate(origin, a, d * Math.sqrt(scale));
   }
 
   return p;

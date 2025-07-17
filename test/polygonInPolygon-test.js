@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("polygonInPolygon(polygonA, polygonB) determines whether a polygon is contained by another polygon", function(test) {
   const polygon = [[0, 0], [2, 0], [2, 2], [0, 2]];

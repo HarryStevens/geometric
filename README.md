@@ -1,17 +1,17 @@
 # Geometric.js
-A JavaScript library for doing geometry. [![Build Status](https://travis-ci.org/HarryStevens/geometric.svg?branch=master)](https://travis-ci.org/HarryStevens/geometric)
+A JavaScript library for doing geometry.
 
-[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/angle-thumb.png" />](https://bl.ocks.org/HarryStevens/5fe49df19892c04dfb9883c217571409)
-[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/length-thumb.png" />](https://bl.ocks.org/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
-[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/centroid-thumb.png" />](https://bl.ocks.org/HarryStevens/37287b23b345f394f8276dc87a9c2bc6)
+[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/angle-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/5fe49df19892c04dfb9883c217571409)
+[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/length-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
+[<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/centroid-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/37287b23b345f394f8276dc87a9c2bc6)
 
 ## Installation
 
 ### Web browser
 In vanilla, a `geometric` global is exported. You can use the latest version from unpkg.
 ```html
-<script src="https://unpkg.com/geometric@2.2.8/build/geometric.js"></script>
-<script src="https://unpkg.com/geometric@2.2.8/build/geometric.min.js"></script>
+<script src="https://unpkg.com/geometric@2.5.5/build/geometric.js"></script>
+<script src="https://unpkg.com/geometric@2.5.5/build/geometric.min.js"></script>
 ```
 If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
@@ -29,7 +29,7 @@ const geometric = require("geometric");
 Geometric.js uses the geometric primitives <b>points</b>, <b>lines</b>, and <b>polygons</b>.
 * [<b>Points</b>](#points) are represented as arrays of two numbers, such as [0, 0].
 * [<b>Lines</b>](#lines) are represented as arrays of two points, such as [[0, 0], [1, 0]]. Because they have endpoints, these are technically [line <i>segments</i>](https://web.archive.org/web/20170829200252/https://www.mhschool.com/math/mathconnects/wa/assets/docs/394_397_wa_gr3_adllsn_onln.pdf), but Geometric.js refers to them as lines for simplicity's sake.
-* [<b>Polygons</b>](#polygons) are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]]. Polygons can be closed – the first and last vertex are the same – or open.
+* [<b>Polygons</b>](#polygons) are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]]. Polygons can be closed – the first and last vertex are the same – or open.
 * There are also functions to [calculate relationships](#relationships) between these primitives.
 
 You will also encounter <b>angles</b>, <b>areas</b>, <b>distances</b>, and <b>lengths</b>.
@@ -56,9 +56,11 @@ Returns the coordinates resulting from translating a <i>point</i> by an <i>angle
 
 Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal axis.
 
-<a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
+<a name="lineInterpolate" href="#lineInterpolate">#</a> geometric.<b>lineInterpolate</b>(<i>line</i>[, <i>clamp</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-lineinterpolate "Example")
 
-Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number ranging from 0 to 1; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
+Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
+
+By default, the interpolator will return points outside of the line segment if t is less than 0 or greater than 1. You can pass an optional boolean indicating whether to <i>clamp</i> the returned point to inside of the line segment, even if t is greater than 1 or less than 0.
 
 <a name="lineLength" href="#lineLength">#</a> geometric.<b>lineLength</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineLength.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linelength "Example")
 
@@ -67,6 +69,14 @@ Returns the length of a <i>line</i>.
 <a name="lineMidpoint" href="#lineMidpoint">#</a> geometric.<b>lineMidpoint</b>(<i>line</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineMidpoint.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linemidpoint "Example")
 
 Returns the midpoint of a <i>line</i>.
+
+<a name="lineRotate" href="#lineRotate">#</a> geometric.<b>lineRotate</b>(<i>line</i>, <i>angle</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineRotate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linerotate "Example")
+
+Returns the coordinates resulting from rotating a <i>line</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to the <a href="#lineMidpoint">midpoint</a> of the line.
+
+<a name="lineTranslate" href="#lineTranslate">#</a> geometric.<b>lineTranslate</b>(<i>line</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/lineTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-linetranslate "Example")
+
+Returns the coordinates resulting from translating a <i>line</i> by an <i>angle</i> in degrees and a <i>distance</i>.
 
 <hr />
 
@@ -95,6 +105,10 @@ Returns the weighted centroid of a <i>polygon</i>. Not to be [confused](https://
 
 Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for an array of <i>points</i>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).
 
+<a name="polygonInterpolate" href="#polygonInterpolate">#</a> geometric.<b>polygonInterpolate</b>(<i>polygon</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonInterpolate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygoninterpolate "Example")
+
+Returns an interpolator function given a <i>polygon</i> of vertices [a, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
+
 <a name="polygonLength" href="#polygonLength">#</a> geometric.<b>polygonLength</b>(<i>polygon</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonLength.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonlength "Example")
 
 Returns the length of a <i>polygon</i>'s perimeter.
@@ -103,9 +117,21 @@ Returns the length of a <i>polygon</i>'s perimeter.
 
 Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
 
+<a name="polygonRandom" href="#polygonRandom">#</a> geometric.<b>polygonRandom</b>([<i>sides</i>[, <i>area</i>[, <i>centroid</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRandom.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonrandom "Example")
+
+Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise. Based on an algorithm by Pavel Valtr and an [implementation by Maneesh Agrawala](https://observablehq.com/@magrawala/random-convex-polygon).
+
+<a name="polygonReflectX" href="#polygonReflectX">#</a> geometric.<b>polygonReflectX</b>(<i>polygon</i>[, <i>reflectFactor</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonReflectX.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonreflectx "Example")
+
+Reflects a <em>polygon</em> over its vertical midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its vertical midline.
+
+<a name="polygonReflectX" href="#polygonReflectY">#</a> geometric.<b>polygonReflectY</b>(<i>polygon</i>[, <i>reflectFactor</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonReflectY.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonreflecty "Example")
+
+Reflects a <em>polygon</em> over its horizontal midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its horizontal midline.
+
 <a name="polygonRegular" href="#polygonRegular">#</a> geometric.<b>polygonRegular</b>([<i>sides</i>[, <i>area</i>[, <i>center</i>]]]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRegular.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonregular "Example")
 
-Returns the vertices of a regular polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>center</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>center</i> is not specified, defaults to [0, 0].
+Returns the vertices of a regular polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>center</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>center</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise.
 
 <a name="polygonRotate" href="#polygonRotate">#</a> geometric.<b>polygonRotate</b>(<i>polygon</i>, <i>angle</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonRotate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonrotate "Example")
 
@@ -115,17 +141,35 @@ Returns the vertices resulting from rotating a <i>polygon</i> about an origin by
 
 Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
+The returned polygon's area is equal to the input polygon's area multiplied by the square of the <i>scaleFactor</i>. To scale the polygon's area by the <i>scaleFactor</i> itself, see <a href="#polygonScaleArea">geometric.polygonScaleArea</a>.
+
+<a name="polygonScaleArea" href="#polygonScaleArea">#</a> geometric.<b>polygonScaleArea</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleArea.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscalearea "Example")
+
+Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+
+The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>. To scale the polygon's area by the square of the <i>scaleFactor</i>, see <a href="#polygonScale">geometric.polygonScale</a>.
+
 <a name="polygonScaleX" href="#polygonScaleX">#</a> geometric.<b>polygonScaleX</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleX.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscalex "Example")
 
 Returns the vertices resulting from scaling the horizontal coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The vertical coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+
+The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
 
 <a name="polygonScaleY" href="#polygonScaleY">#</a> geometric.<b>polygonScaleY</b>(<i>polygon</i>, <i>scaleFactor</i>[, <i>origin</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonScaleY.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonscaley "Example")
 
 Returns the vertices resulting from scaling the vertical coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The horizontal coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
 
+The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
+
 <a name="polygonTranslate" href="#polygonTranslate">#</a> geometric.<b>polygonTranslate</b>(<i>polygon</i>, <i>angle</i>, <i>distance</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonTranslate.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygontranslate "Example")
 
 Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle</i> in degrees and a <i>distance</i>.
+
+<a name="polygonWind" href="#polygonWind">#</a> geometric.<b>polygonWind</b>(<i>polygon</i>[, <i>order</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/polygons/polygonWind.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-polygonwind "Example")
+
+Returns a <i>polygon</i> in the specified winding order. If an <i>order</i> string is passed as either "cw" or "clockwise", returns a polygon with a clockwise winding order. Otherwise, returns a polygon with a counter-clockwise winding order. Returns null if the <i>polygon</i> has fewer than three points.
+
+On computer screens where the top-left corner is at [0, 0], a polygon with a negative signed area has a counter-clockwise winding order.
 
 <hr />
 
@@ -183,8 +227,8 @@ Returns the angle of reflection given a starting angle, also known as the angle 
 
 <a name="angleToDegrees" href="#angleToDegrees">#</a> geometric.<b>angleToDegrees</b>(<i>angle</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/angles/angleToDegrees.js "Source")
 
-Returns the result of a converting an <i>angle</i> in radians to the same angle in degrees.
+Returns the result of converting an <i>angle</i> in radians to the same angle in degrees.
 
 <a name="angleToRadians" href="#angleToRadians">#</a> geometric.<b>angleToRadians</b>(<i>angle</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/angles/angleToRadians.js "Source")
 
-Returns the result of a converting an <i>angle</i> in degrees to the same angle in radians.
+Returns the result of converting an <i>angle</i> in degrees to the same angle in radians.

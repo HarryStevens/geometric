@@ -1,5 +1,5 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("lineAngle(line) calculates the angle of a line, in degrees", function(test) {
   test.equal(geometric.lineAngle([[0, 0], [0, 1]]), 90);

@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("polygonArea(polygon) calculates the area of a polygon", test => {
   test.equal(geometric.polygonArea([[0, 0], [1, 0], [1, 1], [0, 1]]), 1);
@@ -18,4 +18,3 @@ tape("If the polygon's winding order is counter-clockwise and signed is set to t
   test.equal(geometric.polygonArea(p), 8065);
   test.end();
 });
-

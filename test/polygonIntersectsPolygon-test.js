@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("polygonIntersectsPolygon(polygonA, polygonB) determines whether two polygons intersect but neither contains the other", function(test) {
   const polygon = [[0, 0], [2, 0], [2, 2], [0, 2]];
@@ -43,6 +43,16 @@ tape("polygonIntersectsPolygon(polygonA, polygonB) detects intersections in spec
         b = [[160, 180], [170, 181.72], [180, 187.64], [185, 193.41]];
 
   test.equal(geometric.polygonIntersectsPolygon(a, b), true);
+
+  test.end();
+});
+
+// https://github.com/HarryStevens/geometric/issues/29
+tape("polygonIntersectsPolygon(polygonA, polygonB) returns false in open U configuration", test => {
+  const a = [[3, 3], [3, 4], [4, 4], [4, 3]],
+        b = [[1, 1], [1, 4], [2, 4], [2, 2], [5, 2], [5, 4], [6, 4], [6, 1]];
+
+  test.equal(geometric.polygonIntersectsPolygon(a, b), false);
 
   test.end();
 });

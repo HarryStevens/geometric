@@ -10,14 +10,17 @@ tape("lineIntersectsLine(lineA, lineB) determines whether lineA intersects lineB
         lineF = [[1, 2], [3, 4]],
         lineG = [[0, 1], [2, 3]];
 
+  // 1.
   test.equal(geometric.lineIntersectsLine(lineA, lineB), true);
+  // 2.
   test.equal(geometric.lineIntersectsLine(lineA, lineC), false);
+  // 3.
   test.equal(geometric.lineIntersectsLine(lineB, lineC), false);
-  // Same lines
+  // 4. Same lines
   test.equal(geometric.lineIntersectsLine(lineC, lineD), true);
-  // Parallel lines not crossing
+  // 5. Parallel lines not crossing
   test.equal(geometric.lineIntersectsLine(lineE, lineD), false);
-  // Parallel lines overlapping
+  // 6. Parallel lines overlapping
   test.equal(geometric.lineIntersectsLine(lineF, lineG), true);
   test.end();
 });
@@ -33,7 +36,9 @@ tape("lineIntersectsLine(lineA, lineB) returns true if lineA and lineB share an 
     [50.054358, 8.693184]
   ];
 
+  // 7.
   test.equal(geometric.lineIntersectsLine(line1, line2), true);
+  // 8.
   test.equal(geometric.lineIntersectsLine(line2, line1), true);
   test.end();
 });
@@ -49,7 +54,9 @@ tape("lineIntersectsLine(lineA, lineB) returns true if one of lineA and lineB po
     [0.5, 0]
   ];
 
+  // 9.
   test.equal(geometric.lineIntersectsLine(line1, line2), true);
+  // 10.
   test.equal(geometric.lineIntersectsLine(line2, line1), true);
   test.end();
 });
@@ -60,7 +67,9 @@ tape("lineIntersectsLine(lineA, lineB) returns false if two segments are colline
   const line2 = [[0, 0], [11, 0]];
   const line3 = [[15, 0],[25, 0]];
 
+  // 11.
   test.equal(geometric.lineIntersectsLine(line1, line3), false);
+  // 12.
   test.equal(geometric.lineIntersectsLine(line2, line3), false);
   test.end();
 })
