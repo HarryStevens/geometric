@@ -1,1 +1,0 @@
-export function angleToRadians(angle: number): number;

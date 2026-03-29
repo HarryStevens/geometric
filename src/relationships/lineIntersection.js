@@ -1,10 +1,22 @@
-import { pointOnLine } from "./pointOnLine";
+import { pointOnLine } from "./pointOnLine.js";
+
+/**
+ * @typedef {import("../types.js").Point} Point
+ * @typedef {import("../types.js").Line} Line
+ */
 
 // Returns a point where line a intersects line b.
 // If the two lines do not intersect, returns null.
+/**
+ * @param {Line} a
+ * @param {Line} b
+ * @returns {Point | null}
+ */
 export function lineIntersection(a, b) {
-  const [a0x, a0y] = a[0], [a1x, a1y] = a[1];
-  const [b0x, b0y] = b[0], [b1x, b1y] = b[1];
+  const [a0x, a0y] = a[0],
+    [a1x, a1y] = a[1];
+  const [b0x, b0y] = b[0],
+    [b1x, b1y] = b[1];
 
   // Bounding box overlap check
   if (
@@ -23,18 +35,22 @@ export function lineIntersection(a, b) {
   if (pointOnLine(b[1], a)) return b[1];
 
   // Vectorized calculation
-  const dxA = a1x - a0x, dyA = a1y - a0y;
-  const dxB = b1x - b0x, dyB = b1y - b0y;
+  const dxA = a1x - a0x,
+    dyA = a1y - a0y;
+  const dxB = b1x - b0x,
+    dyB = b1y - b0y;
 
-  const denom = (dyB * dxA) - (dxB * dyA);
+  const denom = dyB * dxA - dxB * dyA;
   if (denom === 0) return null; // Parallel lines
 
-  const dy = a0y - b0y, dx = a0x - b0x;
-  const numerA = (dxB * dy) - (dyB * dx);
-  const numerB = (dxA * dy) - (dyA * dx);
-  const quotA = numerA / denom, quotB = numerB / denom;
+  const dy = a0y - b0y,
+    dx = a0x - b0x;
+  const numerA = dxB * dy - dyB * dx;
+  const numerB = dxA * dy - dyA * dx;
+  const quotA = numerA / denom,
+    quotB = numerB / denom;
 
-  return (quotA >= 0 && quotA <= 1 && quotB >= 0 && quotB <= 1) 
-    ? [a0x + quotA * dxA, a0y + quotA * dyA] 
+  return quotA >= 0 && quotA <= 1 && quotB >= 0 && quotB <= 1
+    ? [a0x + quotA * dxA, a0y + quotA * dyA]
     : null;
 }

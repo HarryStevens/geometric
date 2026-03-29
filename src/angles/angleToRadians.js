@@ -1,4 +1,8 @@
 // Converts degrees to radians.
-export function angleToRadians(angle){
-  return angle / 180 * Math.PI;
+/**
+ * @param {number} angle
+ * @returns {number}
+ */
+export function angleToRadians(angle) {
+  return (angle / 180) * Math.PI;
 }

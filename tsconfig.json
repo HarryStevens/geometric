@@ -2,10 +2,9 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "strict": true,
-    "outDir": "./build",
-    "moduleResolution": "node"
+    "moduleResolution": "bundler",
+    "strict": true
   },
-  "include": ["src/**/*", "test/**/*", "types/**/*"],
+  "include": ["src/**/*", "test/**/*"],
   "exclude": ["node_modules"]
 }

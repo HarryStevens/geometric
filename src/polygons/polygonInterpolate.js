@@ -1,29 +1,42 @@
-import { lineAngle } from "../lines/lineAngle";
-import { lineLength } from "../lines/lineLength";
-import { pointTranslate } from "../points/pointTranslate";
-import { polygonClose } from "./polygonClose";
-import { polygonLength } from "./polygonLength";
+import { lineAngle } from "../lines/lineAngle.js";
+import { lineLength } from "../lines/lineLength.js";
+import { pointTranslate } from "../points/pointTranslate.js";
+import { polygonClose } from "./polygonClose.js";
+import { polygonLength } from "./polygonLength.js";
 
-// Returns an interpolator function given a polygon of vertices [a, b, ..., n]. 
+/**
+ * @typedef {import("../types.js").Point} Point
+ * @typedef {import("../types.js").Line} Line
+ * @typedef {import("../types.js").Polygon} Polygon
+ */
+
+// Returns an interpolator function given a polygon of vertices [a, b, ..., n].
 // The returned interpolator function takes a single argument t,
-// where t is a number in [0, 1]; 
+// where t is a number in [0, 1];
 // a value of 0 returns a, while a value of 1 returns n.
 // Intermediate values interpolate from a to n along the polygon's perimeter.
-// You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1]. 
+// You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1].
 // When clamp is false, the interpolator applies modular arithmetic to t.
 // If t is less than 0, the interpolator wraps around the polygon's perimeter in reverse.
 // If t is greater than 1, the interpolator continues forward along the perimeter.
 
-export function polygonInterpolate(polygon, clamp = true){
+/**
+ * @param {Polygon} polygon
+ * @param {boolean} [clamp=true]
+ * @returns {(t: number) => Point}
+ */
+export function polygonInterpolate(polygon, clamp = true) {
   const closed = polygonClose(polygon);
   const length = polygonLength(closed);
-  
+
+  /** @type {[Point, number, number][]} */
   const segments = [];
   for (let i = 0; i < closed.length - 1; i++) {
     const p0 = closed[i];
     const p1 = closed[i + 1];
+    /** @type {Line} */
     const l = [p0, p1];
-    segments.push([ p0, lineLength(l), lineAngle(l) ]);
+    segments.push([p0, lineLength(l), lineAngle(l)]);
   }
 
   return (t) => {
@@ -35,15 +48,15 @@ export function polygonInterpolate(polygon, clamp = true){
     const mod = t % 1;
     const target = length * (mod < 0 ? 1 + mod : mod);
     let track = 0;
-  
-    for (const [ point, length, angle ] of segments) {
+
+    for (const [point, length, angle] of segments) {
       const delta = target - (track += length);
 
       if (delta < 0) {
         return pointTranslate(point, angle, length + delta);
       }
     }
-  
+
     return closed[closed.length - 1];
-  }
+  };
 }

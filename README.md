@@ -1,74 +1,63 @@
 # Geometric.js
+
 A JavaScript library for doing geometry.
 
 [<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/angle-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/5fe49df19892c04dfb9883c217571409)
 [<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/length-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/c4eddfb97535e8e01643325cb43175ff)
 [<img src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/centroid-thumb.png" />](https://blocks.roadtolarissa.com/HarryStevens/37287b23b345f394f8276dc87a9c2bc6)
 
-TypeScript declarations are available via [the build directory](https://github.com/HarryStevens/geometric/blob/master/build/geometric.d.ts).
+Geometric v3 ships as an ESM-first package with CommonJS support and generated TypeScript declarations.
 
 ## Installation
 
-### Web browser
-In vanilla HTML, you can load geometric from a CDN such as unpkg or you can download it locally. You can the CDN-hosted ES module bundle.
-```html
-<!DOCTYPE html>
-<script type="module">
+### pnpm
 
-import * as geometric from "https://unpkg.com/geometric@3.0.0/build/geometric.js"
-
-const point = [10, 10];
-// Translate a point 45 degrees by 100 pixels
-const translated = geometric.pointTranslate(point, 45, 100);
-
-</script>
+```bash
+pnpm add geometric
 ```
-
-You can also use a UMD bundle that exports the d3 global when loaded as a plain script.
-
-```html
-<!DOCTYPE html>
-<script src="https://unpkg.com/geometric@3.0.0/build/geometric.min.js"></script>
-<script type="module">
-
-const point = [10, 10];
-// Translate a point 45 degrees by 100 pixels
-const translated = geometric.pointTranslate(point, 45, 100);
-</script>
-```
-
-If you'd rather host it yourself, download the latest release from the [`build` directory](https://github.com/HarryStevens/geometric/tree/master/build).
 
 ### npm
 
 ```bash
 npm i geometric -S
 ```
+
+## Usage
+
 ```js
-import { pointTranslate } from "geometric"
+import { pointTranslate } from "geometric";
 
 const point = [10, 10];
 // Translate a point 45 degrees by 100 pixels
-const translated = geometric.pointTranslate(point, 45, 100);
+const translated = pointTranslate(point, 45, 100);
 ```
 
-You can also import the entire library.
+You can also import the entire library or use CommonJS.
 
 ```js
-import * as geometric from "geometric"
+import * as geometric from "geometric";
 ```
+
+```js
+const geometric = require("geometric");
+```
+
+TypeScript declarations are generated from the JavaScript source and published with the package.
 
 ## API
 
 Geometric.js uses the geometric primitives <b>points</b>, <b>lines</b>, and <b>polygons</b>.
-* [<b>Points</b>](#points) are represented as arrays of two numbers, such as [0, 0].
-* [<b>Lines</b>](#lines) are represented as arrays of two points, such as [[0, 0], [1, 0]]. Because they have endpoints, these are technically [line <i>segments</i>](https://web.archive.org/web/20170829200252/https://www.mhschool.com/math/mathconnects/wa/assets/docs/394_397_wa_gr3_adllsn_onln.pdf), but Geometric.js refers to them as lines for simplicity's sake.
-* [<b>Polygons</b>](#polygons) are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]]. Polygons can be closed – the first and last vertex are the same – or open.
-* There are also functions to [calculate relationships](#relationships) between these primitives.
+
+- [<b>Points</b>](#points) are represented as arrays of two numbers, such as [0, 0].
+- [<b>Lines</b>](#lines) are represented as arrays of two points, such as [[0, 0], [1, 0]]. Because they have endpoints, these are technically [line <i>segments</i>](https://web.archive.org/web/20170829200252/https://www.mhschool.com/math/mathconnects/wa/assets/docs/394_397_wa_gr3_adllsn_onln.pdf), but Geometric.js refers to them as lines for simplicity's sake.
+- [<b>Polygons</b>](#polygons) are represented as arrays of vertices, each of which is a point, such as [[0, 0], [1, 0], [1, 1], [0, 1]]. Polygons can be closed – the first and last vertex are the same – or open.
+- There are also functions to [calculate relationships](#relationships) between these primitives.
+- Polygon boolean operations return a single array of points. If a true geometric result would split into multiple regions or create a hole, Geometric.js bridges those regions with straight segments instead of returning MultiPolygons.
 
 You will also encounter <b>angles</b>, <b>areas</b>, <b>distances</b>, and <b>lengths</b>.
-* [<b>Angles</b>](#angles) are represented as numbers, measured in degrees. Geometric.js also provides functions to convert angles from [degrees to radians](#angleToRadians) or [vice versa](#angleToDegrees).
-* <b>Areas</b>, <b>distances</b>, and <b>lengths</b> are represented as numbers, measured in pixels.
+
+- [<b>Angles</b>](#angles) are represented as numbers, measured in degrees. Geometric.js also provides functions to convert angles from [degrees to radians](#angleToRadians) or [vice versa](#angleToDegrees).
+- <b>Areas</b>, <b>distances</b>, and <b>lengths</b> are represented as numbers, measured in pixels.
 
 <hr />
 
@@ -125,7 +114,12 @@ Returns the area of a <i>polygon</i>. You can pass a boolean indicating whether 
 Returns the bounds of a <i>polygon</i>, ignoring points with invalid values (null, undefined, NaN, Infinity). The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
 
 ```js
-const rectangle = [[0, 0], [0, 1], [1, 1], [1, 0]];
+const rectangle = [
+  [0, 0],
+  [0, 1],
+  [1, 1],
+  [1, 0],
+];
 const bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
 ```
 
@@ -240,6 +234,10 @@ Returns a boolean representing whether a <i>point</i> is collinear with a <i>lin
 Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
 
 [<img width="150" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
+
+<a name="pointsEqual" href="#pointsEqual">#</a> geometric.<b>pointsEqual</b>(<i>pointA</i>, <i>pointB</i>[, <i>epsilon</i>]) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/relationships/pointsEqual.js "Source")
+
+Returns a boolean representing whether two <i>points</i> are equal within an optional <i>epsilon</i> tolerance. If <i>epsilon</i> is not specified, a small default tolerance is used.
 
 <a name="pointToLine" href="#pointToLine">#</a> geometric.<b>pointToLine</b>(<i>line</i>, <i>point</i>) · [Source](https://github.com/HarryStevens/geometric/blob/master/src/lines/pointToLine.js "Source"), [Example](https://observablehq.com/@harrystevens/geometric-pointtoline "Example")
 

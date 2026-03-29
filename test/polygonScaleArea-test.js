@@ -3,7 +3,16 @@ import * as geometric from "../build/geometric.js";
 
 describe("polygonScaleArea", () => {
   it("scales a polygon by a scale factor from an origin point. The returned polygon's area is equal to the input polygon's area multiplied by the scale factor.", () => {
-    const polygon = [[738.5, 168.5], [838.5, 138.5], [938.5, 168.5], [988.5, 268.5], [938.5, 368.5], [838.5, 398.5], [738.5, 368.5], [688.5, 268.5]];
+    const polygon = [
+      [738.5, 168.5],
+      [838.5, 138.5],
+      [938.5, 168.5],
+      [988.5, 268.5],
+      [938.5, 368.5],
+      [838.5, 398.5],
+      [738.5, 368.5],
+      [688.5, 268.5],
+    ];
     const a0 = geometric.polygonArea(polygon);
 
     for (let scale = 0; scale <= 10; scale += 0.01) {

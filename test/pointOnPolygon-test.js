@@ -1,7 +1,12 @@
 import { strict as assert } from "assert";
 import * as geometric from "../build/geometric.js";
 
-const polygon = [[10, 10], [50, 10], [50, 50], [10, 50]];
+const polygon = [
+  [10, 10],
+  [50, 10],
+  [50, 50],
+  [10, 50],
+];
 
 describe("pointOnPolygon", () => {
   it("determines whether a point is located on one of the edges of a polygon", () => {

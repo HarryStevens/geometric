@@ -1,5 +1,3 @@
-import babel from "@rollup/plugin-babel";
-
 export default {
   input: "src/index.js",
   output: [
@@ -8,15 +6,9 @@ export default {
       format: "es",
     },
     {
-      file: "build/geometric.umd.js",
-      format: "umd",
-      name: "geometric"
-    }
+      file: "build/geometric.cjs",
+      format: "cjs",
+      exports: "named",
+    },
   ],
-  plugins: [
-    babel({
-      babelHelpers: "bundled",
-      exclude: "node_modules/**"
-    })
-  ]
 };

@@ -12,15 +12,15 @@ describe("polygonWind", () => {
       [110, 278],
       [60, 237],
       [30, 159],
-      [19, 101]
+      [19, 101],
     ];
     const isCounterClockwise = geometric.polygonArea(polygon, true) > 0;
 
     const reversed = polygon.slice().reverse(),
-          wound = geometric.polygonWind(polygon),
-          ccw = geometric.polygonWind(polygon, "ccw"),
-          cw = geometric.polygonWind(polygon, "cw"),
-          clockwise = geometric.polygonWind(polygon, "clockwise");
+      wound = geometric.polygonWind(polygon),
+      ccw = geometric.polygonWind(polygon, "ccw"),
+      cw = geometric.polygonWind(polygon, "cw"),
+      clockwise = geometric.polygonWind(polygon, "clockwise");
 
     assert.equal(isCounterClockwise, true);
     assert.deepEqual(wound, polygon);
@@ -32,6 +32,12 @@ describe("polygonWind", () => {
   it("returns null if the polygon has fewer than three points", () => {
     assert.equal(geometric.polygonWind([]), null);
     assert.equal(geometric.polygonWind([[0, 1]]), null);
-    assert.equal(geometric.polygonWind([[0, 1], [1, 2]]), null);
+    assert.equal(
+      geometric.polygonWind([
+        [0, 1],
+        [1, 2],
+      ]),
+      null,
+    );
   });
 });

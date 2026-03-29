@@ -4,7 +4,10 @@ import round from "./utils/roundArray.js";
 
 describe("lineInterpolate", () => {
   it("returns points along a line", () => {
-    const line = [[236, 0], [708, 190]];
+    const line = [
+      [236, 0],
+      [708, 190],
+    ];
     const interpolator = geometric.lineInterpolate(line);
     assert.deepEqual(round(interpolator(0), 1), line[0]);
     assert.deepEqual(round(interpolator(1), 1), line[1]);
@@ -20,14 +23,20 @@ describe("lineInterpolate", () => {
   });
 
   it("returns points outside the line segment if clamp is false", () => {
-    const line = [[236, 0], [708, 190]];
+    const line = [
+      [236, 0],
+      [708, 190],
+    ];
     const interpolator = geometric.lineInterpolate(line, false);
     assert.deepEqual(round(interpolator(-0.1), 1), [188.8, -19]);
     assert.deepEqual(round(interpolator(1.1), 1), [755.2, 209]);
   });
 
   it("returns points inside the line segment if clamp is true", () => {
-    const line = [[236, 0], [708, 190]];
+    const line = [
+      [236, 0],
+      [708, 190],
+    ];
     const interpolator = geometric.lineInterpolate(line);
     assert.deepEqual(interpolator(-0.1), line[0]);
     assert.deepEqual(interpolator(1.1), line[1]);
