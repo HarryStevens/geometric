@@ -2,7 +2,7 @@
  * @typedef {import("../types.js").Line} Line
  */
 
-// Calculates the distance between the endpoints of a line segment.
+// Returns the length of a <i>line</i>.
 /**
  * @param {Line} line
  * @returns {number}

@@ -4,7 +4,7 @@ import { angleToRadians } from "../angles/angleToRadians.js";
  * @typedef {import("../types.js").Point} Point
  */
 
-// Translates a point by an angle in degrees and distance
+// Returns the coordinates resulting from translating a <i>point</i> by an <i>angle</i> in degrees and a <i>distance</i>. If <i>angle</i> is not specified, defaults to 0. If <i>distance</i> is not specified, defaults to 0.
 /**
  * @param {Point} point
  * @param {number} [angle=0]

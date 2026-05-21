@@ -3,7 +3,7 @@
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Calculates the arithmetic mean of a polygon's vertices.
+// Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
 /**
  * @param {Polygon} vertices
  * @returns {Point | []}

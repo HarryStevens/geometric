@@ -1,4 +1,4 @@
-// Converts degrees to radians.
+// Returns the result of converting an <i>angle</i> in degrees to the same angle in radians.
 /**
  * @param {number} angle
  * @returns {number}

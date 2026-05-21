@@ -4,7 +4,7 @@ import { EPSILON } from "../utils/constants.js";
  * @typedef {import("../types.js").Point} Point
  */
 
-// Determines whether two points are equal within an epsilon tolerance.
+// Returns a boolean representing whether two <i>points</i> are equal within an optional <i>epsilon</i> tolerance. If <i>epsilon</i> is not specified, a small default tolerance is used.
 /**
  * @param {Point} pointA
  * @param {Point} pointB

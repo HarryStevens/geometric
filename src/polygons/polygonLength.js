@@ -2,7 +2,7 @@
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Calculates the length of a polygon's perimeter. See https://github.com/d3/d3-polygon/blob/master/src/length.js
+// Returns the length of a <i>polygon</i>'s perimeter.
 /**
  * @param {Polygon} vertices
  * @returns {number}

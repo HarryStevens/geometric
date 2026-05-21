@@ -10,8 +10,7 @@ import { polygonTranslate } from "./polygonTranslate.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a random polygon according to the specific number of sides, area, and centroid.
-// Based on an algorithm by Pavel Valtr and an implementation by Maneesh Agrawala: https://observablehq.com/@magrawala/random-convex-polygon
+// Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise. Based on an algorithm by Pavel Valtr and an [implementation by Maneesh Agrawala](https://observablehq.com/@magrawala/random-convex-polygon).
 /**
  * @param {number} [sides=3]
  * @param {number} [area=100]

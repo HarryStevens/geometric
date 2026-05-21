@@ -5,11 +5,7 @@ import { polygonBounds } from "./polygonBounds.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Reflects a polygon over its horizontal midline.
-// Pass an optional reflectFactor between 0 and 1,
-// where 1 indicates a full reflection,
-// 0 leaves the polygon unchanged,
-// and 0.5 collapses the polygon on its horizontal midline.
+// Reflects a <em>polygon</em> over its horizontal midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its horizontal midline.
 /**
  * @param {Polygon} polygon
  * @param {number} [reflectFactor=1]

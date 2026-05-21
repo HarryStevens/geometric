@@ -8,7 +8,7 @@ import { segmentProject } from "../utils/segment.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the closest position on a polygon's perimeter to a point
+// Returns the closest position on the perimeter of a <i>polygon</i> to a <i>point</i>.
 /**
  * @param {Polygon} polygon
  * @param {Point} point

@@ -6,7 +6,7 @@ import { segmentProject } from "../utils/segment.js";
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns the closest position on a line to a point
+// Returns the closest position on a <i>line</i> to a <i>point</i>.
 /**
  * @param {Line} line
  * @param {Point} point

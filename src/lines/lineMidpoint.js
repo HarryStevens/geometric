@@ -3,7 +3,7 @@
  * @typedef {import("../types.js").Line} Line
  */
 
-// Calculates the midpoint of a line segment.
+// Returns the midpoint of a <i>line</i>.
 /**
  * @param {Line} line
  * @returns {Point}

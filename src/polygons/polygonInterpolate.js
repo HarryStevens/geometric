@@ -10,16 +10,9 @@ import { polygonLength } from "./polygonLength.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns an interpolator function given a polygon of vertices [a, b, ..., n].
-// The returned interpolator function takes a single argument t,
-// where t is a number in [0, 1];
-// a value of 0 returns a, while a value of 1 returns n.
-// Intermediate values interpolate from a to n along the polygon's perimeter.
-// You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1].
-// When clamp is false, the interpolator applies modular arithmetic to t.
-// If t is less than 0, the interpolator wraps around the polygon's perimeter in reverse.
-// If t is greater than 1, the interpolator continues forward along the perimeter.
-
+// Returns an interpolator function given a <i>polygon</i> of vertices [a, b, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
+//
+// You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1]. When clamp is false, the interpolator applies modular arithmetic to t. If t is less than 0, the interpolator wraps around the polygon's perimeter in reverse. If t is greater than 1, the interpolator continues forward along the perimeter.
 /**
  * @param {Polygon} polygon
  * @param {boolean} [clamp=true]

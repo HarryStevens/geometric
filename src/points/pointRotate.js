@@ -4,7 +4,7 @@ import { angleToRadians } from "../angles/angleToRadians.js";
  * @typedef {import("../types.js").Point} Point
  */
 
-// Rotates a point by an angle in degrees around an origin.
+// Returns the coordinates resulting from rotating a <i>point</i> about an origin by an <i>angle</i> in degrees. If <i>angle</i> is not specified, defaults to 0. If <i>origin</i> is not specified, the origin defaults to [0, 0].
 /**
  * @param {Point} point
  * @param {number} [angle=0]

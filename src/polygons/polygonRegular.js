@@ -8,7 +8,7 @@ import { polygonTranslate } from "./polygonTranslate.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices of a regular polygon of the specified number of sides, area, and center coordinates.
+// Returns the vertices of a regular polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>center</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>center</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise.
 /**
  * @param {number} [sides=3]
  * @param {number} [area=100]

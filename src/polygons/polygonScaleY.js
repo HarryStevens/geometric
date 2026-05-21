@@ -8,8 +8,9 @@ import { polygonCentroid } from "./polygonCentroid.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Scales a polygon's y-coordinates by a scale factor (where 1 is the original size) from an origin point.
-// The origin defaults to the polygon's centroid.
+// Returns the vertices resulting from scaling the vertical coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The horizontal coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+//
+// The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
 /**
  * @param {Polygon} polygon
  * @param {number} scale

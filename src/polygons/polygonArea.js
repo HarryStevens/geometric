@@ -2,7 +2,7 @@
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Calculates the area of a polygon.
+// Returns the area of a <i>polygon</i>. You can pass a boolean indicating whether the returned area is <i>signed</i>, which defaults to false.
 /**
  * @param {Polygon} vertices
  * @param {boolean} [signed=false]

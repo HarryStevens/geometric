@@ -16,6 +16,7 @@ function topPointFirst(line) {
   return line[1][1] > line[0][1] ? line : [line[1], line[0]];
 }
 
+// Returns a boolean representing whether a <i>point</i> is to the left of a <i>line</i>.
 /**
  * @param {Point} point
  * @param {Line} line
@@ -25,6 +26,7 @@ export function pointLeftofLine(point, line) {
   const t = topPointFirst(line);
   return cross(point, t[1], t[0]) < 0;
 }
+// Returns a boolean representing whether a <i>point</i> is to the right of a <i>line</i>.
 /**
  * @param {Point} point
  * @param {Line} line
@@ -34,6 +36,8 @@ export function pointRightofLine(point, line) {
   const t = topPointFirst(line);
   return cross(point, t[1], t[0]) > 0;
 }
+
+// Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i> and is also located on the line segment. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointWithLine](#pointWithLine).
 /**
  * @param {Point} point
  * @param {Line} line
@@ -48,6 +52,8 @@ export function pointOnLine(point, line, epsilon = 0) {
     lineLength([line[1], point]) <= l
   );
 }
+
+// Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointOnLine](#pointOnLine).
 /**
  * @param {Point} point
  * @param {Line} line

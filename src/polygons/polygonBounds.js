@@ -4,7 +4,19 @@
  * @typedef {[Point, Point]} Bounds
  */
 
-// Calculates the bounds of a polygon.
+// Returns the bounds of a <i>polygon</i>, ignoring points with invalid values (null, undefined, NaN, Infinity). The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
+//
+// ```js
+// const rectangle = [
+//   [0, 0],
+//   [0, 1],
+//   [1, 1],
+//   [1, 0],
+// ];
+// const bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
+// ```
+//
+// Returns null if the <i>polygon</i> has fewer than three points.
 /**
  * @param {Polygon} polygon
  * @returns {Bounds | null}

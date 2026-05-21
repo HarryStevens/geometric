@@ -5,7 +5,7 @@ import { lineMidpoint } from "../lines/lineMidpoint.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Calculates the weighted centroid a polygon.
+// Returns the weighted centroid of a <i>polygon</i>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [mean center](#polygonMean).
 /**
  * @param {Polygon} vertices
  * @returns {Point | []}

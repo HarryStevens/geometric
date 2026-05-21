@@ -4,7 +4,7 @@ import { angleToDegrees } from "../angles/angleToDegrees.js";
  * @typedef {import("../types.js").Line} Line
  */
 
-// Calculates the angle of a line, in degrees.
+// Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal axis.
 /**
  * @param {Line} line
  * @returns {number}

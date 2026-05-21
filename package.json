@@ -12,6 +12,10 @@
       "import": "./build/geometric.js",
       "require": "./build/geometric.cjs",
       "default": "./build/geometric.js"
+    },
+    "./api": {
+      "import": "./build/api.generated.js",
+      "default": "./build/api.generated.js"
     }
   },
   "files": [
@@ -20,9 +24,11 @@
   "packageManager": "pnpm@10.18.3",
   "scripts": {
     "clean": "rm -rf build",
+    "generate:api": "node scripts/generate-api.js",
+    "build:api": "node scripts/generate-api.js --out build/api.generated.js",
     "build:js": "rollup -c",
     "build:types": "tsc -p tsconfig.build.json",
-    "build": "pnpm run clean && pnpm run build:js && pnpm run build:types",
+    "build": "pnpm run clean && pnpm run build:js && pnpm run build:types && pnpm run build:api",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint . --max-warnings=0",

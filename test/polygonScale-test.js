@@ -39,4 +39,19 @@ describe("polygonScale", () => {
     assert.equal(polygonDoubled[7][0], 538.5);
     assert.equal(Math.round(polygonDoubled[7][1]), 269);
   });
+
+  it("defaults the scale factor to 1", () => {
+    const polygon = [
+      [0, 0],
+      [10, 0],
+      [10, 10],
+      [0, 10],
+    ];
+
+    const scaled = geometric.polygonScale(polygon);
+
+    scaled.forEach((point, index) => {
+      assert.equal(geometric.pointsEqual(point, polygon[index]), true);
+    });
+  });
 });
