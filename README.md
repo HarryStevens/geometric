@@ -7,5 +7,3 @@ Geometric.js is a JavaScript library for doing geometry. It includes TypeScript 
 - [Getting Started](https://harryjstevens.com/geometric/getting-started/)
 - [API Reference](https://harryjstevens.com/geometric/api/)
 - [Examples](https://harryjstevens.com/geometric/examples/)
-
-
