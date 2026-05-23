@@ -39,8 +39,27 @@ jobs:
       - name: Run build and tests
         run: pnpm test
 
+      - name: Read currently published version
+        run: echo "PUBLISHED_VERSION_BEFORE=$(npm view geometric version 2>/dev/null || true)" >> "$GITHUB_ENV"
+
       - name: Publish release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm run release
+
+      - name: Trigger site deploy
+        env:
+          GH_TOKEN: ${{ secrets.GEOMETRIC_SITE_DISPATCH_TOKEN }}
+        run: |
+          published_version_after="$(npm view geometric version)"
+
+          if [ "$published_version_after" = "$PUBLISHED_VERSION_BEFORE" ]; then
+            echo "No new npm version was published; skipping site deploy."
+            exit 0
+          fi
+
+          gh api repos/HarryStevens/geometric-site/dispatches \
+            --method POST \
+            -f event_type=geometric-published \
+            -f client_payload[version]="$published_version_after"

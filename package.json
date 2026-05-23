@@ -12,14 +12,11 @@
       "import": "./build/geometric.js",
       "require": "./build/geometric.cjs",
       "default": "./build/geometric.js"
-    },
-    "./api": {
-      "import": "./build/api.generated.js",
-      "default": "./build/api.generated.js"
     }
   },
   "files": [
-    "build/"
+    "build/",
+    "img/logo.svg"
   ],
   "packageManager": "pnpm@10.18.3",
   "scripts": {

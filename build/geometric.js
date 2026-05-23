@@ -664,7 +664,7 @@ function polygonIntersection(polygonA, polygonB) {
 }
 
 /**
- * Returns the portion of `polygonA` that is outside `polygonB`.
+ * Returns the portion of <i>polygonA</i> that is outside <i>polygonB</i>.
  *
  * Holes are bridged into a single point array.
  *
