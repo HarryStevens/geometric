@@ -1,10 +1,35 @@
-const tape = require("tape"),
-      geometric = require("../");
+import { strict as assert } from "assert";
+import * as geometric from "../build/geometric.js";
 
-tape("lineLength(line) calculates the length of a line segment", function(test) {
-  test.equal(geometric.lineLength([[0, 0], [0, 1]]), 1);
-  test.equal(geometric.lineLength([[0, 0], [0, -1]]), 1);
-  test.equal(geometric.lineLength([[1, 0], [1, 0]]), 0);
-  test.equal(geometric.lineLength([[1, 0], [-1, 0]]), 2);
-  test.end();
+describe("lineLength", () => {
+  it("calculates the length of a line segment", () => {
+    assert.equal(
+      geometric.lineLength([
+        [0, 0],
+        [0, 1],
+      ]),
+      1,
+    );
+    assert.equal(
+      geometric.lineLength([
+        [0, 0],
+        [0, -1],
+      ]),
+      1,
+    );
+    assert.equal(
+      geometric.lineLength([
+        [1, 0],
+        [1, 0],
+      ]),
+      0,
+    );
+    assert.equal(
+      geometric.lineLength([
+        [1, 0],
+        [-1, 0],
+      ]),
+      2,
+    );
+  });
 });

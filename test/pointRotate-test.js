@@ -1,22 +1,21 @@
-const tape = require("tape"),
-      geometric = require("../");
+import { strict as assert } from "assert";
+import * as geometric from "../build/geometric.js";
 
-tape("pointRotate(point, angle, origin) rotates a point by an angle in degrees around an origin", test => {
-  test.equal(geometric.pointRotate([1, 1], 90).map(d => Math.round(d))[0], -1);
-  test.equal(geometric.pointRotate([1, 1], 90)[1], 1);
-  test.equal(geometric.pointRotate([1, 1], 180).map(d => Math.round(d))[0], -1);
-  test.equal(geometric.pointRotate([1, 1], 180).map(d => Math.round(d))[1], -1);
-  test.equal(geometric.pointRotate([1, 1], 180, [0, 0]).map(d => Math.round(d))[0], -1);
-  test.equal(geometric.pointRotate([1, 1], 180, [0, 0]).map(d => Math.round(d))[1], -1);
-  test.equal(geometric.pointRotate([1, 1], 90, [2, 2])[0], 3);
-  test.equal(geometric.pointRotate([1, 1], 90, [2, 2])[1], 1);
-  test.equal(geometric.pointRotate([1, 1], 180, [2, 2])[0], 3);
-  test.equal(geometric.pointRotate([1, 1], 180, [2, 2])[1], 3);
-  test.end();
-});
+describe("pointRotate", () => {
+  it("rotates a point by an angle in degrees around an origin", () => {
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 90)[0]), -1);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 90)[1]), 1);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 180)[0]), -1);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 180)[1]), -1);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 180, [0, 0])[0]), -1);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 180, [0, 0])[1]), -1);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 90, [2, 2])[0]), 3);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 90, [2, 2])[1]), 1);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 180, [2, 2])[0]), 3);
+    assert.equal(Math.round(geometric.pointRotate([1, 1], 180, [2, 2])[1]), 3);
+  });
 
-tape("pointRotate(point, angle, origin) returns the same point if second two arguments are not passed", test => {
-  test.deepEqual(geometric.pointRotate([1, 1]), [1, 1]);
-
-  test.end();
+  it("returns the same point if the second two arguments are not passed", () => {
+    assert.deepEqual(geometric.pointRotate([1, 1]), [1, 1]);
+  });
 });

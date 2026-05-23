@@ -1,14 +1,63 @@
-const tape = require("tape"),
-      geometric = require("../");
+import { strict as assert } from "assert";
+import * as geometric from "../build/geometric.js";
 
-tape("lineMidpoint(line) calculates the midpoint of a line segment", function(test) {
-  test.equal(geometric.lineMidpoint([[0, 0], [0, 1]])[0], 0);
-  test.equal(geometric.lineMidpoint([[0, 0], [0, 1]])[1], .5);
-  test.equal(geometric.lineMidpoint([[0, 0], [0, -1]])[0], 0);
-  test.equal(geometric.lineMidpoint([[0, 0], [0, -1]])[1], -.5);
-  test.equal(geometric.lineMidpoint([[1, 0], [1, 0]])[0], 1);
-  test.equal(geometric.lineMidpoint([[1, 0], [1, 0]])[1], 0);
-  test.equal(geometric.lineMidpoint([[1, 0], [-1, 0]])[0], 0);
-  test.equal(geometric.lineMidpoint([[1, 0], [-1, 0]])[1], 0);
-  test.end();
+describe("lineMidpoint", () => {
+  it("calculates the midpoint of a line segment", () => {
+    assert.equal(
+      geometric.lineMidpoint([
+        [0, 0],
+        [0, 1],
+      ])[0],
+      0,
+    );
+    assert.equal(
+      geometric.lineMidpoint([
+        [0, 0],
+        [0, 1],
+      ])[1],
+      0.5,
+    );
+    assert.equal(
+      geometric.lineMidpoint([
+        [0, 0],
+        [0, -1],
+      ])[0],
+      0,
+    );
+    assert.equal(
+      geometric.lineMidpoint([
+        [0, 0],
+        [0, -1],
+      ])[1],
+      -0.5,
+    );
+    assert.equal(
+      geometric.lineMidpoint([
+        [1, 0],
+        [1, 0],
+      ])[0],
+      1,
+    );
+    assert.equal(
+      geometric.lineMidpoint([
+        [1, 0],
+        [1, 0],
+      ])[1],
+      0,
+    );
+    assert.equal(
+      geometric.lineMidpoint([
+        [1, 0],
+        [-1, 0],
+      ])[0],
+      0,
+    );
+    assert.equal(
+      geometric.lineMidpoint([
+        [1, 0],
+        [-1, 0],
+      ])[1],
+      0,
+    );
+  });
 });

@@ -1,9 +1,15 @@
-const tape = require("tape"),
-      geometric = require("../");
+import { strict as assert } from "assert";
+import * as geometric from "../build/geometric.js";
 
-tape("pointInPolygon(point, vertices) determines whether a point is in a polygon", function(test) {
-  const polygon = [[0, 0], [2, 0], [2, 2], [0, 2]];
-  test.equal(geometric.pointInPolygon([1, 1], polygon), true);
-  test.equal(geometric.pointInPolygon([3, 3], polygon), false);
-  test.end();
+describe("pointInPolygon", () => {
+  it("determines whether a point is in a polygon", () => {
+    const polygon = [
+      [0, 0],
+      [2, 0],
+      [2, 2],
+      [0, 2],
+    ];
+    assert.equal(geometric.pointInPolygon([1, 1], polygon), true);
+    assert.equal(geometric.pointInPolygon([3, 3], polygon), false);
+  });
 });

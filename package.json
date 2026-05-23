@@ -1,26 +1,52 @@
 {
   "name": "geometric",
-  "version": "2.5.5",
+  "version": "3.0.0",
   "description": "A JavaScript library with geometric functions.",
-  "main": "build/geometric.js",
-  "unpkg": "build/geometric.min.js",
-  "jsdelivr": "build/geometric.min.js",
-  "module": "index",
+  "type": "module",
+  "main": "./build/geometric.cjs",
+  "module": "./build/geometric.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "import": "./build/geometric.js",
+      "require": "./build/geometric.cjs",
+      "default": "./build/geometric.js"
+    }
+  },
+  "files": [
+    "build/",
+    "img/logo.svg"
+  ],
+  "packageManager": "pnpm@10.18.3",
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup -c --banner \"$(preamble)\"",
-    "test": "tape 'test/**/*-test.js'",
-    "prepublishOnly": "npm run test && uglifyjs build/geometric.js -c -m -o build/geometric.min.js",
-    "postpublish": "zip -j build/geometric.zip -- LICENSE README.md build/geometric.js build/geometric.min.js"
+    "clean": "rm -rf build",
+    "generate:api": "node scripts/generate-api.js",
+    "build:api": "node scripts/generate-api.js --out build/api.generated.js",
+    "build:js": "rollup -c",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build": "pnpm run clean && pnpm run build:js && pnpm run build:types && pnpm run build:api",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint . --max-warnings=0",
+    "test:runtime": "mocha 'test/**/*-test.js'",
+    "test:types": "tsc -p test/tsconfig.json --noEmit",
+    "test": "pnpm run build && pnpm run test:runtime && pnpm run test:types",
+    "release": "semantic-release"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "babel": "^6.23.0",
-    "package-preamble": "0.1",
-    "rollup": "^0.62.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "tape": "4",
-    "uglify-js": "^2.8.11"
+    "@eslint/js": "^9.36.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.2",
+    "eslint": "^9.36.0",
+    "globals": "^16.4.0",
+    "mocha": "^11.0.1",
+    "prettier": "^3.6.2",
+    "rollup": "^4.30.1",
+    "semantic-release": "^24.2.3",
+    "typescript": "^5.7.3"
   },
   "repository": {
     "type": "git",
@@ -38,5 +64,33 @@
   "bugs": {
     "url": "https://github.com/HarryStevens/geometric/issues"
   },
-  "homepage": "https://github.com/HarryStevens/geometric#readme"
+  "homepage": "https://github.com/HarryStevens/geometric#readme",
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "pnpm-lock.yaml"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}"
+        }
+      ]
+    ]
+  }
 }

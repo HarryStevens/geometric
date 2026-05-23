@@ -1,15 +1,14 @@
-import babel from "rollup-plugin-babel";
-
 export default {
-  input: "index.js",
-  output: {
-    file: "build/geometric.js",
-    format: "umd",
-    name: "geometric"
-  },
-  plugins: [
-    babel({
-      exclude: "node_modules/**"
-    })
-  ] 
+  input: "src/index.js",
+  output: [
+    {
+      file: "build/geometric.js",
+      format: "es",
+    },
+    {
+      file: "build/geometric.cjs",
+      format: "cjs",
+      exports: "named",
+    },
+  ],
 };

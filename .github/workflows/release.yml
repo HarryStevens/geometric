@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.18.3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run build and tests
+        run: pnpm test
+
+      - name: Read currently published version
+        run: echo "PUBLISHED_VERSION_BEFORE=$(npm view geometric version 2>/dev/null || true)" >> "$GITHUB_ENV"
+
+      - name: Publish release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm run release
+
+      - name: Trigger site deploy
+        env:
+          GH_TOKEN: ${{ secrets.GEOMETRIC_SITE_DISPATCH_TOKEN }}
+        run: |
+          published_version_after="$(npm view geometric version)"
+
+          if [ "$published_version_after" = "$PUBLISHED_VERSION_BEFORE" ]; then
+            echo "No new npm version was published; skipping site deploy."
+            exit 0
+          fi
+
+          gh api repos/HarryStevens/geometric-site/dispatches \
+            --method POST \
+            -f event_type=geometric-published \
+            -f client_payload[version]="$published_version_after"

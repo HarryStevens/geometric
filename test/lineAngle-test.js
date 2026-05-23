@@ -1,12 +1,49 @@
-const tape = require("tape"),
-      geometric = require("../");
+import { strict as assert } from "assert";
+import * as geometric from "../build/geometric.js";
 
-tape("lineAngle(line) calculates the angle of a line, in degrees", function(test) {
-  test.equal(geometric.lineAngle([[0, 0], [0, 1]]), 90);
-  test.equal(geometric.lineAngle([[0, 0], [0, -1]]), -90);
-  test.equal(geometric.lineAngle([[0, 0], [1, 0]]), 0);
-  test.equal(geometric.lineAngle([[0, 0], [-1, 0]]), 180);
-  test.equal(geometric.lineAngle([[0, 0], [1, 1]]), 45);
-  test.equal(geometric.lineAngle([[0, 0], [-1, -1]]), -135);
-  test.end();
+describe("lineAngle", () => {
+  it("calculates the angle of a line, in degrees", () => {
+    assert.equal(
+      geometric.lineAngle([
+        [0, 0],
+        [0, 1],
+      ]),
+      90,
+    );
+    assert.equal(
+      geometric.lineAngle([
+        [0, 0],
+        [0, -1],
+      ]),
+      -90,
+    );
+    assert.equal(
+      geometric.lineAngle([
+        [0, 0],
+        [1, 0],
+      ]),
+      0,
+    );
+    assert.equal(
+      geometric.lineAngle([
+        [0, 0],
+        [-1, 0],
+      ]),
+      180,
+    );
+    assert.equal(
+      geometric.lineAngle([
+        [0, 0],
+        [1, 1],
+      ]),
+      45,
+    );
+    assert.equal(
+      geometric.lineAngle([
+        [0, 0],
+        [-1, -1],
+      ]),
+      -135,
+    );
+  });
 });

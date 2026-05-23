@@ -1,9 +1,10 @@
-const tape = require("tape"),
-      geometric = require("../");
+import { strict as assert } from "assert";
+import * as geometric from "../build/geometric.js";
 
-tape("angleToDegrees(angle) converts an angle from radians to degrees", function(test) {
-  test.equal(geometric.angleToDegrees(Math.PI), 180);
-  test.equal(geometric.angleToDegrees(Math.PI * 2), 360);
-  test.equal(geometric.angleToDegrees(0), 0);
-  test.end();
+describe("angleToDegrees", () => {
+  it("converts an angle from radians to degrees", () => {
+    assert.equal(geometric.angleToDegrees(Math.PI), 180);
+    assert.equal(geometric.angleToDegrees(Math.PI * 2), 360);
+    assert.equal(geometric.angleToDegrees(0), 0);
+  });
 });
