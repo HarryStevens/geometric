@@ -71,6 +71,49 @@ describe("polygonInPolygon", () => {
     ];
     assert.equal(geometric.polygonInPolygon(polygonA, polygonB), false);
   });
+  it("returns true when the polygons are equal", () => {
+    const polygon = [
+      [1, 2],
+      [215, 1],
+      [215, 215],
+    ];
+    assert.equal(geometric.polygonInPolygon(polygon, polygon), true);
+  });
+  it("returns true when polygonA shares points with polygonB and is otherwise contained", () => {
+    assert.equal(
+      geometric.polygonInPolygon(
+        [
+          [1, 2],
+          [215, 1],
+          [214, 214],
+        ],
+        [
+          [1, 2],
+          [215, 1],
+          [215, 215],
+        ],
+      ),
+      true,
+    );
+  });
+  it("returns true when polygonA shares an edge with polygonB and is otherwise contained", () => {
+    assert.equal(
+      geometric.polygonInPolygon(
+        [
+          [0, 0],
+          [2, 0],
+          [1, 1],
+        ],
+        [
+          [0, 0],
+          [2, 0],
+          [2, 2],
+          [0, 2],
+        ],
+      ),
+      true,
+    );
+  });
   it("does not alter polygonA if it is forced closed", () => {
     const openPolygon = [
       [0, 0],
