@@ -10,5 +10,11 @@ export default {
       format: "cjs",
       exports: "named",
     },
+    {
+      file: "build/geometric.min.js",
+      format: "umd",
+      name: "geometric",
+      exports: "named",
+    },
   ],
 };

@@ -5,6 +5,8 @@
   "type": "module",
   "main": "./build/geometric.cjs",
   "module": "./build/geometric.js",
+  "unpkg": "./build/geometric.min.js",
+  "jsdelivr": "./build/geometric.min.js",
   "types": "./build/index.d.ts",
   "exports": {
     ".": {
