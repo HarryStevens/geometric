@@ -29,6 +29,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Check formatting
+        if: github.event_name == 'pull_request'
         run: pnpm run format:check
 
       - name: Run lint
