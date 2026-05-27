@@ -27,7 +27,7 @@ npm install geometric -S
 ```
 
 ```js
-import { polygonArea, polygonCentroid, polygonScale } from "geometric";
+import * as geometric from "geometric";
 ```
 
 ## Why Geometric.js?
