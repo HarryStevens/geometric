@@ -1,9 +1,8 @@
 ## [3.0.2](https://github.com/HarryStevens/geometric/compare/v3.0.1...v3.0.2) (2026-05-24)
 
-
 ### Bug Fixes
 
-* **polygonInPolygon:** treat boundary points and edges as contained ([8423d74](https://github.com/HarryStevens/geometric/commit/8423d74ac39ee0bfbc1493f1d7e8488753018697)), closes [#20](https://github.com/HarryStevens/geometric/issues/20)
+- **polygonInPolygon:** treat boundary points and edges as contained ([8423d74](https://github.com/HarryStevens/geometric/commit/8423d74ac39ee0bfbc1493f1d7e8488753018697)), closes [#20](https://github.com/HarryStevens/geometric/issues/20)
 
 ## [3.0.1](https://github.com/HarryStevens/geometric/compare/v3.0.0...v3.0.1) (2026-05-24)
 
