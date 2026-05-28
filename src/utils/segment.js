@@ -25,7 +25,7 @@ export function directedSegmentKey(segment) {
 
 /**
  * Projects a point onto a line segment.
- * See https://observablehq.com/@fil/distance-to-a-segment
+ * See https://harryjstevens.com/geometric/examples/point-to-line/
  *
  * @param {Point} point
  * @param {Line} line

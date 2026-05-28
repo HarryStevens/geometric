@@ -535,8 +535,6 @@ function pointWithLine(point, line, epsilon = 0) {
  */
 
 // Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
-//
-// [<img width="150" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
 /**
  * @param {Point} point
  * @param {Polygon} polygon
@@ -616,7 +614,7 @@ function directedSegmentKey(segment) {
 
 /**
  * Projects a point onto a line segment.
- * See https://observablehq.com/@fil/distance-to-a-segment
+ * See https://harryjstevens.com/geometric/examples/point-to-line/
  *
  * @param {Point} point
  * @param {Line} line
@@ -1459,7 +1457,7 @@ function polygonTranslate(polygon, angle, distance) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise. Based on an algorithm by Pavel Valtr and an [implementation by Maneesh Agrawala](https://observablehq.com/@magrawala/random-convex-polygon).
+// Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise. Based on an algorithm by Pavel Valtr. See [example](https://harryjstevens.com/geometric/examples/polygon-random/).
 /**
  * @param {number} [sides=3]
  * @param {number} [area=100]
@@ -1990,7 +1988,7 @@ function lineInOrOnPolygon(line, polygon) {
   return true;
 }
 
-// Returns a boolean representing whether <i>polygonA</i> is contained by <i>polygonB</i>.
+// Returns a boolean representing whether <i>polygonA</i> is contained by <i>polygonB</i>. Points and edges on <i>polygonB</i>'s boundary are considered contained.
 /**
  * @param {Polygon} polygonA
  * @param {Polygon} polygonB

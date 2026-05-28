@@ -7,8 +7,6 @@ import { polygonClose } from "../polygons/polygonClose.js";
  */
 
 // Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
-//
-// [<img width="150" src="https://raw.githubusercontent.com/HarryStevens/geometric/master/img/point-on-with-line.png" />](https://observablehq.com/d/c463ce4b7cbcd048)
 /**
  * @param {Point} point
  * @param {Polygon} polygon
