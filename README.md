@@ -35,6 +35,8 @@ import * as geometric from "geometric";
 Geometric.js keeps geometry simple. A point is an `[x, y]` array, a line is an array of two points, and a polygon is an array of points.
 
 ```js
+import { pointTranslate, lineRotate, polygonScale } from "geometric";
+
 const point = [0, 0];
 const line = [
   [0, 0],
@@ -46,6 +48,10 @@ const polygon = [
   [10, 10],
   [0, 10],
 ];
+
+const translated = pointTranslate(point, 90, 10);
+const rotated = lineRotate(line, 90);
+const scaled = polygonScale(polygon, 2);
 ```
 
 There are no custom classes to instantiate and no special data structures to learn. The values you pass into Geometric.js are the same values you can serialize, inspect, draw to SVG or Canvas, store in JSON, or pass to other JavaScript code.
