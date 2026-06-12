@@ -9,7 +9,6 @@
 [![CI](https://github.com/HarryStevens/geometric/actions/workflows/ci.yml/badge.svg)](https://github.com/HarryStevens/geometric/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/geometric.svg)](https://www.npmjs.com/package/geometric)
 [![npm downloads](https://img.shields.io/npm/dw/geometric.svg)](https://www.npmjs.com/package/geometric)
-[![GitHub stars](https://img.shields.io/github/stars/HarryStevens/geometric.svg)](https://github.com/HarryStevens/geometric/stargazers)
 [![license](https://img.shields.io/npm/l/geometric.svg)](LICENSE)
 
 Geometric.js is a JavaScript library for working with points, lines, polygons, and angles. It uses plain JavaScript arrays for geometry primitives, includes TypeScript declarations for editor autocomplete and type checking, and works in modern browsers and Node.js.
