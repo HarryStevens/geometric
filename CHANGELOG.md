@@ -1,9 +1,8 @@
 ## [3.0.3](https://github.com/HarryStevens/geometric/compare/v3.0.2...v3.0.3) (2026-05-28)
 
-
 ### Bug Fixes
 
-* **build:** minify browser bundle ([0e9d488](https://github.com/HarryStevens/geometric/commit/0e9d488fe52f9a084e8e33c06e5bfea6e8d6b485))
+- **build:** minify browser bundle ([0e9d488](https://github.com/HarryStevens/geometric/commit/0e9d488fe52f9a084e8e33c06e5bfea6e8d6b485))
 
 ## [3.0.2](https://github.com/HarryStevens/geometric/compare/v3.0.1...v3.0.2) (2026-05-24)
 
