@@ -20,6 +20,11 @@
     "build/",
     "img/logo.svg"
   ],
+  "pnpm": {
+    "overrides": {
+      "serialize-javascript": "^7.0.5"
+    }
+  },
   "packageManager": "pnpm@10.18.3",
   "scripts": {
     "clean": "rm -rf build",
