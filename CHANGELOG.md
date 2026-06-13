@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/HarryStevens/geometric/compare/v3.0.4...v3.0.5) (2026-06-13)
+
+
+### Bug Fixes
+
+* **deps:** update lodash transitive dependencies ([5b6ef9b](https://github.com/HarryStevens/geometric/commit/5b6ef9b4e0d5a22787e11994d064d2cf413504c7))
+
 ## [3.0.4](https://github.com/HarryStevens/geometric/compare/v3.0.3...v3.0.4) (2026-06-13)
 
 
