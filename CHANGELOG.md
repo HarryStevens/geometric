@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/HarryStevens/geometric/compare/v3.0.3...v3.0.4) (2026-06-13)
+
+
+### Bug Fixes
+
+* **package:** sync published README ([dbdca57](https://github.com/HarryStevens/geometric/commit/dbdca57b70bfc540657e6479643a1e8792a9d255))
+
 ## [3.0.3](https://github.com/HarryStevens/geometric/compare/v3.0.2...v3.0.3) (2026-05-28)
 
 ### Bug Fixes
