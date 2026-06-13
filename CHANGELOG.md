@@ -1,3 +1,11 @@
+## [3.0.6](https://github.com/HarryStevens/geometric/compare/v3.0.5...v3.0.6) (2026-06-13)
+
+
+### Bug Fixes
+
+* **deps:** override serialize-javascript ([7c6506e](https://github.com/HarryStevens/geometric/commit/7c6506ede2fb158769c0b80d087cfc1f1a55be41))
+* update changelog ([f96ec75](https://github.com/HarryStevens/geometric/commit/f96ec75ba7177fd29d83136ca5be538765606080))
+
 ## [3.0.5](https://github.com/HarryStevens/geometric/compare/v3.0.4...v3.0.5) (2026-06-13)
 
 
