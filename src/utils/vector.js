@@ -3,17 +3,6 @@
  */
 
 /**
- * Returns the midpoint between two points.
- *
- * @param {Point} pointA
- * @param {Point} pointB
- * @returns {Point}
- */
-export function midpoint(pointA, pointB) {
-  return [(pointA[0] + pointB[0]) / 2, (pointA[1] + pointB[1]) / 2];
-}
-
-/**
  * Subtracts pointB from pointA.
  *
  * @param {Point} pointA

@@ -1,4 +1,5 @@
 import { lineInterpolate } from "../lines/lineInterpolate.js";
+import { lineMidpoint } from "../lines/lineMidpoint.js";
 import { pointInPolygon } from "../relationships/pointInPolygon.js";
 import { pointOnPolygon } from "../relationships/pointOnPolygon.js";
 import { pointsEqual } from "../relationships/pointsEqual.js";
@@ -11,7 +12,6 @@ import {
   distanceSquared,
   dot,
   magnitude,
-  midpoint,
   subtract,
 } from "../utils/vector.js";
 import { polygonArea } from "./polygonArea.js";
@@ -231,7 +231,7 @@ function splitPolygonEdges(polygon, otherPolygon) {
  * @returns {{ start: Point, end: Point, startKey: string, endKey: string, angle: number } | null}
  */
 function orientBoundarySegment(operation, polygonA, polygonB, segment, scale) {
-  const center = midpoint(segment.start, segment.end);
+  const center = lineMidpoint([segment.start, segment.end]);
   const direction = subtract(segment.end, segment.start);
   const length = magnitude(direction);
 
