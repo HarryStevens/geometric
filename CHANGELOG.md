@@ -1,3 +1,10 @@
+## [3.0.7](https://github.com/HarryStevens/geometric/compare/v3.0.6...v3.0.7) (2026-06-14)
+
+
+### Bug Fixes
+
+* reuse shared geometry helpers ([187050e](https://github.com/HarryStevens/geometric/commit/187050ec548aace3b5f8f8478a5371bf74372a0a))
+
 ## [3.0.6](https://github.com/HarryStevens/geometric/compare/v3.0.5...v3.0.6) (2026-06-13)
 
 
