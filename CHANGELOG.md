@@ -1,3 +1,10 @@
+## [3.0.8](https://github.com/HarryStevens/geometric/compare/v3.0.7...v3.0.8) (2026-06-17)
+
+
+### Bug Fixes
+
+* include API summaries in generated types ([4f39475](https://github.com/HarryStevens/geometric/commit/4f39475b49415de3d2f8442607b76158b8289a9c))
+
 ## [3.0.7](https://github.com/HarryStevens/geometric/compare/v3.0.6...v3.0.7) (2026-06-14)
 
 ### Bug Fixes
