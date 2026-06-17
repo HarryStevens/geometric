@@ -5,8 +5,9 @@ import { pointOnLine } from "./pointOnLine.js";
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns a point where line <i>a</i> intersects line <i>b</i>. If the two lines do not intersect, returns null.
 /**
+ * Returns a point where line <i>a</i> intersects line <i>b</i>. If the two lines do not intersect, returns null.
+ *
  * @param {Line} a
  * @param {Line} b
  * @returns {Point | null}

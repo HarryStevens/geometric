@@ -8,8 +8,9 @@ import { pointsEqual } from "./pointsEqual.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns an array of points where a <i>line</i> intersects a </i>polygon</i>. If the line does not intersect the polygon, returns null.
 /**
+ * Returns an array of points where a <i>line</i> intersects a </i>polygon</i>. If the line does not intersect the polygon, returns null.
+ *
  * @param {Line} line
  * @param {Polygon} polygon
  * @returns {Point[] | null}

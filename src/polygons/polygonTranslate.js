@@ -4,8 +4,9 @@ import { pointTranslate } from "../points/pointTranslate.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle</i> in degrees and a <i>distance</i>.
 /**
+ * Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle</i> in degrees and a <i>distance</i>.
+ *
  * @param {Polygon} polygon
  * @param {number} angle
  * @param {number} distance

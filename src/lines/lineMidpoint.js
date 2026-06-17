@@ -3,8 +3,9 @@
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns the midpoint of a <i>line</i>.
 /**
+ * Returns the midpoint of a <i>line</i>.
+ *
  * @param {Line} line
  * @returns {Point}
  */

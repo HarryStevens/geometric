@@ -6,8 +6,9 @@ import { polygonClose } from "../polygons/polygonClose.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a boolean representing whether <i>polygonA</i> intersects but is not contained by <i>polygonB</i>.
 /**
+ * Returns a boolean representing whether <i>polygonA</i> intersects but is not contained by <i>polygonB</i>.
+ *
  * @param {Polygon} polygonA
  * @param {Polygon} polygonB
  * @returns {boolean}

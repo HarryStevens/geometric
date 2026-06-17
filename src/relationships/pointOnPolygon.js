@@ -6,8 +6,9 @@ import { polygonClose } from "../polygons/polygonClose.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
 /**
+ * Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
+ *
  * @param {Point} point
  * @param {Polygon} polygon
  * @param {number} [epsilon=0]

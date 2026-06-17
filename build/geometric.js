@@ -1,5 +1,6 @@
-// Returns the result of converting an <i>angle</i> in radians to the same angle in degrees.
 /**
+ * Returns the result of converting an <i>angle</i> in radians to the same angle in degrees.
+ *
  * @param {number} angle
  * @returns {number}
  */
@@ -11,8 +12,9 @@ function angleToDegrees(angle) {
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal axis.
 /**
+ * Returns the angle of a <i>line</i>, in degrees, with respect to the horizontal axis.
+ *
  * @param {Line} line
  * @returns {number}
  */
@@ -27,10 +29,11 @@ function lineAngle(line) {
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
-//
-// By default, the returned interpolator will <i>clamp</i> the output to the ends of the line segment. You can pass an optional boolean indicating whether to return points outside the line segment if t is greater than 1 or less than 0.
 /**
+ * Returns an interpolator function given a <i>line</i> [a, b]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns b. Intermediate values interpolate from a to b along the line segment.
+ *
+ * By default, the returned interpolator will <i>clamp</i> the output to the ends of the line segment. You can pass an optional boolean indicating whether to return points outside the line segment if t is greater than 1 or less than 0.
+ *
  * @param {Line} line
  * @param {boolean} [clamp=true]
  * @returns {(t: number) => Point}
@@ -48,326 +51,8 @@ function lineInterpolate(line, clamp = true) {
 }
 
 /**
- * @typedef {import("../types.js").Line} Line
- */
-
-// Returns the length of a <i>line</i>.
-/**
- * @param {Line} line
- * @returns {number}
- */
-function lineLength(line) {
-  return Math.sqrt(
-    Math.pow(line[1][0] - line[0][0], 2) + Math.pow(line[1][1] - line[0][1], 2),
-  );
-}
-
-/**
- * @typedef {import("../types.js").Point} Point
- * @typedef {import("../types.js").Line} Line
- */
-
-// Returns the midpoint of a <i>line</i>.
-/**
- * @param {Line} line
- * @returns {Point}
- */
-function lineMidpoint(line) {
-  return [(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2];
-}
-
-// Returns the result of converting an <i>angle</i> in degrees to the same angle in radians.
-/**
- * @param {number} angle
- * @returns {number}
- */
-function angleToRadians(angle) {
-  return (angle / 180) * Math.PI;
-}
-
-/**
  * @typedef {import("../types.js").Point} Point
  */
-
-// Returns the coordinates resulting from rotating a <i>point</i> about an origin by an <i>angle</i> in degrees. If <i>angle</i> is not specified, defaults to 0. If <i>origin</i> is not specified, the origin defaults to [0, 0].
-/**
- * @param {Point} point
- * @param {number} [angle=0]
- * @param {Point} [origin]
- * @returns {Point}
- */
-function pointRotate(point, angle, origin) {
-  const r = angleToRadians(angle || 0);
-
-  if (!origin || (origin[0] === 0 && origin[1] === 0)) {
-    return rotate(point, r);
-  } else {
-    // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
-    const p0 = point.map((c, i) => c - origin[i]);
-    const rotated = rotate(p0, r);
-    return rotated.map((c, i) => c + origin[i]);
-  }
-}
-
-/**
- * @param {Point} point
- * @param {number} angle
- * @returns {Point}
- */
-function rotate(point, angle) {
-  // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
-  return [
-    point[0] * Math.cos(angle) - point[1] * Math.sin(angle),
-    point[0] * Math.sin(angle) + point[1] * Math.cos(angle),
-  ];
-}
-
-/**
- * @typedef {import("../types.js").Line} Line
- * @typedef {import("../types.js").Point} Point
- */
-
-// Returns the coordinates resulting from rotating a <i>line</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to the <a href="#lineMidpoint">midpoint</a> of the line.
-/**
- * @param {Line} line
- * @param {number} angle
- * @param {Point} [origin]
- * @returns {Line}
- */
-function lineRotate(line, angle, origin) {
-  return line.map((point) =>
-    pointRotate(point, angle, origin || lineMidpoint(line)),
-  );
-}
-
-/**
- * @typedef {import("../types.js").Point} Point
- */
-
-// Returns the coordinates resulting from translating a <i>point</i> by an <i>angle</i> in degrees and a <i>distance</i>. If <i>angle</i> is not specified, defaults to 0. If <i>distance</i> is not specified, defaults to 0.
-/**
- * @param {Point} point
- * @param {number} [angle=0]
- * @param {number} [distance=0]
- * @returns {Point}
- */
-function pointTranslate(point, angle = 0, distance = 0) {
-  const r = angleToRadians(angle);
-  return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
-}
-
-/**
- * @typedef {import("../types.js").Line} Line
- */
-
-// Returns the coordinates resulting from translating a <i>line</i> by an <i>angle</i> in degrees and a <i>distance</i>. If <i>angle</i> is not specified, defaults to 0. If <i>distance</i> is not specified, defaults to 0.
-/**
- * @param {Line} line
- * @param {number} angle
- * @param {number} distance
- * @returns {Line}
- */
-function lineTranslate(line, angle, distance) {
-  return line.map((point) => pointTranslate(point, angle, distance));
-}
-
-/**
- * @typedef {import("../types.js").Polygon} Polygon
- */
-
-// Returns the area of a <i>polygon</i>. You can pass a boolean indicating whether the returned area is <i>signed</i>, which defaults to false.
-/**
- * @param {Polygon} vertices
- * @param {boolean} [signed=false]
- * @returns {number}
- */
-function polygonArea(vertices, signed = false) {
-  let a = 0;
-
-  for (let i = 0, l = vertices.length; i < l; i++) {
-    const v0 = vertices[i],
-      v1 = vertices[i === l - 1 ? 0 : i + 1];
-
-    a += v0[0] * v1[1];
-    a -= v1[0] * v0[1];
-  }
-
-  return signed ? a / 2 : Math.abs(a / 2);
-}
-
-/**
- * @typedef {import("../types.js").Point} Point
- * @typedef {import("../types.js").Polygon} Polygon
- * @typedef {[Point, Point]} Bounds
- */
-
-// Returns the bounds of a <i>polygon</i>, ignoring points with invalid values (null, undefined, NaN, Infinity). The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
-//
-// ```js
-// const rectangle = [
-//   [0, 0],
-//   [0, 1],
-//   [1, 1],
-//   [1, 0],
-// ];
-// const bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
-// ```
-//
-// Returns null if the <i>polygon</i> has fewer than three points.
-/**
- * @param {Polygon} polygon
- * @returns {Bounds | null}
- */
-function polygonBounds(polygon) {
-  if (polygon.length < 3) {
-    return null;
-  }
-
-  let xMin = Infinity,
-    xMax = -Infinity,
-    yMin = Infinity,
-    yMax = -Infinity,
-    found = false;
-
-  for (let i = 0, l = polygon.length; i < l; i++) {
-    const p = polygon[i],
-      x = p[0],
-      y = p[1];
-
-    if (x != null && isFinite(x) && y != null && isFinite(y)) {
-      found = true;
-      if (x < xMin) xMin = x;
-      if (x > xMax) xMax = x;
-      if (y < yMin) yMin = y;
-      if (y > yMax) yMax = y;
-    }
-  }
-
-  return found
-    ? [
-        [xMin, yMin],
-        [xMax, yMax],
-      ]
-    : null;
-}
-
-/**
- * @typedef {import("../types.js").Point} Point
- * @typedef {import("../types.js").Polygon} Polygon
- */
-
-// Returns the weighted centroid of a <i>polygon</i>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [mean center](#polygonMean).
-/**
- * @param {Polygon} vertices
- * @returns {Point | []}
- */
-function polygonCentroid(vertices) {
-  if (!vertices.length) return [];
-  if (vertices.length === 1) return vertices[0];
-  if (vertices.length === 2) return lineMidpoint(vertices);
-
-  let a = 0,
-    x = 0,
-    y = 0,
-    l = vertices.length;
-
-  for (let i = 0; i < l; i++) {
-    const s = i === l - 1 ? 0 : i + 1,
-      v0 = vertices[i],
-      v1 = vertices[s],
-      f = v0[0] * v1[1] - v1[0] * v0[1];
-
-    a += f;
-    x += (v0[0] + v1[0]) * f;
-    y += (v0[1] + v1[1]) * f;
-  }
-
-  const d = a * 3;
-
-  return [x / d, y / d];
-}
-
-/**
- * @typedef {import("../types.js").Polygon} Polygon
- */
-
-// Returns a new <i>polygon</i> that is closed by appending the first point of the polygon to the end if it is not already closed. The input <i>polygon</i> is not modified.
-/**
- * @param {Polygon} polygon
- * @returns {Polygon}
- */
-function polygonClose(polygon) {
-  if (!polygon.length) {
-    return polygon;
-  }
-  return polygonClosed(polygon) ? polygon : [...polygon, polygon[0]];
-}
-
-// Returns a boolean indicating whether the given <i>polygon</i> is closed. A polygon is considered closed if its first point is identical to its last point.
-/**
- * @param {Polygon} polygon
- * @returns {boolean}
- */
-function polygonClosed(polygon) {
-  if (polygon.length < 2) {
-    return false;
-  }
-  const first = polygon[0],
-    last = polygon[polygon.length - 1];
-  return first[0] === last[0] && first[1] === last[1];
-}
-
-// Determines whether a point is inside of a polygon, represented as an array of vertices.
-// From https://github.com/substack/point-in-polygon/blob/master/index.js,
-// based on the ray-casting algorithm from https://web.archive.org/web/20180115151705/https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
-// Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
-// Returns a boolean.
-/**
- * @typedef {import("../types.js").Point} Point
- * @typedef {import("../types.js").Polygon} Polygon
- */
-
-// Returns a boolean representing whether a <i>point</i> is inside of a <i>polygon</i>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
-/**
- * @param {Point} point
- * @param {Polygon} polygon
- * @returns {boolean}
- */
-function pointInPolygon(point, polygon) {
-  let x = point[0],
-    y = point[1],
-    inside = false;
-
-  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-    const xi = polygon[i][0],
-      yi = polygon[i][1],
-      xj = polygon[j][0],
-      yj = polygon[j][1];
-
-    if (yi > y != yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) {
-      inside = !inside;
-    }
-  }
-
-  return inside;
-}
-
-const EPSILON = 1e-9;
-
-/**
- * @typedef {import("../types.js").Point} Point
- */
-
-/**
- * Returns the midpoint between two points.
- *
- * @param {Point} pointA
- * @param {Point} pointB
- * @returns {Point}
- */
-function midpoint(pointA, pointB) {
-  return [(pointA[0] + pointB[0]) / 2, (pointA[1] + pointB[1]) / 2];
-}
 
 /**
  * Subtracts pointB from pointA.
@@ -438,6 +123,324 @@ function distanceSquared(pointA, pointB) {
 }
 
 /**
+ * @typedef {import("../types.js").Line} Line
+ */
+
+/**
+ * Returns the length of a <i>line</i>.
+ *
+ * @param {Line} line
+ * @returns {number}
+ */
+function lineLength(line) {
+  return Math.sqrt(distanceSquared(line[0], line[1]));
+}
+
+/**
+ * @typedef {import("../types.js").Point} Point
+ * @typedef {import("../types.js").Line} Line
+ */
+
+/**
+ * Returns the midpoint of a <i>line</i>.
+ *
+ * @param {Line} line
+ * @returns {Point}
+ */
+function lineMidpoint(line) {
+  return [(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2];
+}
+
+/**
+ * Returns the result of converting an <i>angle</i> in degrees to the same angle in radians.
+ *
+ * @param {number} angle
+ * @returns {number}
+ */
+function angleToRadians(angle) {
+  return (angle / 180) * Math.PI;
+}
+
+/**
+ * @typedef {import("../types.js").Point} Point
+ */
+
+/**
+ * Returns the coordinates resulting from rotating a <i>point</i> about an origin by an <i>angle</i> in degrees. If <i>angle</i> is not specified, defaults to 0. If <i>origin</i> is not specified, the origin defaults to [0, 0].
+ *
+ * @param {Point} point
+ * @param {number} [angle=0]
+ * @param {Point} [origin]
+ * @returns {Point}
+ */
+function pointRotate(point, angle, origin) {
+  const r = angleToRadians(angle || 0);
+
+  if (!origin || (origin[0] === 0 && origin[1] === 0)) {
+    return rotate(point, r);
+  } else {
+    // See: https://math.stackexchange.com/questions/1964905/rotation-around-non-zero-point
+    const p0 = point.map((c, i) => c - origin[i]);
+    const rotated = rotate(p0, r);
+    return rotated.map((c, i) => c + origin[i]);
+  }
+}
+
+/**
+ * @param {Point} point
+ * @param {number} angle
+ * @returns {Point}
+ */
+function rotate(point, angle) {
+  // See: https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Rotation
+  return [
+    point[0] * Math.cos(angle) - point[1] * Math.sin(angle),
+    point[0] * Math.sin(angle) + point[1] * Math.cos(angle),
+  ];
+}
+
+/**
+ * @typedef {import("../types.js").Line} Line
+ * @typedef {import("../types.js").Point} Point
+ */
+
+/**
+ * Returns the coordinates resulting from rotating a <i>line</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to the <a href="#lineMidpoint">midpoint</a> of the line.
+ *
+ * @param {Line} line
+ * @param {number} angle
+ * @param {Point} [origin]
+ * @returns {Line}
+ */
+function lineRotate(line, angle, origin) {
+  return line.map((point) =>
+    pointRotate(point, angle, origin || lineMidpoint(line)),
+  );
+}
+
+/**
+ * @typedef {import("../types.js").Point} Point
+ */
+
+/**
+ * Returns the coordinates resulting from translating a <i>point</i> by an <i>angle</i> in degrees and a <i>distance</i>. If <i>angle</i> is not specified, defaults to 0. If <i>distance</i> is not specified, defaults to 0.
+ *
+ * @param {Point} point
+ * @param {number} [angle=0]
+ * @param {number} [distance=0]
+ * @returns {Point}
+ */
+function pointTranslate(point, angle = 0, distance = 0) {
+  const r = angleToRadians(angle);
+  return [point[0] + distance * Math.cos(r), point[1] + distance * Math.sin(r)];
+}
+
+/**
+ * @typedef {import("../types.js").Line} Line
+ */
+
+/**
+ * Returns the coordinates resulting from translating a <i>line</i> by an <i>angle</i> in degrees and a <i>distance</i>. If <i>angle</i> is not specified, defaults to 0. If <i>distance</i> is not specified, defaults to 0.
+ *
+ * @param {Line} line
+ * @param {number} angle
+ * @param {number} distance
+ * @returns {Line}
+ */
+function lineTranslate(line, angle, distance) {
+  return line.map((point) => pointTranslate(point, angle, distance));
+}
+
+/**
+ * @typedef {import("../types.js").Polygon} Polygon
+ */
+
+/**
+ * Returns the area of a <i>polygon</i>. You can pass a boolean indicating whether the returned area is <i>signed</i>, which defaults to false.
+ *
+ * @param {Polygon} vertices
+ * @param {boolean} [signed=false]
+ * @returns {number}
+ */
+function polygonArea(vertices, signed = false) {
+  let a = 0;
+
+  for (let i = 0, l = vertices.length; i < l; i++) {
+    const v0 = vertices[i],
+      v1 = vertices[i === l - 1 ? 0 : i + 1];
+
+    a += v0[0] * v1[1];
+    a -= v1[0] * v0[1];
+  }
+
+  return signed ? a / 2 : Math.abs(a / 2);
+}
+
+/**
+ * @typedef {import("../types.js").Point} Point
+ * @typedef {import("../types.js").Polygon} Polygon
+ * @typedef {[Point, Point]} Bounds
+ */
+
+/**
+ * Returns the bounds of a <i>polygon</i>, ignoring points with invalid values (null, undefined, NaN, Infinity). The returned bounds are represented as an array of two points, where the first point is the top-left corner and the second point is the bottom-right corner. For example:
+ *
+ * ```js
+ * const rectangle = [
+ *   [0, 0],
+ *   [0, 1],
+ *   [1, 1],
+ *   [1, 0],
+ * ];
+ * const bounds = geometric.polygonBounds(rectangle); // [[0, 0], [1, 1]]
+ * ```
+ *
+ * Returns null if the <i>polygon</i> has fewer than three points.
+ *
+ * @param {Polygon} polygon
+ * @returns {Bounds | null}
+ */
+function polygonBounds(polygon) {
+  if (polygon.length < 3) {
+    return null;
+  }
+
+  let xMin = Infinity,
+    xMax = -Infinity,
+    yMin = Infinity,
+    yMax = -Infinity,
+    found = false;
+
+  for (let i = 0, l = polygon.length; i < l; i++) {
+    const p = polygon[i],
+      x = p[0],
+      y = p[1];
+
+    if (x != null && isFinite(x) && y != null && isFinite(y)) {
+      found = true;
+      if (x < xMin) xMin = x;
+      if (x > xMax) xMax = x;
+      if (y < yMin) yMin = y;
+      if (y > yMax) yMax = y;
+    }
+  }
+
+  return found
+    ? [
+        [xMin, yMin],
+        [xMax, yMax],
+      ]
+    : null;
+}
+
+/**
+ * @typedef {import("../types.js").Point} Point
+ * @typedef {import("../types.js").Polygon} Polygon
+ */
+
+/**
+ * Returns the weighted centroid of a <i>polygon</i>. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [mean center](#polygonMean).
+ *
+ * @param {Polygon} vertices
+ * @returns {Point | []}
+ */
+function polygonCentroid(vertices) {
+  if (!vertices.length) return [];
+  if (vertices.length === 1) return vertices[0];
+  if (vertices.length === 2) return lineMidpoint(vertices);
+
+  let a = 0,
+    x = 0,
+    y = 0,
+    l = vertices.length;
+
+  for (let i = 0; i < l; i++) {
+    const s = i === l - 1 ? 0 : i + 1,
+      v0 = vertices[i],
+      v1 = vertices[s],
+      f = v0[0] * v1[1] - v1[0] * v0[1];
+
+    a += f;
+    x += (v0[0] + v1[0]) * f;
+    y += (v0[1] + v1[1]) * f;
+  }
+
+  const d = a * 3;
+
+  return [x / d, y / d];
+}
+
+/**
+ * @typedef {import("../types.js").Polygon} Polygon
+ */
+
+/**
+ * Returns a new <i>polygon</i> that is closed by appending the first point of the polygon to the end if it is not already closed. The input <i>polygon</i> is not modified.
+ *
+ * @param {Polygon} polygon
+ * @returns {Polygon}
+ */
+function polygonClose(polygon) {
+  if (!polygon.length) {
+    return polygon;
+  }
+  return polygonClosed(polygon) ? polygon : [...polygon, polygon[0]];
+}
+
+/**
+ * Returns a boolean indicating whether the given <i>polygon</i> is closed. A polygon is considered closed if its first point is identical to its last point.
+ *
+ * @param {Polygon} polygon
+ * @returns {boolean}
+ */
+function polygonClosed(polygon) {
+  if (polygon.length < 2) {
+    return false;
+  }
+  const first = polygon[0],
+    last = polygon[polygon.length - 1];
+  return first[0] === last[0] && first[1] === last[1];
+}
+
+// Determines whether a point is inside of a polygon, represented as an array of vertices.
+// From https://github.com/substack/point-in-polygon/blob/master/index.js,
+// based on the ray-casting algorithm from https://web.archive.org/web/20180115151705/https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
+// Wikipedia: https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
+// Returns a boolean.
+/**
+ * @typedef {import("../types.js").Point} Point
+ * @typedef {import("../types.js").Polygon} Polygon
+ */
+
+/**
+ * Returns a boolean representing whether a <i>point</i> is inside of a <i>polygon</i>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
+ *
+ * @param {Point} point
+ * @param {Polygon} polygon
+ * @returns {boolean}
+ */
+function pointInPolygon(point, polygon) {
+  let x = point[0],
+    y = point[1],
+    inside = false;
+
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0],
+      yi = polygon[i][1],
+      xj = polygon[j][0],
+      yj = polygon[j][1];
+
+    if (yi > y != yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) {
+      inside = !inside;
+    }
+  }
+
+  return inside;
+}
+
+const EPSILON = 1e-9;
+
+/**
  * @typedef {import("../types.js").Point} Point
  */
 
@@ -472,8 +475,9 @@ function isCollinear(pointA, pointB, pointC, epsilon = EPSILON) {
  * @typedef {import("../types.js").Line} Line
  */
 
-// See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
 /**
+ * See https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
+ *
  * @param {Line} line
  * @returns {Line}
  */
@@ -481,8 +485,9 @@ function topPointFirst(line) {
   return line[1][1] > line[0][1] ? line : [line[1], line[0]];
 }
 
-// Returns a boolean representing whether a <i>point</i> is to the left of a <i>line</i>.
 /**
+ * Returns a boolean representing whether a <i>point</i> is to the left of a <i>line</i>.
+ *
  * @param {Point} point
  * @param {Line} line
  * @returns {boolean}
@@ -491,8 +496,9 @@ function pointLeftofLine(point, line) {
   const t = topPointFirst(line);
   return cross(point, t[1], t[0]) < 0;
 }
-// Returns a boolean representing whether a <i>point</i> is to the right of a <i>line</i>.
 /**
+ * Returns a boolean representing whether a <i>point</i> is to the right of a <i>line</i>.
+ *
  * @param {Point} point
  * @param {Line} line
  * @returns {boolean}
@@ -502,8 +508,9 @@ function pointRightofLine(point, line) {
   return cross(point, t[1], t[0]) > 0;
 }
 
-// Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i> and is also located on the line segment. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointWithLine](#pointWithLine).
 /**
+ * Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i> and is also located on the line segment. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointWithLine](#pointWithLine).
+ *
  * @param {Point} point
  * @param {Line} line
  * @param {number} [epsilon=0]
@@ -518,8 +525,9 @@ function pointOnLine(point, line, epsilon = 0) {
   );
 }
 
-// Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointOnLine](#pointOnLine).
 /**
+ * Returns a boolean representing whether a <i>point</i> is collinear with a <i>line</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured. See also [pointOnLine](#pointOnLine).
+ *
  * @param {Point} point
  * @param {Line} line
  * @param {number} [epsilon=0]
@@ -534,8 +542,9 @@ function pointWithLine(point, line, epsilon = 0) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
 /**
+ * Returns a boolean representing whether a <i>point</i> is located on one of the edges of a <i>polygon</i>. An optional <i>epsilon</i> number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
+ *
  * @param {Point} point
  * @param {Polygon} polygon
  * @param {number} [epsilon=0]
@@ -559,8 +568,9 @@ function pointOnPolygon(point, polygon, epsilon = 0) {
  * @typedef {import("../types.js").Point} Point
  */
 
-// Returns a boolean representing whether two <i>points</i> are equal within an optional <i>epsilon</i> tolerance. If <i>epsilon</i> is not specified, a small default tolerance is used.
 /**
+ * Returns a boolean representing whether two <i>points</i> are equal within an optional <i>epsilon</i> tolerance. If <i>epsilon</i> is not specified, a small default tolerance is used.
+ *
  * @param {Point} pointA
  * @param {Point} pointB
  * @param {number} [epsilon=EPSILON]
@@ -845,7 +855,7 @@ function splitPolygonEdges(polygon, otherPolygon) {
  * @returns {{ start: Point, end: Point, startKey: string, endKey: string, angle: number } | null}
  */
 function orientBoundarySegment(operation, polygonA, polygonB, segment, scale) {
-  const center = midpoint(segment.start, segment.end);
+  const center = lineMidpoint([segment.start, segment.end]);
   const direction = subtract(segment.end, segment.start);
   const length = magnitude(direction);
 
@@ -1241,8 +1251,9 @@ function clockwiseDelta(angleA, angleB) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for an array of <i>points</i>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).
 /**
+ * Returns the [convex hull](https://en.wikipedia.org/wiki/Convex_hull), represented as a polygon, for an array of <i>points</i>. Returns null if the input array has fewer than three points. Uses [Andrew’s monotone chain algorithm](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript).
+ *
  * @param {Point[]} points
  * @returns {Polygon | null}
  */
@@ -1289,8 +1300,9 @@ function polygonHull(points) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the length of a <i>polygon</i>'s perimeter.
 /**
+ * Returns the length of a <i>polygon</i>'s perimeter.
+ *
  * @param {Polygon} vertices
  * @returns {number}
  */
@@ -1328,10 +1340,11 @@ function polygonLength(vertices) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns an interpolator function given a <i>polygon</i> of vertices [a, b, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
-//
-// You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1]. When clamp is false, the interpolator applies modular arithmetic to t. If t is less than 0, the interpolator wraps around the polygon's perimeter in reverse. If t is greater than 1, the interpolator continues forward along the perimeter.
 /**
+ * Returns an interpolator function given a <i>polygon</i> of vertices [a, b, ..., n]. The returned interpolator function takes a single argument <i>t</i>, where t is a number in [0, 1]; a value of 0 returns a, while a value of 1 returns n. Intermediate values interpolate from a to n along the polygon's perimeter.
+ *
+ * You can pass an optional boolean, which defaults to true, indicating whether to <i>clamp</i> t to the range [0, 1]. When clamp is false, the interpolator applies modular arithmetic to t. If t is less than 0, the interpolator wraps around the polygon's perimeter in reverse. If t is greater than 1, the interpolator continues forward along the perimeter.
+ *
  * @param {Polygon} polygon
  * @param {boolean} [clamp=true]
  * @returns {(t: number) => Point}
@@ -1377,8 +1390,9 @@ function polygonInterpolate(polygon, clamp = true) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
 /**
+ * Returns the arithmetic mean of the vertices of a polygon. Keeps duplicate vertices, resulting in different values for open and closed polygons. Not to be [confused](https://github.com/Turfjs/turf/issues/334) with a [centroid](#polygonCentroid).
+ *
  * @param {Polygon} vertices
  * @returns {Point | []}
  */
@@ -1404,10 +1418,11 @@ function polygonMean(vertices) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
-//
-// The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>. To scale the polygon's area by the square of the <i>scaleFactor</i>, see <a href="#polygonScale">geometric.polygonScale</a>.
 /**
+ * Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+ *
+ * The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>. To scale the polygon's area by the square of the <i>scaleFactor</i>, see <a href="#polygonScale">geometric.polygonScale</a>.
+ *
  * @param {Polygon} polygon
  * @param {number} scale
  * @param {Point} [origin]
@@ -1435,8 +1450,9 @@ function polygonScaleArea(polygon, scale, origin) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle</i> in degrees and a <i>distance</i>.
 /**
+ * Returns the vertices resulting from translating a <i>polygon</i> by an <i>angle</i> in degrees and a <i>distance</i>.
+ *
  * @param {Polygon} polygon
  * @param {number} angle
  * @param {number} distance
@@ -1457,8 +1473,9 @@ function polygonTranslate(polygon, angle, distance) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise. Based on an algorithm by Pavel Valtr. See [example](https://harryjstevens.com/geometric/examples/polygon-random/).
 /**
+ * Returns the vertices of a random convex polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>centroid</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>centroid</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise. Based on an algorithm by Pavel Valtr. See [example](https://harryjstevens.com/geometric/examples/polygon-random/).
+ *
  * @param {number} [sides=3]
  * @param {number} [area=100]
  * @param {Point} [centroid=[0, 0]]
@@ -1550,8 +1567,9 @@ function shuffle(array) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Reflects a <em>polygon</em> over its vertical midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its vertical midline.
 /**
+ * Reflects a <em>polygon</em> over its vertical midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its vertical midline.
+ *
  * @param {Polygon} polygon
  * @param {number} [reflectFactor=1]
  * @returns {Polygon}
@@ -1586,8 +1604,9 @@ function polygonReflectX(polygon, reflectFactor = 1) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Reflects a <em>polygon</em> over its horizontal midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its horizontal midline.
 /**
+ * Reflects a <em>polygon</em> over its horizontal midline. Pass an optional <em>reflectFactor</em> between 0 and 1, where 1 indicates a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its horizontal midline.
+ *
  * @param {Polygon} polygon
  * @param {number} [reflectFactor=1]
  * @returns {Polygon}
@@ -1623,8 +1642,9 @@ function polygonReflectY(polygon, reflectFactor = 1) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices of a regular polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>center</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>center</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise.
 /**
+ * Returns the vertices of a regular polygon of the specified number of <i>sides</i>, <i>area</i>, and <i>center</i> coordinates. If <i>sides</i> is not specified, defaults to 3. If <i>area</i> is not specified, defaults to 100. If <i>center</i> is not specified, defaults to [0, 0]. The returned polygon's winding order will be counter-clockwise.
+ *
  * @param {number} [sides=3]
  * @param {number} [area=100]
  * @param {Point} [center]
@@ -1661,8 +1681,9 @@ function polygonRegular(sides = 3, area = 100, center) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from rotating a <i>polygon</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to [0, 0].
 /**
+ * Returns the vertices resulting from rotating a <i>polygon</i> about an origin by an <i>angle</i> in degrees. If <i>origin</i> is not specified, the origin defaults to [0, 0].
+ *
  * @param {Polygon} polygon
  * @param {number} angle
  * @param {Point} [origin]
@@ -1683,10 +1704,11 @@ function polygonRotate(polygon, angle, origin) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
-//
-// The returned polygon's area is equal to the input polygon's area multiplied by the square of the <i>scaleFactor</i>. To scale the polygon's area by the <i>scaleFactor</i> itself, see <a href="#polygonScaleArea">geometric.polygonScaleArea</a>.
 /**
+ * Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+ *
+ * The returned polygon's area is equal to the input polygon's area multiplied by the square of the <i>scaleFactor</i>. To scale the polygon's area by the <i>scaleFactor</i> itself, see <a href="#polygonScaleArea">geometric.polygonScaleArea</a>.
+ *
  * @param {Polygon} polygon
  * @param {number} [scale=1]
  * @param {Point} [origin]
@@ -1715,10 +1737,11 @@ function polygonScale(polygon, scale = 1, origin) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from scaling the horizontal coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The vertical coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
-//
-// The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
 /**
+ * Returns the vertices resulting from scaling the horizontal coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The vertical coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+ *
+ * The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
+ *
  * @param {Polygon} polygon
  * @param {number} scale
  * @param {Point} [origin]
@@ -1748,10 +1771,11 @@ function polygonScaleX(polygon, scale, origin) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from scaling the vertical coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The horizontal coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
-//
-// The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
 /**
+ * Returns the vertices resulting from scaling the vertical coordinates of a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. The horizontal coordinates remain unchanged. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+ *
+ * The returned polygon's area is equal to the input polygon's area multiplied by the <i>scaleFactor</i>.
+ *
  * @param {Polygon} polygon
  * @param {number} scale
  * @param {Point} [origin]
@@ -1780,10 +1804,11 @@ function polygonScaleY(polygon, scale, origin) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a <i>polygon</i> in the specified winding order. If an <i>order</i> string is passed as either "cw" or "clockwise", returns a polygon with a clockwise winding order. Otherwise, returns a polygon with a counter-clockwise winding order. Returns null if the <i>polygon</i> has fewer than three points.
-//
-// Uses the convention that a polygon with a negative signed area has a clockwise winding order, and a polygon with a positive signed area has a counter-clockwise winding order. As a result, the winding order will appear reversed on computer screens where the y-axis is reversed (i.e. 0 is on top rather than on bottom).
 /**
+ * Returns a <i>polygon</i> in the specified winding order. If an <i>order</i> string is passed as either "cw" or "clockwise", returns a polygon with a clockwise winding order. Otherwise, returns a polygon with a counter-clockwise winding order. Returns null if the <i>polygon</i> has fewer than three points.
+ *
+ * Uses the convention that a polygon with a negative signed area has a clockwise winding order, and a polygon with a positive signed area has a counter-clockwise winding order. As a result, the winding order will appear reversed on computer screens where the y-axis is reversed (i.e. 0 is on top rather than on bottom).
+ *
  * @param {Polygon} polygon
  * @param {"cw" | "clockwise" | "ccw" | "counterclockwise"} [order="ccw"]
  * @returns {Polygon | null}
@@ -1806,8 +1831,9 @@ function polygonWind(polygon, order = "ccw") {
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns a point where line <i>a</i> intersects line <i>b</i>. If the two lines do not intersect, returns null.
 /**
+ * Returns a point where line <i>a</i> intersects line <i>b</i>. If the two lines do not intersect, returns null.
+ *
  * @param {Line} a
  * @param {Line} b
  * @returns {Point | null}
@@ -1861,8 +1887,9 @@ function lineIntersection(a, b) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns an array of points where a <i>line</i> intersects a </i>polygon</i>. If the line does not intersect the polygon, returns null.
 /**
+ * Returns an array of points where a <i>line</i> intersects a </i>polygon</i>. If the line does not intersect the polygon, returns null.
+ *
  * @param {Line} line
  * @param {Polygon} polygon
  * @returns {Point[] | null}
@@ -1903,8 +1930,9 @@ function lineIntersectsPolygon(line, polygon) {
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns the closest position on a <i>line</i> to a <i>point</i>.
 /**
+ * Returns the closest position on a <i>line</i> to a <i>point</i>.
+ *
  * @param {Line} line
  * @param {Point} point
  * @returns {Point}
@@ -1919,8 +1947,9 @@ function pointToLine(line, point) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the closest position on the perimeter of a <i>polygon</i> to a <i>point</i>.
 /**
+ * Returns the closest position on the perimeter of a <i>polygon</i> to a <i>point</i>.
+ *
  * @param {Polygon} polygon
  * @param {Point} point
  * @returns {Point | []}
@@ -1988,8 +2017,9 @@ function lineInOrOnPolygon(line, polygon) {
   return true;
 }
 
-// Returns a boolean representing whether <i>polygonA</i> is contained by <i>polygonB</i>. Points and edges on <i>polygonB</i>'s boundary are considered contained.
 /**
+ * Returns a boolean representing whether <i>polygonA</i> is contained by <i>polygonB</i>. Points and edges on <i>polygonB</i>'s boundary are considered contained.
+ *
  * @param {Polygon} polygonA
  * @param {Polygon} polygonB
  * @returns {boolean}
@@ -2021,8 +2051,9 @@ function polygonInPolygon(polygonA, polygonB) {
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a boolean representing whether <i>polygonA</i> intersects but is not contained by <i>polygonB</i>.
 /**
+ * Returns a boolean representing whether <i>polygonA</i> intersects but is not contained by <i>polygonB</i>.
+ *
  * @param {Polygon} polygonA
  * @param {Polygon} polygonB
  * @returns {boolean}
@@ -2054,8 +2085,9 @@ function polygonIntersectsPolygon(polygonA, polygonB) {
   return intersects;
 }
 
-// Returns the angle of reflection given a starting angle, also known as the angle of <i>incidence</i>, and the angle of the <i>surface</i> off of which it is reflected.
 /**
+ * Returns the angle of reflection given a starting angle, also known as the angle of <i>incidence</i>, and the angle of the <i>surface</i> off of which it is reflected.
+ *
  * @param {number} incidenceAngle
  * @param {number} surfaceAngle
  * @returns {number}

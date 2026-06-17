@@ -8,8 +8,9 @@
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a boolean representing whether a <i>point</i> is inside of a <i>polygon</i>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
 /**
+ * Returns a boolean representing whether a <i>point</i> is inside of a <i>polygon</i>. Uses [ray casting](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm).
+ *
  * @param {Point} point
  * @param {Polygon} polygon
  * @returns {boolean}

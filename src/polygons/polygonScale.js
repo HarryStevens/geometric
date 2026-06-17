@@ -8,10 +8,11 @@ import { polygonCentroid } from "./polygonCentroid.js";
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
-//
-// The returned polygon's area is equal to the input polygon's area multiplied by the square of the <i>scaleFactor</i>. To scale the polygon's area by the <i>scaleFactor</i> itself, see <a href="#polygonScaleArea">geometric.polygonScaleArea</a>.
 /**
+ * Returns the vertices resulting from scaling a <i>polygon</i> by a <i>scaleFactor</i> (where 1 is the polygon's current size) from an origin point. If <i>origin</i> is not specified, the origin defaults to the polygon's centroid.
+ *
+ * The returned polygon's area is equal to the input polygon's area multiplied by the square of the <i>scaleFactor</i>. To scale the polygon's area by the <i>scaleFactor</i> itself, see <a href="#polygonScaleArea">geometric.polygonScaleArea</a>.
+ *
  * @param {Polygon} polygon
  * @param {number} [scale=1]
  * @param {Point} [origin]

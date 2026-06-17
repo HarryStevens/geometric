@@ -2,8 +2,9 @@
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns a new <i>polygon</i> that is closed by appending the first point of the polygon to the end if it is not already closed. The input <i>polygon</i> is not modified.
 /**
+ * Returns a new <i>polygon</i> that is closed by appending the first point of the polygon to the end if it is not already closed. The input <i>polygon</i> is not modified.
+ *
  * @param {Polygon} polygon
  * @returns {Polygon}
  */
@@ -14,8 +15,9 @@ export function polygonClose(polygon) {
   return polygonClosed(polygon) ? polygon : [...polygon, polygon[0]];
 }
 
-// Returns a boolean indicating whether the given <i>polygon</i> is closed. A polygon is considered closed if its first point is identical to its last point.
 /**
+ * Returns a boolean indicating whether the given <i>polygon</i> is closed. A polygon is considered closed if its first point is identical to its last point.
+ *
  * @param {Polygon} polygon
  * @returns {boolean}
  */

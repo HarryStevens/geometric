@@ -1,5 +1,6 @@
-// Returns the result of converting an <i>angle</i> in radians to the same angle in degrees.
 /**
+ * Returns the result of converting an <i>angle</i> in radians to the same angle in degrees.
+ *
  * @param {number} angle
  * @returns {number}
  */

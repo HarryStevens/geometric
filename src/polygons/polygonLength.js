@@ -2,8 +2,9 @@
  * @typedef {import("../types.js").Polygon} Polygon
  */
 
-// Returns the length of a <i>polygon</i>'s perimeter.
 /**
+ * Returns the length of a <i>polygon</i>'s perimeter.
+ *
  * @param {Polygon} vertices
  * @returns {number}
  */

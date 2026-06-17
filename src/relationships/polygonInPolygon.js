@@ -46,8 +46,9 @@ function lineInOrOnPolygon(line, polygon) {
   return true;
 }
 
-// Returns a boolean representing whether <i>polygonA</i> is contained by <i>polygonB</i>. Points and edges on <i>polygonB</i>'s boundary are considered contained.
 /**
+ * Returns a boolean representing whether <i>polygonA</i> is contained by <i>polygonB</i>. Points and edges on <i>polygonB</i>'s boundary are considered contained.
+ *
  * @param {Polygon} polygonA
  * @param {Polygon} polygonB
  * @returns {boolean}

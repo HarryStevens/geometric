@@ -4,8 +4,9 @@ import { distanceSquared } from "../utils/vector.js";
  * @typedef {import("../types.js").Line} Line
  */
 
-// Returns the length of a <i>line</i>.
 /**
+ * Returns the length of a <i>line</i>.
+ *
  * @param {Line} line
  * @returns {number}
  */
