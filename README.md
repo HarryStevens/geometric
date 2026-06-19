@@ -53,7 +53,7 @@ const rotated = lineRotate(line, 90);
 const scaled = polygonScale(polygon, 2);
 ```
 
-There are no custom classes to instantiate and no special data structures to learn. The values you pass into Geometric.js are the same values you can serialize, inspect, draw to SVG or Canvas, store in JSON, or pass to other JavaScript code.
+There are no custom classes to instantiate and no special data structures to learn. The values you pass into Geometric.js are the same values you can serialize, inspect, and draw to SVG or Canvas.
 
 ## Development
 
