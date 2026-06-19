@@ -1,3 +1,10 @@
+## [3.0.9](https://github.com/HarryStevens/geometric/compare/v3.0.8...v3.0.9) (2026-06-19)
+
+
+### Bug Fixes
+
+* override vulnerable js-yaml dependency ([d606eae](https://github.com/HarryStevens/geometric/commit/d606eaea27d79c7bdf3e9d51a8662ee59fa47309))
+
 ## [3.0.8](https://github.com/HarryStevens/geometric/compare/v3.0.7...v3.0.8) (2026-06-17)
 
 ### Bug Fixes
